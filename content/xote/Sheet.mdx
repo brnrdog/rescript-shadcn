@@ -1,0 +1,70 @@
+---
+title: Sheet
+description: Extends the Dialog component to display content that complements the main content of the screen.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="SheetDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Sheet
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Sheet"
+  title="components/ui/Sheet.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Sheet>
+  <Sheet.Trigger> {"Open"} </Sheet.Trigger>
+  <Sheet.Content side=Left>
+    <Sheet.Header>
+      <Sheet.Title> {"Edit profile"} </Sheet.Title>
+      <Sheet.Description> {"Make changes to your profile here."} </Sheet.Description>
+    </Sheet.Header>
+  </Sheet.Content>
+</Sheet>
+```
+
+Use `side` to slide the sheet in from `Top`, `Right`, `Bottom` or `Left`.
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

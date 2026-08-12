@@ -121,6 +121,7 @@ module Popup = {
     ~ariaLabel: option<string>=?,
     ~dataSlot: string="dialog-popup",
     ~dataSize: option<string>=?,
+    ~attrs: array<(string, View.attrValue)>=[],
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
@@ -138,7 +139,7 @@ module Popup = {
       class=?{className}
       style=?{style}
       ariaLabel=?{ariaLabel}
-      attrs=[
+      attrs={Array.concat([
         View.optionalAttr(
           "aria-modal",
           ctx->Option.mapOr(true, ctx => ctx.modal) ? Some("true") : None,
@@ -153,7 +154,7 @@ module Popup = {
         /* The popup only exists while the dialog is open, so its open state is
            part of the markup rather than a reactive attribute. */
         View.attr("data-open", ""),
-      ]>
+      ], attrs)}>
       {children}
     </div>
   }

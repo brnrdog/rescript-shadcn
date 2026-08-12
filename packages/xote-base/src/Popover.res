@@ -61,6 +61,7 @@ module Popup = {
     ~id: option<string>=?,
     ~ariaLabel: option<string>=?,
     ~dataSlot: string="popover-popup",
+    ~attrs: array<(string, View.attrValue)>=[],
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
@@ -74,7 +75,7 @@ module Popup = {
       class=?{className}
       style=?{style}
       ariaLabel=?{ariaLabel}
-      attrs=[
+      attrs={Array.concat([
         View.optionalAttr(
           "aria-labelledby",
           ariaLabel === None ? ctx->Option.map(ctx => ctx.titleId) : None,
@@ -83,7 +84,7 @@ module Popup = {
         View.computedAttr("data-side", () => side()->Anchored.Side.toString),
         /* The popup exists only while open, so its open state is markup. */
         View.attr("data-open", ""),
-      ]>
+      ], attrs)}>
       {children}
     </div>
   }

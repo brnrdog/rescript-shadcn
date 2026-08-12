@@ -1,0 +1,66 @@
+---
+title: Toggle Group
+description: A set of two-state buttons that can be toggled on or off.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="ToggleGroupDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/ToggleGroup
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="ToggleGroup"
+  title="components/ui/ToggleGroup.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<ToggleGroup multiple=true defaultValue=["bold"] variant=Outline>
+  <ToggleGroup.Item value="bold" ariaLabel="Bold"> {"B"} </ToggleGroup.Item>
+  <ToggleGroup.Item value="italic" ariaLabel="Italic"> {"I"} </ToggleGroup.Item>
+</ToggleGroup>
+```
+
+Leave `multiple` off for a single-select group, which then exposes itself as a
+radio group.
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

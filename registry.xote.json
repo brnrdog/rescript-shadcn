@@ -115,6 +115,24 @@
       ]
     },
     {
+      "name": "AlertDialog",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/AlertDialog.res",
+          "type": "registry:file",
+          "target": "@ui/AlertDialog.res"
+        }
+      ]
+    },
+    {
       "name": "AspectRatio",
       "type": "registry:ui",
       "dependencies": [
@@ -438,6 +456,20 @@
       ]
     },
     {
+      "name": "ScrollArea",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/ScrollArea.res",
+          "type": "registry:file",
+          "target": "@ui/ScrollArea.res"
+        }
+      ]
+    },
+    {
       "name": "Separator",
       "type": "registry:ui",
       "dependencies": [
@@ -453,6 +485,25 @@
       ]
     },
     {
+      "name": "Sheet",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Sheet.res",
+          "type": "registry:file",
+          "target": "@ui/Sheet.res"
+        }
+      ]
+    },
+    {
       "name": "Skeleton",
       "type": "registry:ui",
       "dependencies": [
@@ -463,6 +514,21 @@
           "path": "registry/xote/ui/Skeleton.res",
           "type": "registry:file",
           "target": "@ui/Skeleton.res"
+        }
+      ]
+    },
+    {
+      "name": "Slider",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Slider.res",
+          "type": "registry:file",
+          "target": "@ui/Slider.res"
         }
       ]
     },
@@ -557,6 +623,24 @@
       ]
     },
     {
+      "name": "ToggleGroup",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/ToggleGroup.res",
+          "type": "registry:file",
+          "target": "@ui/ToggleGroup.res"
+        }
+      ]
+    },
+    {
       "name": "Tooltip",
       "type": "registry:ui",
       "dependencies": [
@@ -600,6 +684,23 @@
       "files": [
         {
           "path": "registry/xote/examples/AlertDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AlertDialogDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/AlertDialog",
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AlertDialogDemo.res",
           "type": "registry:example"
         }
       ]
@@ -948,6 +1049,23 @@
       ]
     },
     {
+      "name": "ScrollAreaDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ScrollArea",
+        "@rescript-shadcn/Separator"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ScrollAreaDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "SeparatorDemo",
       "type": "registry:example",
       "dependencies": [
@@ -964,6 +1082,25 @@
       ]
     },
     {
+      "name": "SheetDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Input",
+        "@rescript-shadcn/Label",
+        "@rescript-shadcn/Sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SheetDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "SkeletonDemo",
       "type": "registry:example",
       "dependencies": [
@@ -975,6 +1112,22 @@
       "files": [
         {
           "path": "registry/xote/examples/SkeletonDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SliderDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Slider"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SliderDemo.res",
           "type": "registry:example"
         }
       ]
@@ -1074,6 +1227,22 @@
       "files": [
         {
           "path": "registry/xote/examples/ToggleDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleGroupDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ToggleGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleGroupDemo.res",
           "type": "registry:example"
         }
       ]

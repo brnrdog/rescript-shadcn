@@ -59,6 +59,7 @@ module Popup = {
     ~className: option<string>=?,
     ~id: option<string>=?,
     ~dataSlot: string="tooltip-popup",
+    ~attrs: array<(string, View.attrValue)>=[],
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
@@ -70,11 +71,11 @@ module Popup = {
       role={ctx->Option.mapOr("tooltip", ctx => ctx.role)}
       class=?{className}
       style=?{style}
-      attrs=[
+      attrs={Array.concat([
         View.attr("data-slot", dataSlot),
         View.computedAttr("data-side", () => side()->Anchored.Side.toString),
         View.attr("data-open", ""),
-      ]>
+      ], attrs)}>
       {children}
     </div>
   }

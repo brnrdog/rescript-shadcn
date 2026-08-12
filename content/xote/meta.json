@@ -3,6 +3,7 @@
   "pages": [
     "Accordion",
     "Alert",
+    "AlertDialog",
     "AspectRatio",
     "Avatar",
     "Badge",
@@ -23,14 +24,18 @@
     "Popover",
     "Progress",
     "RadioGroup",
+    "ScrollArea",
     "Separator",
+    "Sheet",
     "Skeleton",
+    "Slider",
     "Spinner",
     "Switch",
     "Table",
     "Tabs",
     "Textarea",
     "Toggle",
+    "ToggleGroup",
     "Tooltip"
   ]
 }
