@@ -1,6 +1,7 @@
 @module("tailwind-merge")
 external cn: (string, option<string>) => string = "twMerge"
 
+module Internal = XoteBase.Internal
 module Orientation = XoteBase.Internal.Orientation
 
 /* Two panels either side of a draggable handle. The handle writes a percentage
@@ -21,6 +22,20 @@ let dragRatio: (Dom.element, Dom.event, bool) => float = %raw(`function (el, eve
     ? (event.clientY - rect.top) / rect.height
     : (event.clientX - rect.left) / rect.width
   return Math.min(0.9, Math.max(0.1, ratio)) * 100
+}`)
+
+/* The handle is a hairline, so without capture the pointer leaves it after the
+   first pixel and the drag dies there. Capture retargets every later move and
+   the release to the handle, wherever the pointer actually is. */
+let capturePointer: Dom.event => unit = %raw(`function (event) {
+  event.preventDefault()
+  event.currentTarget.setPointerCapture(event.pointerId)
+}`)
+
+let releasePointer: Dom.event => unit = %raw(`function (event) {
+  if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+    event.currentTarget.releasePointerCapture(event.pointerId)
+  }
 }`)
 
 @xote.component
@@ -58,18 +73,24 @@ module Panel = {
     ~grow: bool=false,
     ~defaultSize: option<float>=?,
     ~children: View.node=View.fragment([]),
-  ) =>
+  ) => {
+    let ctx = XoteBase.Internal.Context.use(context)
+
+    /* A starting size belongs to the group, not to this panel — pinning the
+       panel's basis here would take it out of the drag entirely. */
+    switch (ctx, defaultSize, grow) {
+    | (Some(ctx), Some(size), false) => Signal.set(ctx.ratio, size)
+    | _ => ()
+    }
+
     <div
       id=?{id}
       class={cn("cn-resizable-panel min-h-0 min-w-0 overflow-hidden", className)}
-      style={switch (grow, defaultSize) {
-      | (true, _) => "flex: 1 1 auto"
-      | (false, Some(size)) => `flex: 0 0 ${size->Float.toString}%`
-      | (false, None) => "flex: 0 0 var(--resizable-ratio)"
-      }}
+      style={grow ? "flex: 1 1 auto" : "flex: 0 0 var(--resizable-ratio)"}
       attrs=[View.attr("data-slot", "resizable-panel")]>
       {children}
     </div>
+  }
 }
 
 module Handle = {
@@ -77,6 +98,7 @@ module Handle = {
   let make = (~className: option<string>=?, ~id: option<string>=?, ~withHandle: bool=false) => {
     let ctx = XoteBase.Internal.Context.use(context)
     let dragging = ref(false)
+    let active = Signal.make(false)
     let orientation = ctx->Option.mapOr(Orientation.Horizontal, ctx => ctx.orientation)
 
     let update = event =>
@@ -115,15 +137,27 @@ module Handle = {
         "cn-resizable-handle relative flex w-px items-center justify-center bg-border ring-offset-background after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-hidden aria-[orientation=horizontal]:h-px aria-[orientation=horizontal]:w-full aria-[orientation=horizontal]:after:left-0 aria-[orientation=horizontal]:after:h-1 aria-[orientation=horizontal]:after:w-full aria-[orientation=horizontal]:after:translate-x-0 aria-[orientation=horizontal]:after:-translate-y-1/2 [&[aria-orientation=horizontal]>div]:rotate-90",
         className,
       )}
+      style="touch-action: none"
       onPointerDown={event => {
         dragging := true
+        capturePointer(event)
+        Signal.set(active, true)
         update(event)
       }}
       onPointerMove={event =>
         if dragging.contents {
           update(event)
         }}
-      onPointerUp={_ => dragging := false}
+      onPointerUp={event => {
+        dragging := false
+        releasePointer(event)
+        Signal.set(active, false)
+      }}
+      onPointerCancel={event => {
+        dragging := false
+        releasePointer(event)
+        Signal.set(active, false)
+      }}
       onKeyDown={onKeyDown}
       attrs=[
         View.attr("data-slot", "resizable-handle"),
@@ -131,6 +165,12 @@ module Handle = {
           "aria-orientation",
           orientation === Vertical ? "horizontal" : "vertical",
         ),
+        Internal.flag("data-dragging", () => Signal.get(active)),
+        View.computedAttr("aria-valuenow", () =>
+          ctx->Option.mapOr("50", ctx => Signal.get(ctx.ratio)->Float.toFixed(~digits=0))
+        ),
+        View.attr("aria-valuemin", "10"),
+        View.attr("aria-valuemax", "90"),
       ]>
       {withHandle
         ? <div class="cn-resizable-handle-icon z-10 flex shrink-0">

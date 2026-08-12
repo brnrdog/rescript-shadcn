@@ -209,9 +209,17 @@ module El = {
     | None => ()
     }
 
-  /* Work waiting for its node to exist. Portaled content is built long before
-     it is mounted, so a single lookup after the current task would miss it. */
-  let pending: array<(string, Dom.element => unit, option<View.Reactivity.owner>)> = []
+  /* Work bound to a node by id. Portaled content is built long before it is
+     mounted, and a portal mounts a *new* node every time it opens, so this is a
+     standing binding rather than a one-shot lookup. */
+  type binding = {
+    id: string,
+    fn: Dom.element => unit,
+    owner: option<View.Reactivity.owner>,
+    mutable last: option<Dom.element>,
+  }
+
+  let bindings: array<binding> = []
 
   let runOwned = (fn, owner, element) =>
     switch owner {
@@ -219,26 +227,27 @@ module El = {
     | None => fn(element)
     }
 
-  /* Resolve everything whose node is in the document now, and leave the rest
-     waiting — a closed portal's content mounts on open, not before. */
-  let flushPending = (): unit => {
-    let waiting = pending->Array.copy
-    pending->Array.splice(~start=0, ~remove=pending->Array.length, ~insert=[])
-
-    waiting->Array.forEach(((id, fn, owner)) =>
-      switch getElementById(id)->Nullable.toOption {
-      | Some(element) => runOwned(fn, owner, element)
-      | None => pending->Array.push((id, fn, owner))->ignore
+  /* Run every binding whose node is in the document and is not the one it last
+     ran against — that covers both the first mount and each reopen. */
+  let flushPending = (): unit =>
+    bindings->Array.forEach(binding =>
+      switch (getElementById(binding.id)->Nullable.toOption, binding.last) {
+      | (None, _) => ()
+      | (Some(element), Some(previous)) if element === previous => ()
+      | (Some(element), _) =>
+        binding.last = Some(element)
+        runOwned(binding.fn, binding.owner, element)
       }
     )
-  }
 
   /* Stands in for a ref: run `fn` against the node rendered for `id`, owned by
      the component that is currently rendering, so effects created inside are
      disposed with it. */
   let withElement = (id: string, fn: Dom.element => unit): unit =>
     if isBrowser {
-      pending->Array.push((id, fn, View.Reactivity.currentOwner.contents))->ignore
+      bindings
+      ->Array.push({id, fn, owner: View.Reactivity.currentOwner.contents, last: None})
+      ->ignore
       schedule(flushPending)
     }
 }

@@ -321,3 +321,34 @@ describe("anchored overlays", () => {
     expect(positioner.style.getPropertyValue("--transform-origin")).not.toBe("")
   })
 })
+
+describe("reopening an overlay", () => {
+  // A portal mounts a *new* node every time it opens, so the binding that
+  // positions it has to run again — the first version resolved once and left
+  // every reopen sitting in flow at the bottom of the page.
+  it.each([
+    ["popover", PopoverDemo, '[data-slot="popover-trigger"]', '[data-slot="popover-content"]'],
+    ["select", SelectDemo, '[data-slot="select-trigger"]', '[data-slot="select-content"]'],
+  ])("%s positions its content again on the second open", async (_name, demo, triggerSel, popupSel) => {
+    const container = await render(demo as (props: {}) => unknown)
+    const trigger = query(container, triggerSel as string)
+
+    const positionerFor = () =>
+      query(document, popupSel as string).closest('[data-slot$="-positioner"]') as HTMLElement
+
+    trigger.click()
+    await flush()
+    const first = positionerFor()
+    expect(first.style.position).toBe("fixed")
+
+    document.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }))
+    await flush()
+    expect(document.querySelector(popupSel as string)).toBeNull()
+
+    trigger.click()
+    await flush()
+    const second = positionerFor()
+    expect(second.style.position).toBe("fixed")
+    expect(second.style.getPropertyValue("--anchor-width")).not.toBe("")
+  })
+})
