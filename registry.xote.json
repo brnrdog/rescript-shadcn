@@ -524,6 +524,24 @@
       ]
     },
     {
+      "name": "Select",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Select.res",
+          "type": "registry:file",
+          "target": "@ui/Select.res"
+        }
+      ]
+    },
+    {
       "name": "Separator",
       "type": "registry:ui",
       "dependencies": [
@@ -1164,6 +1182,22 @@
       "files": [
         {
           "path": "registry/xote/examples/ScrollAreaDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SelectDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Select"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SelectDemo.res",
           "type": "registry:example"
         }
       ]

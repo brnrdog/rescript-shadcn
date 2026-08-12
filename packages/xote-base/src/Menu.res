@@ -32,6 +32,8 @@ module Trigger = {
     ~disabled: bool=false,
     ~ariaLabel: option<string>=?,
     ~dataSlot: string="menu-trigger",
+    ~dataSize: option<string>=?,
+    ~attrs: array<(string, View.attrValue)>=[],
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
@@ -64,12 +66,16 @@ module Trigger = {
       disabled
       onClick={toggle}
       onKeyDown={onKeyDown}
-      attrs=[
-        View.attr("aria-haspopup", "menu"),
-        View.optionalAttr("aria-controls", ctx->Option.map(ctx => ctx.popupId)),
-        View.attr("data-slot", dataSlot),
-        Internal.flag("data-popup-open", isOpen),
-      ]>
+      attrs={Array.concat(
+        [
+          View.attr("aria-haspopup", "menu"),
+          View.optionalAttr("aria-controls", ctx->Option.map(ctx => ctx.popupId)),
+          View.attr("data-slot", dataSlot),
+          View.optionalAttr("data-size", dataSize),
+          Internal.flag("data-popup-open", isOpen),
+        ],
+        attrs,
+      )}>
       {children}
     </button>
   }
@@ -131,6 +137,7 @@ module Item = {
     ~role: string="menuitem",
     ~dataSlot: string="menu-item",
     ~dataVariant: option<string>=?,
+    ~attrs: array<(string, View.attrValue)>=[],
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
@@ -155,12 +162,15 @@ module Item = {
       class=?{className}
       style=?{style}
       onClick={select}
-      attrs=[
-        View.attr("data-slot", dataSlot),
-        View.optionalAttr("data-variant", dataVariant),
-        View.optionalAttr("aria-disabled", disabled ? Some("true") : None),
-        View.optionalAttr("data-disabled", disabled ? Some("") : None),
-      ]>
+      attrs={Array.concat(
+        [
+          View.attr("data-slot", dataSlot),
+          View.optionalAttr("data-variant", dataVariant),
+          View.optionalAttr("aria-disabled", disabled ? Some("true") : None),
+          View.optionalAttr("data-disabled", disabled ? Some("") : None),
+        ],
+        attrs,
+      )}>
       {children}
     </div>
   }

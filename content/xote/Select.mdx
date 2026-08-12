@@ -1,0 +1,76 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="SelectDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Select
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Select"
+  title="components/ui/Select.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+let value = Signal.make("")
+
+<Select
+  value={MaybeSignal.reactive(value)}
+  onValueChange={next => Signal.set(value, next)}
+  placeholder="Select a fruit">
+  <Select.Trigger>
+    <Select.Value />
+  </Select.Trigger>
+  <Select.Content>
+    <Select.Item value="apple" label="Apple"> {"Apple"} </Select.Item>
+    <Select.Item value="banana" label="Banana"> {"Banana"} </Select.Item>
+  </Select.Content>
+</Select>
+```
+
+`Select.Value` renders the selected item's `label`, falling back to the value
+itself, and shows the root's `placeholder` while nothing is selected.
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
