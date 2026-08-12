@@ -291,6 +291,24 @@
       ]
     },
     {
+      "name": "DropdownMenu",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/DropdownMenu.res",
+          "type": "registry:file",
+          "target": "@ui/DropdownMenu.res"
+        }
+      ]
+    },
+    {
       "name": "Empty",
       "type": "registry:ui",
       "dependencies": [
@@ -873,6 +891,23 @@
       "files": [
         {
           "path": "registry/xote/examples/DialogDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "DropdownMenuDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/DropdownMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/DropdownMenuDemo.res",
           "type": "registry:example"
         }
       ]
