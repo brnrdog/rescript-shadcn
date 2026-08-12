@@ -1873,6 +1873,22 @@
       ]
     },
     {
+      "name": "CalendarBasic",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CalendarBasic.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "CalendarDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1884,6 +1900,39 @@
       "files": [
         {
           "path": "registry/xote/examples/CalendarDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "CalendarMultiple",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Calendar",
+        "@rescript-shadcn/Card"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CalendarMultiple.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "CalendarRange",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CalendarRange.res",
           "type": "registry:example"
         }
       ]
@@ -2047,6 +2096,43 @@
       ]
     },
     {
+      "name": "ComboboxBasic",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Combobox",
+        "@rescript-shadcn/Command"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ComboboxBasic.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ComboboxClear",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Combobox",
+        "@rescript-shadcn/Command",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ComboboxClear.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ComboboxDemo",
       "type": "registry:example",
       "dependencies": [
@@ -2060,6 +2146,24 @@
       "files": [
         {
           "path": "registry/xote/examples/ComboboxDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ComboboxDisabled",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Combobox",
+        "@rescript-shadcn/Command"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ComboboxDisabled.res",
           "type": "registry:example"
         }
       ]

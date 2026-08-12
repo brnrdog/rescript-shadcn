@@ -33,7 +33,7 @@ describe("xote documentation", () => {
   })
 
   it.each(pages)("%s renders previews that exist", (page) => {
-    const previews = matchAll(read(page), /<ComponentPreview\s+name="([^"]+)"/g)
+    const previews = matchAll(read(page), /<ComponentPreview\b[^>]*?name="([^"]+)"/gs)
     const missing = previews.filter(
       (name) => !existsSync(join(examplesDir, `${name}.res`))
     )
@@ -41,7 +41,7 @@ describe("xote documentation", () => {
   })
 
   it.each(pages)("%s links component sources that exist", (page) => {
-    const sources = matchAll(read(page), /<ComponentSource\s+name="([^"]+)"/g)
+    const sources = matchAll(read(page), /<ComponentSource\b[^>]*?name="([^"]+)"/gs)
     const missing = sources.filter((name) => !existsSync(join(uiDir, `${name}.res`)))
     expect(missing).toEqual([])
   })

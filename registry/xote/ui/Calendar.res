@@ -3,6 +3,18 @@ external cn: (string, option<string>) => string = "twMerge"
 
 /* A month grid written against `Date` — react-day-picker, which the React
    registries use, has no framework-agnostic core. */
+
+module Mode = {
+  @unboxed
+  type t =
+    | @as("single") Single
+    | @as("multiple") Multiple
+    | @as("range") Range
+}
+
+module DateRange = {
+  type t = {from: Date.t, to: Date.t}
+}
 type day = {
   date: Date.t,
   inMonth: bool,
@@ -64,17 +76,107 @@ let monthDays = (month: Date.t): array<day> => {
 let make = (
   ~className: option<string>=?,
   ~id: option<string>=?,
+  ~mode: Mode.t=Single,
   ~selected: option<MaybeSignal.t<option<Date.t>>>=?,
   ~onSelect: option<Date.t => unit>=?,
+  ~selectedDates: option<MaybeSignal.t<array<Date.t>>>=?,
+  ~onSelectDates: option<array<Date.t> => unit>=?,
+  ~selectedRange: option<MaybeSignal.t<option<DateRange.t>>>=?,
+  ~onSelectRange: option<option<DateRange.t> => unit>=?,
   ~defaultMonth: option<Date.t>=?,
   ~ariaLabel: string="Calendar",
 ) => {
   let today = Date.make()
   let month = Signal.make(startOfMonth(defaultMonth->Option.getOr(today)))
-  let selectedDate = () =>
+
+  /* Uncontrolled state for each mode, so `<Calendar mode=Range />` is useful on
+     its own; a caller that passes the matching prop drives it instead. */
+  let ownSingle = Signal.make(None)
+  let ownMany = Signal.make([])
+  let ownRange = Signal.make(None)
+
+  let currentSingle = () =>
     switch selected {
     | Some(value) => MaybeSignal.get(value)
-    | None => None
+    | None => Signal.get(ownSingle)
+    }
+
+  let currentMany = () =>
+    switch selectedDates {
+    | Some(value) => MaybeSignal.get(value)
+    | None => Signal.get(ownMany)
+    }
+
+  let currentRange = () =>
+    switch selectedRange {
+    | Some(value) => MaybeSignal.get(value)
+    | None => Signal.get(ownRange)
+    }
+
+  let pick = date =>
+    switch mode {
+    | Single =>
+      if selected === None {
+        Signal.set(ownSingle, Some(date))
+      }
+      switch onSelect {
+      | Some(onSelect) => onSelect(date)
+      | None => ()
+      }
+    | Multiple =>
+      let current = currentMany()
+      let next = current->Array.some(entry => isSameDay(entry, date))
+        ? current->Array.filter(entry => !isSameDay(entry, date))
+        : Array.concat(current, [date])
+      if selectedDates === None {
+        Signal.set(ownMany, next)
+      }
+      switch onSelectDates {
+      | Some(onSelectDates) => onSelectDates(next)
+      | None => ()
+      }
+    | Range =>
+      /* First click starts a range, second completes it, third starts over. */
+      let next = switch currentRange() {
+      | Some({from, to}) if isSameDay(from, to) =>
+        Date.getTime(date) < Date.getTime(from)
+          ? Some({DateRange.from: date, to: from})
+          : Some({DateRange.from, to: date})
+      | _ => Some({DateRange.from: date, to: date})
+      }
+      if selectedRange === None {
+        Signal.set(ownRange, next)
+      }
+      switch onSelectRange {
+      | Some(onSelectRange) => onSelectRange(next)
+      | None => ()
+      }
+    }
+
+  let isSelected = date =>
+    switch mode {
+    | Single => currentSingle()->Option.mapOr(false, selected => isSameDay(selected, date))
+    | Multiple => currentMany()->Array.some(entry => isSameDay(entry, date))
+    | Range =>
+      currentRange()->Option.mapOr(false, ({from, to}) =>
+        isSameDay(from, date) || isSameDay(to, date)
+      )
+    }
+
+  let rangePosition = date =>
+    switch (mode, currentRange()) {
+    | (Range, Some({from, to})) =>
+      let time = Date.getTime(date)
+      if isSameDay(from, date) {
+        Some("start")
+      } else if isSameDay(to, date) {
+        Some("end")
+      } else if time > Date.getTime(from) && time < Date.getTime(to) {
+        Some("middle")
+      } else {
+        None
+      }
+    | _ => None
     }
 
   <div
@@ -82,7 +184,7 @@ let make = (
     role="group"
     ariaLabel
     class={cn("cn-calendar bg-background p-3", className)}
-    attrs=[View.attr("data-slot", "calendar")]>
+    attrs=[View.attr("data-slot", "calendar"), View.attr("data-mode", (mode :> string))]>
     <div
       class="cn-calendar-caption flex items-center justify-between pb-2"
       attrs=[View.attr("data-slot", "calendar-caption")]>
@@ -116,36 +218,22 @@ let make = (
           </div>}
       />
     </div>
-    <div
-      role="grid"
-      class="grid grid-cols-7"
-      attrs=[View.attr("data-slot", "calendar-grid")]>
+    <div role="grid" class="grid grid-cols-7" attrs=[View.attr("data-slot", "calendar-grid")]>
       <View.For
         each={MaybeSignal.computed(() => monthDays(Signal.get(month)))}
         by={day => day.key}
         render={day =>
           <button
             type_="button"
-            class="cn-calendar-day-button flex size-8 items-center justify-center rounded-md text-sm outline-none data-[outside=true]:opacity-40 data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground data-[today=true]:font-semibold hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/50"
-            onClick={_ =>
-              switch onSelect {
-              | Some(onSelect) => onSelect(day.date)
-              | None => ()
-              }}
+            class="cn-calendar-day-button flex size-8 items-center justify-center rounded-md text-sm outline-none data-[outside=true]:opacity-40 data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground data-[range=middle]:bg-accent data-[range=middle]:text-accent-foreground data-[today=true]:font-semibold hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/50"
+            onClick={_ => pick(day.date)}
             attrs=[
               View.attr("data-slot", "calendar-day-button"),
               View.attr("data-outside", day.inMonth ? "false" : "true"),
               View.attr("data-today", isSameDay(day.date, today) ? "true" : "false"),
-              View.computedAttr("data-selected", () =>
-                selectedDate()->Option.mapOr(false, date => isSameDay(date, day.date))
-                  ? "true"
-                  : "false"
-              ),
-              View.computedAttr("aria-selected", () =>
-                selectedDate()->Option.mapOr(false, date => isSameDay(date, day.date))
-                  ? "true"
-                  : "false"
-              ),
+              View.computedAttr("data-selected", () => isSelected(day.date) ? "true" : "false"),
+              View.optionalComputedAttr("data-range", () => rangePosition(day.date)),
+              View.computedAttr("aria-selected", () => isSelected(day.date) ? "true" : "false"),
             ]>
             {day.date->Date.getDate->Int.toString}
           </button>}

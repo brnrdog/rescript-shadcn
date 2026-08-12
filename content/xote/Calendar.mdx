@@ -10,6 +10,14 @@ links:
 
 <ComponentPreview name="CalendarDemo" />
 
+`mode` is `Single`, `Multiple` or `Range`. Each mode manages its own selection
+when you pass nothing, so `<Calendar mode=Range />` works on its own; pass
+`selected` / `selectedDates` / `selectedRange` with the matching `onSelect*` to
+drive it yourself. Range days carry `data-range="start" | "middle" | "end"`.
+
+The React registries use react-day-picker, which has no framework-agnostic core,
+so this is a month grid written against `Date`.
+
 ## Installation
 
 <CodeTabs>
@@ -63,6 +71,26 @@ let selected = Signal.make(Some(Date.make()))
 The React registries use react-day-picker, which has no framework-agnostic core,
 so this is a month grid written against `Date`: six rows always, so the grid
 never changes height between months.
+
+## Examples
+
+### Basic
+
+A basic calendar component. We used `className="rounded-lg border"` to style the calendar.
+
+<ComponentPreview
+  name="CalendarBasic"
+  previewClassName="h-96"
+/>
+
+### Range Calendar
+
+Use the `mode="range"` prop to enable range selection.
+
+<ComponentPreview
+  name="CalendarRange"
+  previewClassName="h-[36rem] md:h-96"
+/>
 
 ## API Reference
 

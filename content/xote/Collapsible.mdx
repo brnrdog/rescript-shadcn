@@ -3,11 +3,11 @@ title: Collapsible
 description: An interactive component which expands/collapses a panel.
 base: xote
 component: true
+featured: true
 links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="CollapsibleDemo" />
 
 ## Installation
@@ -51,13 +51,36 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Collapsible>
-  <Collapsible.Trigger> {"Toggle"} </Collapsible.Trigger>
-  <Collapsible.Content> {"Content"} </Collapsible.Content>
+  <Collapsible.Trigger render={<Button variant=Ghost size=Icon />}>
+    <Icons.ChevronsUpDown />
+  </Collapsible.Trigger>
+  <Collapsible.Content>
+    {"Content here."}
+  </Collapsible.Content>
 </Collapsible>
+```
+
+## Controlled State
+
+Use the `open` and `onOpenChange` props to control the state.
+
+```res showLineNumbers
+@react.component
+let make = () => {
+  let open_ = Signal.make(false)
+
+  <Collapsible open_= onOpenChange={o => setOpen(_ => o)}>
+    <CollapsibleTrigger> {"Toggle"} </CollapsibleTrigger>
+    <CollapsibleContent> {"Content"} </CollapsibleContent>
+  </Collapsible>
+}
 ```
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

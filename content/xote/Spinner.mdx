@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="SpinnerDemo" />
 
 ## Installation
@@ -30,12 +29,6 @@ npx shadcn@latest add @rescript-shadcn/Spinner
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
@@ -55,6 +48,29 @@ npm install xote
 <Spinner />
 ```
 
+## Customization
+
+You can replace the default spinner icon with any other icon by editing the `Spinner` component.
+
+<ComponentPreview name="SpinnerCustom" />
+
+```res showLineNumbers title="components/ui/Spinner.res"
+@module("tailwind-merge")
+external cn: (string, option<string>) => string = "twMerge"
+
+@react.component
+let make = (~className=?, ~dataIcon=?, ~dataSlot=?) => {
+  <LoaderIcon
+    ?dataIcon
+    ?dataSlot
+    role="status"
+    ariaLabel="Loading"
+    className={cn("size-4 animate-spin", className)}
+  />
+}
+
+```
+
 ## Examples
 
 ### Size
@@ -70,7 +86,3 @@ Use the `size-*` utility class to change the size of the spinner.
 ### Empty
 
 <ComponentPreview name="SpinnerEmpty" />
-
-## API Reference
-
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.

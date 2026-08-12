@@ -10,6 +10,10 @@ links:
 
 <ComponentPreview name="ComboboxDemo" />
 
+The React registry passes `items` and renders the list through a function child.
+Here the list is written out with `View.For`, which reconciles by key — so the
+filtering, empty state and grouping all come from `Command`.
+
 ## Installation
 
 <CodeTabs>
@@ -68,6 +72,26 @@ npm install xote rescript-xote-base
 
 A popover holding a command list, so filtering, empty state and grouping behave
 exactly as they do in `Command`.
+
+## Examples
+
+### Basic
+
+A simple combobox with a list of frameworks.
+
+<ComponentPreview name="ComboboxBasic" />
+
+### Clear Button
+
+Use the `showClear` prop to show a clear button.
+
+<ComponentPreview name="ComboboxClear" />
+
+### Disabled
+
+Use the `disabled` prop to disable the combobox.
+
+<ComponentPreview name="ComboboxDisabled" />
 
 ## API Reference
 

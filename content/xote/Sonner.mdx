@@ -1,14 +1,17 @@
 ---
 title: Sonner
-description: An opinionated toast component.
+description: An opinionated toast component for React.
 base: xote
 component: true
 links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="SonnerDemo" />
+
+## About
+
+Sonner is built and maintained by [emilkowalski](https://twitter.com/emilkowalski).
 
 ## Installation
 
@@ -20,9 +23,31 @@ links:
 </TabsList>
 <TabsContent value="cli">
 
+<Steps className="mb-0 pt-2">
+
+<Step>Run the following command:</Step>
+
 ```bash
 npx shadcn@latest add @rescript-shadcn/Sonner
 ```
+
+<Step>Add the Toaster component</Step>
+
+```res title="app/layout.res" {1,9} showLineNumbers
+module RootLayout = {
+  @react.component 
+  let make = (~children) => 
+    <html lang="en">
+      <head />
+      <body>
+        <main>{children}</main>
+        <Sonner />
+      </body>
+    </html>
+}
+```
+
+</Steps>
 
 </TabsContent>
 
@@ -43,6 +68,22 @@ npm install xote
   title="components/ui/Sonner.res"
 />
 
+<Step>Add the Toaster component</Step>
+
+```res showLineNumbers title="app/layout.res" {1,8}
+module RootLayout = {
+  @react.component 
+  let make = (~children) => 
+    <html lang="en">
+      <head />
+      <body>
+        <Toaster />
+        <main>{children}</main>
+      </body>
+    </html>
+}
+```
+
 </Steps>
 
 </TabsContent>
@@ -51,15 +92,12 @@ npm install xote
 
 ## Usage
 
-```res
-Sonner.toast(~title="Deployed", ~description="Your changes are live.")->ignore
-
-<Sonner.Toaster />
+```res showLineNumbers
+Sonner.toast("Event has been created")
 ```
-
-`Sonner` is the same queue and viewport as `Toast` under a sonner-flavoured
-name — pick whichever call site reads better; they render together.
 
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

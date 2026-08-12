@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="CheckboxDemo" />
 
 ## Installation
@@ -52,7 +51,23 @@ npm install xote rescript-xote-base
 ## Usage
 
 ```res
-<Checkbox id="terms" onCheckedChange={checked => Console.log(checked)} />
+<Checkbox />
+```
+
+## Checked State
+
+Use `defaultChecked` for uncontrolled checkboxes, or `checked` and
+`onCheckedChange` to control the state.
+
+```res showLineNumbers
+module Example = {
+  @react.component
+  let make = () => {
+    let checked = Signal.make(false)
+
+    <Checkbox checked onCheckedChange={v => setChecked(_ => v)} />
+  }
+}
 ```
 
 ## Examples
@@ -71,4 +86,7 @@ Use `FieldContent` and `FieldDescription` for helper text.
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

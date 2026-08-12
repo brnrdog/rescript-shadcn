@@ -7,8 +7,7 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
-<ComponentPreview name="DirectionDemo" />
+The `DirectionProvider` component is used to set the text direction (`ltr` or `rtl`) for your application. This is essential for supporting right-to-left languages like Arabic, Hebrew, and Persian.
 
 ## Installation
 
@@ -18,6 +17,7 @@ links:
   <TabsTrigger value="cli">Command</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
+
 <TabsContent value="cli">
 
 ```bash
@@ -51,15 +51,23 @@ npm install xote
 
 ## Usage
 
-```res
-<Direction direction="rtl">
-  <Input placeholder="m@example.com" />
-</Direction>
+```res showLineNumbers
+<Direction.DirectionProvider>
+  {"Direction context"}
+</Direction.DirectionProvider>
 ```
 
-Xote has no provider component, so direction is the `dir` attribute on a
-wrapper — which is what CSS logical properties and the browser read anyway.
+## Direction.use
 
-## API Reference
+The `Direction.use` hook is used to get the current direction of the application.
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+```res showLineNumbers
+module MyComponent = {
+  @react.component 
+  let make = () => {
+    let direction = Direction.use()
+
+    <div> {`Current direction: ${(direction :> string)}`} </div>
+  }
+}
+```

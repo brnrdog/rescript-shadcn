@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="NavigationMenuDemo" />
 
 ## Installation
@@ -51,22 +50,42 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
+```res showLineNumbers
 <NavigationMenu>
   <NavigationMenu.List>
     <NavigationMenu.Item>
-      <NavigationMenu.Trigger> {"Getting started"} </NavigationMenu.Trigger>
+      <NavigationMenu.Trigger> {"Item One"} </NavigationMenu.Trigger>
       <NavigationMenu.Content>
-        <NavigationMenu.Link href="/docs"> {"Introduction"} </NavigationMenu.Link>
+        <NavigationMenu.Link> {"Link"} </NavigationMenu.Link>
       </NavigationMenu.Content>
     </NavigationMenu.Item>
   </NavigationMenu.List>
 </NavigationMenu>
 ```
 
-Each item owns its own menu, so opening one leaves its neighbours alone — there
-is no shared viewport animating between panels.
+## Link Component
+
+Use the `render` prop to compose a custom link component such as Next.js `Link`.
+
+```res showLineNumbers
+
+module NavigationMenuDemo = {
+  @react.component
+  let make = () =>
+    <NavigationMenu.Item>
+      <NavigationMenu.Link
+        render={<Next.Link href="/docs" />}
+        className={NavigationMenu.navigationMenuTriggerStyle()}
+      >
+        Documentation
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+}
+```
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.
