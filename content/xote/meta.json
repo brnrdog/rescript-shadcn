@@ -18,12 +18,14 @@
     "ContextMenu",
     "Dialog",
     "Direction",
+    "Drawer",
     "DropdownMenu",
     "Empty",
     "Field",
     "HoverCard",
     "Input",
     "InputGroup",
+    "InputOtp",
     "Item",
     "Kbd",
     "Label",
@@ -48,6 +50,7 @@
     "Textarea",
     "Toggle",
     "ToggleGroup",
-    "Tooltip"
+    "Tooltip",
+    "Typography"
   ]
 }

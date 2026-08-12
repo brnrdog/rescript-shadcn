@@ -354,6 +354,21 @@
       ]
     },
     {
+      "name": "Drawer",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Drawer.res",
+          "type": "registry:file",
+          "target": "@ui/Drawer.res"
+        }
+      ]
+    },
+    {
       "name": "DropdownMenu",
       "type": "registry:ui",
       "dependencies": [
@@ -462,6 +477,24 @@
           "path": "registry/xote/ui/InputGroup.res",
           "type": "registry:file",
           "target": "@ui/InputGroup.res"
+        }
+      ]
+    },
+    {
+      "name": "InputOtp",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/InputOtp.res",
+          "type": "registry:file",
+          "target": "@ui/InputOtp.res"
         }
       ]
     },
@@ -1145,6 +1178,23 @@
       ]
     },
     {
+      "name": "DrawerDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/DrawerDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "DropdownMenuDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1245,6 +1295,22 @@
       "files": [
         {
           "path": "registry/xote/examples/InputGroupDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputOtpDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/InputOtp"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputOtpDemo.res",
           "type": "registry:example"
         }
       ]
@@ -1664,6 +1730,19 @@
       "files": [
         {
           "path": "registry/xote/examples/TooltipDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyDemo.res",
           "type": "registry:example"
         }
       ]

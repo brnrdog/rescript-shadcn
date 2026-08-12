@@ -1,0 +1,66 @@
+---
+title: Typography
+description: Styles for headings, paragraphs, lists...etc
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="TypographyDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Typography
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Typography"
+  title="components/ui/Typography.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance">
+  {"The Joke Tax Chronicles"}
+</h1>
+```
+
+Typography is not a component — it is a set of classes you apply to plain
+elements. The preview above shows the headings, lead, blockquote, list and
+inline code styles the theme defines.
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
