@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="EmptyDemo" />
 
 ## Installation
@@ -30,12 +29,6 @@ npx shadcn@latest add @rescript-shadcn/Empty
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
@@ -51,18 +44,43 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Empty>
   <Empty.Header>
     <Empty.Media variant=Icon>
-      <Icons.Search />
+      <Icons.Folder />
     </Empty.Media>
-    <Empty.Title> {"No results found"} </Empty.Title>
-    <Empty.Description> {"Try adjusting your filters."} </Empty.Description>
+    <Empty.Title> {"No data"} </Empty.Title>
+    <Empty.Description> {"No data found"} </Empty.Description>
   </Empty.Header>
+  <Empty.Content>
+    <Button> {"Add data"} </Button>
+  </Empty.Content>
 </Empty>
 ```
 
+## Examples
+
+### Avatar
+
+Use the `Empty.Media` component to display an avatar in the empty state.
+
+<ComponentPreview name="EmptyAvatar" />
+
+### Avatar Group
+
+Use the `Empty.Media` component to display an avatar group in the empty state.
+
+<ComponentPreview name="EmptyAvatarGroup" />
+
+### InputGroup
+
+You can add an `InputGroup` component to the `Empty.Content` component.
+
+<ComponentPreview name="EmptyInputGroup" />
+
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

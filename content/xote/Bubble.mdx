@@ -7,8 +7,9 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="BubbleDemo" />
+
+The `Bubble` component displays framed conversational content. Use it for chat text, short structured output, suggestions, and reactions. For full message rows with avatars or metadata, compose it inside [`Message`](/components/base/Message).
 
 ## Installation
 
@@ -30,18 +31,9 @@ npx shadcn@latest add @rescript-shadcn/Bubble
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource
-  name="Bubble"
-  title="components/ui/Bubble.res"
-/>
+<ComponentSource name="Bubble" title="components/ui/Bubble.res" />
 
 </Steps>
 
@@ -51,17 +43,55 @@ npm install xote
 
 ## Usage
 
-```res
-<Bubble.Group>
-  <Bubble>
-    <Bubble.Content> {"Hey, are we still on for tomorrow?"} </Bubble.Content>
-  </Bubble>
-  <Bubble variant=Muted align=End>
-    <Bubble.Content> {"Yes — 10am works."} </Bubble.Content>
-  </Bubble>
-</Bubble.Group>
+```res showLineNumbers
+<Bubble variant=Muted>
+  <Bubble.Content>
+    {"I checked the registry output and removed the stale route."}
+  </Bubble.Content>
+  <Bubble.Reactions>
+    <span> {"+1"} </span>
+  </Bubble.Reactions>
+</Bubble>
 ```
+
+## Composition
+
+```text
+Bubble
+├── Bubble.Content
+└── Bubble.Reactions
+```
+
+Use `Bubble.Group` to group consecutive bubbles from the same sender.
+
+## Features
+
+- Seven visual variants, from strong primary content to unframed ghost content
+- Start and end alignment for sender and receiver bubbles
+- Reactions that anchor to the bubble edge
+- Bubbles size to their content, up to the style-defined max width
+- Custom styling through `className` on every part
+
+## Examples
+
+### Group
+
+Use `Bubble.Group` to stack consecutive bubbles from the same sender.
+
+<ComponentPreview name="BubbleGroupDemo" />
+
+### Reactions
+
+Use `Bubble.Reactions` for reaction summaries or quick action buttons.
+
+<ComponentPreview name="BubbleReactions" />
+
+## Accessibility
+
+When reactions are plain emoji, group them with `role="img"` and an `ariaLabel` so assistive technology announces the reaction summary once. When reactions are interactive, render buttons with icon labels.
 
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

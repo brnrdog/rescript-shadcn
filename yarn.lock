@@ -6542,6 +6542,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-static@npm:^1.31.0":
+  version: 1.31.0
+  resolution: "lucide-static@npm:1.31.0"
+  checksum: 10c0/e30168aa78e9223f7285dd8bd36a8c7cb7dfd0a825208d4efd87ecad4a569fc46f36e5aa8571f03d3d4729ae1be5b47061c19c8f471707617c940b976b76856c
+  languageName: node
+  linkType: hard
+
 "magic-string@npm:^0.30.21":
   version: 0.30.21
   resolution: "magic-string@npm:0.30.21"
@@ -8889,6 +8896,7 @@ __metadata:
     jsdom: "npm:^30.0.1"
     lru-cache: "npm:^11.2.6"
     lucide-react: "npm:^0.487.0"
+    lucide-static: "npm:^1.31.0"
     next: "npm:16.1.6"
     next-themes: "npm:^0.4.6"
     puppeteer: "npm:^24.40.0"

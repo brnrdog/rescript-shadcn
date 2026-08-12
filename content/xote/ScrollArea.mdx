@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="ScrollAreaDemo" />
 
 ## Installation
@@ -51,15 +50,14 @@ npm install xote
 
 ## Usage
 
-```res
-<ScrollArea className="h-72 w-48 rounded-md border">
-  <div class="p-4"> {"Long content"} </div>
+```res showLineNumbers
+<ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+  {"Your scrollable content here."}
 </ScrollArea>
 ```
 
-This build styles the native scrollbar rather than rendering a custom thumb, so
-scrolling stays hardware accelerated and needs no measurement.
-
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

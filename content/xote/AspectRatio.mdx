@@ -1,5 +1,5 @@
 ---
-title: AspectRatio
+title: Aspect Ratio
 description: Displays content within a desired ratio.
 base: xote
 component: true
@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="AspectRatioDemo" />
 
 ## Installation
@@ -51,12 +50,14 @@ npm install xote
 
 ## Usage
 
-```res
-<AspectRatio ratio="16/9">
-  <img src="..." alt="Photo" class="size-full object-cover" />
+```res showLineNumbers
+<AspectRatio ratio={16. / 9.} className="bg-muted rounded-lg">
+  <Next.Image src="..." alt="Image" className="rounded-md object-cover" />
 </AspectRatio>
 ```
 
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

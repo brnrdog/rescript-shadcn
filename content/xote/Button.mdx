@@ -3,11 +3,11 @@ title: Button
 description: Displays a button or a component that looks like a button.
 base: xote
 component: true
+featured: true
 links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="ButtonDemo" />
 
 ## Installation
@@ -51,10 +51,71 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Button variant=Outline> {"Button"} </Button>
 ```
 
+## Cursor
+
+Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor) from `cursor: pointer` to `cursor: default` for the button component.
+
+If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+```css showLineNumbers title="globals.css"
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the size of the button.
+
+<ComponentPreview name="ButtonSize" />
+
+### Default
+
+<ComponentPreview name="ButtonDefault" />
+
+### Outline
+
+<ComponentPreview name="ButtonOutline" />
+
+### Secondary
+
+<ComponentPreview name="ButtonSecondary" />
+
+### Ghost
+
+<ComponentPreview name="ButtonGhost" />
+
+### Destructive
+
+<ComponentPreview name="ButtonDestructive" />
+
+### Link
+
+<ComponentPreview name="ButtonLink" />
+
+### Rounded
+
+Use the `rounded-full` class to make the button rounded.
+
+<ComponentPreview name="ButtonRounded" />
+
+### Button Group
+
+To create a button group, use the `ButtonGroup` component. See the [Button Group](/components/base/ButtonGroup) documentation for more details.
+
+<ComponentPreview name="ButtonGroupDemo" />
+
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

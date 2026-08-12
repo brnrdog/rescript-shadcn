@@ -17,11 +17,13 @@ let make = (
   ~className: option<string>=?,
   ~id: option<string>=?,
   ~orientation: Orientation.t=Horizontal,
+  ~ariaLabel: option<string>=?,
   ~children: View.node=View.fragment([]),
 ) =>
   <div
     id=?{id}
     role="group"
+    ariaLabel=?{ariaLabel}
     class={cn(buttonGroupVariants(~orientation), className)}
     attrs=[
       View.attr("data-slot", "button-group"),

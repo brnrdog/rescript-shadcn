@@ -92,10 +92,14 @@ module Reactions = {
     ~id: option<string>=?,
     ~side: Side.t=Bottom,
     ~align: Align.t=End,
+    ~role: option<string>=?,
+    ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
     <div
       id=?{id}
+      role=?{role}
+      ariaLabel=?{ariaLabel}
       class={cn(
         `cn-bubble-reactions cn-bubble-reactions-side-${(side :> string)} cn-bubble-reactions-align-${(align :> string)}`,
         className,

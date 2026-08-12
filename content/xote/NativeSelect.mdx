@@ -7,6 +7,10 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
+<Callout variant="info" icon={<Icons.Info className="!translate-y-[3px]" />}>
+  For a styled select component, see the [Select](/components/Select)
+  component.
+</Callout>
 
 <ComponentPreview name="NativeSelectDemo" />
 
@@ -30,12 +34,6 @@ npx shadcn@latest add @rescript-shadcn/NativeSelect
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
@@ -51,13 +49,43 @@ npm install xote
 
 ## Usage
 
-```res
-<NativeSelect name="framework">
-  <NativeSelect.Option value="next"> {"Next.js"} </NativeSelect.Option>
-  <NativeSelect.Option value="remix"> {"Remix"} </NativeSelect.Option>
+```res showLineNumbers
+<NativeSelect>
+  <NativeSelect.Option value=""> {"Select a fruit"} </NativeSelect.Option>
+  <NativeSelect.Option value="apple"> {"Apple"} </NativeSelect.Option>
+  <NativeSelect.Option value="banana"> {"Banana"} </NativeSelect.Option>
+  <NativeSelect.Option value="blueberry"> {"Blueberry"} </NativeSelect.Option>
+  <NativeSelect.Option value="pineapple"> {"Pineapple"} </NativeSelect.Option>
 </NativeSelect>
 ```
 
+## Examples
+
+### Groups
+
+Use `NativeSelectOptGroup` to organize options into categories.
+
+<ComponentPreview name="NativeSelectGroups" />
+
+### Disabled
+
+Add the `disabled` prop to the `NativeSelect` component to disable the select.
+
+<ComponentPreview name="NativeSelectDisabled" />
+
+### Invalid
+
+Use `aria-invalid` to show validation errors and the `data-invalid` attribute to the `Field` component for styling.
+
+<ComponentPreview name="NativeSelectInvalid" />
+
+## Native Select vs Select
+
+- Use `NativeSelect` for native browser behavior, better performance, or mobile-optimized dropdowns.
+- Use `Select` for custom styling, animations, or complex interactions.
+
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="PaginationDemo" />
 
 ## Installation
@@ -30,12 +29,6 @@ npx shadcn@latest add @rescript-shadcn/Pagination
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
@@ -51,14 +44,23 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Pagination>
   <Pagination.Content>
     <Pagination.Item>
       <Pagination.Previous href="#" />
     </Pagination.Item>
     <Pagination.Item>
-      <Pagination.Link href="#" isActive=true> {"1"} </Pagination.Link>
+      <Pagination.Link href="#"> {"1"} </Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link href="#" isActive=true> {"2"} </Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link href="#"> {"3"} </Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Ellipsis />
     </Pagination.Item>
     <Pagination.Item>
       <Pagination.Next href="#" />
@@ -67,6 +69,41 @@ npm install xote
 </Pagination>
 ```
 
-## API Reference
+## Examples
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+### Simple
+
+A simple pagination with only page numbers.
+
+<ComponentPreview name="PaginationSimple" />
+
+### Icons Only
+
+Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
+
+<ComponentPreview name="PaginationIconsOnly" />
+
+## Next.js
+
+By default the `<Pagination.Link />` component will render an `<a />` tag.
+
+To use the Next.js `<Link />` component, make the following updates to `Pagination.res`.
+
+```diff showLineNumbers /typeof Link/ {1}
+
+module Link = (...) => 
+  <Item>
+-   <a>
++   <Link>
+      // ...
+-   </a>
++   </Link>
+  </Item>
+
+```
+
+<Callout className="mt-6">
+
+**Note:** We are making updates to the cli to automatically do this for you.
+
+</Callout>

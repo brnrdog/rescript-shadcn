@@ -7,61 +7,34 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="DatePickerDemo" />
 
 ## Installation
 
-<CodeTabs>
+The Date Picker is built using a composition of the `<Popover />` and the `<Calendar />` components.
 
-<TabsList>
-  <TabsTrigger value="cli">Command</TabsTrigger>
-  <TabsTrigger value="manual">Manual</TabsTrigger>
-</TabsList>
-<TabsContent value="cli">
-
-```bash
-npx shadcn@latest add @rescript-shadcn/DatePicker
-```
-
-</TabsContent>
-
-<TabsContent value="manual">
-
-<Steps className="mb-0 pt-2">
-
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
-<Step>Copy and paste the following code into your project.</Step>
-
-<ComponentSource
-  name="DatePicker"
-  title="components/ui/DatePicker.res"
-/>
-
-</Steps>
-
-</TabsContent>
-
-</CodeTabs>
+See installation instructions for the [Popover](/docs/components/base/popover#installation) and the [Calendar](/docs/components/base/calendar#installation) components.
 
 ## Usage
 
-```res
-let selected = Signal.make(None)
+```res showLineNumbers
+let date = Signal.make(None)
 
-<DatePicker
-  selected={MaybeSignal.reactive(selected)}
-  onSelect={date => Signal.set(selected, Some(date))}
-/>
+<Popover>
+  <Popover.Trigger
+    render={<Button
+      variant=Outline
+      dataEmpty=?{date->Option.isNone ? Some(true) : None}
+      className="data-[empty=true]:text-muted-foreground justify-start text-left font-normal"
+    />}
+  >
+    {switch date {
+    | Some(d) => d->format("PPP")
+    | None => <span> {"Pick a date"} </span>
+    }}
+  </Popover.Trigger>
+  <Popover.Content className="w-auto p-0">
+    <Calendar mode=Single selected={date} onSelect={value => setDate(_ => value)} />
+  </Popover.Content>
+</Popover>
 ```
-
-A `Calendar` inside a `Popover`; picking a day closes it.
-
-## API Reference
-
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.

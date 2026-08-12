@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="ToastDemo" />
 
 ## Installation
@@ -18,6 +17,7 @@ links:
   <TabsTrigger value="cli">Command</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
+
 <TabsContent value="cli">
 
 ```bash
@@ -38,10 +38,13 @@ npm install xote rescript-xote-base
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource
-  name="Toast"
-  title="components/ui/Toast.res"
-/>
+<ComponentSource name="Toast" title="components/ui/Toast.res" />
+
+<Step>Add the toaster once near the root of your application.</Step>
+
+```res showLineNumbers
+<Toast.Toaster />
+```
 
 </Steps>
 
@@ -51,16 +54,9 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-Toast.add(~title="Event created", ~description="Sunday at 9:00 AM")->ignore
-
-// Render the viewport once, near the root of your app:
-<Toast.Toaster />
+```res showLineNumbers
+let _: string = Toast.toast.add({
+  title: "Event created",
+  description: "Sunday, December 3 at 9:00 AM",
+})
 ```
-
-The store is module level, so `Toast.add` works from anywhere without a provider
-in scope. Pass `~duration=0` for a toast that stays until dismissed.
-
-## API Reference
-
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

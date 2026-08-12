@@ -13,6 +13,7 @@ let make = (
   ~required: bool=false,
   ~readOnly: bool=false,
   ~autoComplete: option<string>=?,
+  ~ariaLabel: option<string>=?,
   ~onInput: option<Dom.event => unit>=?,
   ~onChange: option<Dom.event => unit>=?,
 ) =>
@@ -26,6 +27,7 @@ let make = (
     required
     readOnly
     autoComplete=?{autoComplete}
+    ariaLabel=?{ariaLabel}
     onInput=?{onInput}
     onChange=?{onChange}
     class={cn(

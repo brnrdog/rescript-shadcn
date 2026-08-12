@@ -7,8 +7,11 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="InputOtpDemo" />
+
+## About
+
+Input OTP is built on top of [input-otp](https://github.com/guilhermerodz/input-otp) by [@guilherme_rodz](https://twitter.com/guilherme_rodz).
 
 ## Installation
 
@@ -51,25 +54,37 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-<InputOtp length=6 onComplete={code => Console.log(code)}>
+```res showLineNumbers
+<InputOtp maxLength={6}>
   <InputOtp.Group>
-    <InputOtp.Slot index=0 />
-    <InputOtp.Slot index=1 />
-    <InputOtp.Slot index=2 />
+    <InputOtp.Slot index={0} />
+    <InputOtp.Slot index={1} />
+    <InputOtp.Slot index={2} />
   </InputOtp.Group>
   <InputOtp.Separator />
   <InputOtp.Group>
-    <InputOtp.Slot index=3 />
-    <InputOtp.Slot index=4 />
-    <InputOtp.Slot index=5 />
+    <InputOtp.Slot index={3} />
+    <InputOtp.Slot index={4} />
+    <InputOtp.Slot index={5} />
   </InputOtp.Group>
 </InputOtp>
 ```
 
-A single real input holds the value and the slots render from it, so paste,
-autofill and the numeric keyboard on mobile all keep working.
+## Examples
+
+### Separator
+
+Use the `<InputOTPSeparator />` component to add a separator between input groups.
+
+<ComponentPreview name="InputOtpSeparator" />
+
+### Form
+
+<ComponentPreview name="InputOtpForm" />
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

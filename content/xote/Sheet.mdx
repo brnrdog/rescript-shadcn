@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="SheetDemo" />
 
 ## Installation
@@ -51,20 +50,23 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Sheet>
-  <Sheet.Trigger> {"Open"} </Sheet.Trigger>
-  <Sheet.Content side=Left>
+  <Sheet.Trigger render={<Button variant=Outline />}>
+    {"Open"}
+  </Sheet.Trigger>
+  <Sheet.Content>
     <Sheet.Header>
-      <Sheet.Title> {"Edit profile"} </Sheet.Title>
-      <Sheet.Description> {"Make changes to your profile here."} </Sheet.Description>
+      <Sheet.Title> {"Are you absolutely sure?"} </Sheet.Title>
+      <Sheet.Description> {"This action cannot be undone."} </Sheet.Description>
     </Sheet.Header>
   </Sheet.Content>
 </Sheet>
 ```
 
-Use `side` to slide the sheet in from `Top`, `Right`, `Bottom` or `Left`.
-
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

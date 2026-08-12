@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="SliderDemo" />
 
 ## Installation
@@ -51,17 +50,13 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-let value = Signal.make(33.)
-
-<Slider
-  value={MaybeSignal.reactive(value)}
-  onValueChange={next => Signal.set(value, next)}
-  max=100.
-  step=1.
-/>
+```res showLineNumbers
+<Slider defaultValue={[33.]} max={100.} step={1.} />
 ```
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

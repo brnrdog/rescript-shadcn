@@ -1,5 +1,5 @@
 ---
-title: RadioGroup
+title: Radio Group
 description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
 base: xote
 component: true
@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="RadioGroupDemo" />
 
 ## Installation
@@ -51,13 +50,36 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-<RadioGroup defaultValue="comfortable">
-  <RadioGroup.Item value="default" id="r1" />
-  <RadioGroup.Item value="comfortable" id="r2" />
+```res showLineNumbers
+<RadioGroup defaultValue="option-one">
+  <div className="flex items-center gap-3">
+    <RadioGroup.Item value="option-one" id="option-one" />
+    <Label htmlFor="option-one"> {"Option One"} </Label>
+  </div>
+  <div className="flex items-center gap-3">
+    <RadioGroup.Item value="option-two" id="option-two" />
+    <Label htmlFor="option-two"> {"Option Two"} </Label>
+  </div>
 </RadioGroup>
 ```
 
+## Examples
+
+### Description
+
+Radio group items with a description using the `Field` component.
+
+<ComponentPreview name="RadioGroupDescription" />
+
+### Choice Card
+
+Use `FieldLabel` to wrap the entire `Field` for a clickable card-style selection.
+
+<ComponentPreview name="RadioGroupChoiceCard" />
+
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

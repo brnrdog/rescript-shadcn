@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="ToggleGroupDemo" />
 
 ## Installation
@@ -51,16 +50,35 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-<ToggleGroup multiple=true defaultValue=["bold"] variant=Outline>
-  <ToggleGroup.Item value="bold" ariaLabel="Bold"> {"B"} </ToggleGroup.Item>
-  <ToggleGroup.Item value="italic" ariaLabel="Italic"> {"I"} </ToggleGroup.Item>
+```res 
+<ToggleGroup multiple=false>
+  <ToggleGroup.Item value="a"> {"A"} </ToggleGroup.Item>
+  <ToggleGroup.Item value="b"> {"B"} </ToggleGroup.Item>
+  <ToggleGroup.Item value="c"> {"C"} </ToggleGroup.Item>
 </ToggleGroup>
 ```
 
-Leave `multiple` off for a single-select group, which then exposes itself as a
-radio group.
+## Examples
+
+### Outline
+
+Use `variant=Outline` for an outline style.
+
+<ComponentPreview name="ToggleGroupOutline" />
+
+### Size
+
+Use the `size` prop to change the size of the toggle group.
+
+<ComponentPreview name="ToggleGroupSizes" />
+
+### Disabled
+
+<ComponentPreview name="ToggleGroupDisabled" />
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="PopoverDemo" />
 
 ## Installation
@@ -51,27 +50,21 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Popover>
-  <Popover.Trigger> {"Open"} </Popover.Trigger>
+  <Popover.Trigger render={<Button variant=Outline />}>
+    {"Open Popover"}
+  </Popover.Trigger>
   <Popover.Content>
-    <Popover.Title> {"Dimensions"} </Popover.Title>
-    <Popover.Description> {"Set the dimensions for the layer."} </Popover.Description>
+    <h4 className="leading-none font-medium"> {"Title"} </h4>
+    <p className="text-muted-foreground text-sm"> {"Description text here."} </p>
   </Popover.Content>
 </Popover>
 ```
 
-## Positioning
-
-The content is portaled to the end of `document.body` and positioned against
-the trigger, flipping to the opposite side when the preferred one has no room.
-Use `side` and `align` to choose the preferred placement, and `sideOffset` /
-`alignOffset` to nudge it.
-
-```res
-<Popover.Content side=Right align=Start sideOffset=8. />
-```
-
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

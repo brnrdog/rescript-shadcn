@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="TabsDemo" />
 
 ## Installation
@@ -51,17 +50,38 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-<Tabs defaultValue="account">
+```res showLineNumbers
+<Tabs defaultValue="account" className="w-[400px]">
   <Tabs.List>
     <Tabs.Trigger value="account"> {"Account"} </Tabs.Trigger>
     <Tabs.Trigger value="password"> {"Password"} </Tabs.Trigger>
   </Tabs.List>
-  <Tabs.Content value="account"> {"Account settings"} </Tabs.Content>
-  <Tabs.Content value="password"> {"Password settings"} </Tabs.Content>
+  <Tabs.Content value="account"> {"Make changes to your account here."} </Tabs.Content>
+  <Tabs.Content value="password"> {"Change your password here."} </Tabs.Content>
 </Tabs>
 ```
 
+## Examples
+
+### Line
+
+Use the `variant=Line` prop on `TabsList` for a line style.
+
+<ComponentPreview name="TabsLine" />
+
+### Vertical
+
+Use `orientation="vertical"` for vertical tabs.
+
+<ComponentPreview name="TabsVertical" />
+
+### Disabled
+
+<ComponentPreview name="TabsDisabled" />
+
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="BadgeDemo" />
 
 ## Installation
@@ -30,12 +29,6 @@ npx shadcn@latest add @rescript-shadcn/Badge
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
@@ -51,10 +44,32 @@ npm install xote
 
 ## Usage
 
-```res
-<Badge variant=Outline> {"Badge"} </Badge>
+```res showLineNumbers
+<Badge variant=Badge.Variant.Outline> {"Badge"} </Badge>
 ```
+
+## Examples
+
+### Variants
+
+Use the `variant` prop to change the variant of the badge.
+
+<ComponentPreview name="BadgeVariants" />
+
+### With Icon
+
+You can render an icon inside the badge. Use `dataIcon=InlineStart` to render the icon on the left and `dataIcon=InlineEnd` to render the icon on the right.
+
+<ComponentPreview name="BadgeIcon" />
+
+### Custom Colors
+
+You can customize the colors of a badge by adding custom classes such as `bg-green-50 dark:bg-green-800` to the `Badge` component.
+
+<ComponentPreview name="BadgeColors" />
 
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

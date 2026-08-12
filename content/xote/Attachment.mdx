@@ -7,8 +7,9 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="AttachmentDemo" />
+
+The `Attachment` component displays a file or image attachment, its media, name, metadata, optional actions, and upload state. Use it for chat composers, message threads, and upload lists.
 
 ## Installation
 
@@ -30,7 +31,7 @@ npx shadcn@latest add @rescript-shadcn/Attachment
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
+<Step>Install the required dependencies:</Step>
 
 ```bash
 npm install xote
@@ -38,10 +39,7 @@ npm install xote
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource
-  name="Attachment"
-  title="components/ui/Attachment.res"
-/>
+<ComponentSource name="Attachment" title="components/ui/Attachment.res" />
 
 </Steps>
 
@@ -51,21 +49,79 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Attachment>
-  <Attachment.Media variant=Icon>
-    <Icons.Check />
+  <Attachment.Media>
+    <Icons.FileText />
   </Attachment.Media>
   <Attachment.Content>
-    <Attachment.Title> {"design-system.pdf"} </Attachment.Title>
-    <Attachment.Description> {"2.4 MB"} </Attachment.Description>
+    <Attachment.Title> {"sales-dashboard.pdf"} </Attachment.Title>
+    <Attachment.Description> {"PDF - 2.4 MB"} </Attachment.Description>
   </Attachment.Content>
+  <Attachment.Actions>
+    <Attachment.Action ariaLabel="Remove sales-dashboard.pdf">
+      <Icons.X />
+    </Attachment.Action>
+  </Attachment.Actions>
 </Attachment>
 ```
 
-`state` drives the upload styling: `Idle`, `Uploading`, `Processing`, `Error` or
-`Ready`.
+## Composition
+
+```text
+Attachment
+├── Attachment.Media
+├── Attachment.Content
+│   ├── Attachment.Title
+│   └── Attachment.Description
+├── Attachment.Actions
+│   └── Attachment.Action
+└── Attachment.Trigger
+```
+
+Use `Attachment.Group` to lay out multiple attachments in a horizontally scrollable row.
+
+## Features
+
+- Icon and image media through `Attachment.Media`
+- Upload states: `Idle`, `Uploading`, `Processing`, `Error`, and `Done`
+- Three sizes and horizontal or vertical orientation
+- A full-card `Attachment.Trigger` for preview/open interactions
+- Scrollable, snapping `Attachment.Group`
+- Custom styling through `className` on every part
+
+## Examples
+
+### Image
+
+Set `variant=Image` on `Attachment.Media` and render an `<img />` inside it. Use `orientation=Vertical` to stack the media above the content.
+
+<ComponentPreview name="AttachmentImage" />
+
+### States
+
+Set `state` to reflect the upload lifecycle. `Uploading` and `Processing` shimmer the title, and `Error` switches to a destructive treatment.
+
+<ComponentPreview name="AttachmentStates" />
+
+### Group
+
+Wrap attachments in `Attachment.Group` to lay them out in a horizontally scrollable, snapping row.
+
+<ComponentPreview name="AttachmentGroup" />
+
+### Trigger
+
+Add `Attachment.Trigger` to make the whole card clickable while actions stay independently clickable.
+
+<ComponentPreview name="AttachmentTrigger" />
+
+## Accessibility
+
+`Attachment.Action` is usually icon-only, so pass an `ariaLabel` that names the action and target. `Attachment.Trigger` covers the card with no visible text, so it should also receive an `ariaLabel`.
 
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

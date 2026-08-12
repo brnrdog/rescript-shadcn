@@ -22,6 +22,7 @@ let make = (
   ~id: option<string>=?,
   ~orientation: Orientation.t=Vertical,
   ~invalid: bool=false,
+  ~dataInvalid: bool=false,
   ~disabled: bool=false,
   ~children: View.node=View.fragment([]),
 ) =>
@@ -32,7 +33,7 @@ let make = (
     attrs=[
       View.attr("data-slot", "field"),
       View.attr("data-orientation", (orientation :> string)),
-      View.optionalAttr("data-invalid", invalid ? Some("true") : None),
+      View.optionalAttr("data-invalid", invalid || dataInvalid ? Some("true") : None),
       View.optionalAttr("data-disabled", disabled ? Some("true") : None),
     ]>
     {children}
@@ -43,6 +44,7 @@ module Group = {
   let make = (
     ~className: option<string>=?,
     ~id: option<string>=?,
+    ~dataSlot: string="field-group",
     ~children: View.node=View.fragment([]),
   ) =>
     <div
@@ -51,7 +53,7 @@ module Group = {
         "cn-field-group group/field-group @container/field-group flex w-full flex-col",
         className,
       )}
-      attrs=[View.attr("data-slot", "field-group")]>
+      attrs=[View.attr("data-slot", dataSlot)]>
       {children}
     </div>
 }
@@ -76,12 +78,16 @@ module Legend = {
   let make = (
     ~className: option<string>=?,
     ~id: option<string>=?,
+    ~variant: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
     <legend
       id=?{id}
       class={cn("cn-field-legend", className)}
-      attrs=[View.attr("data-slot", "field-legend")]>
+      attrs=[
+        View.attr("data-slot", "field-legend"),
+        View.optionalAttr("data-variant", variant),
+      ]>
       {children}
     </legend>
 }

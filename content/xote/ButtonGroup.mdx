@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="ButtonGroupDemo" />
 
 ## Installation
@@ -33,7 +32,7 @@ npx shadcn@latest add @rescript-shadcn/ButtonGroup
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install xote
+npm install xote rescript-xote-base
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -51,13 +50,62 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <ButtonGroup>
-  <Button variant=Outline> {"Archive"} </Button>
-  <Button variant=Outline> {"Report"} </Button>
+  <Button> {"Button 1"} </Button>
+  <Button> {"Button 2"} </Button>
 </ButtonGroup>
 ```
 
+## Accessibility
+
+- The `ButtonGroup` component has the `role` attribute set to `group`.
+- Use <Kbd>Tab</Kbd> to navigate between the buttons in the group.
+- Use `aria-label` or `aria-labelledby` to label the button group.
+
+```res showLineNumbers
+<ButtonGroup aria-label="Button group">
+  <Button> {"Button 1"} </Button>
+  <Button> {"Button 2"} </Button>
+</ButtonGroup>
+```
+
+## ButtonGroup vs ToggleGroup
+
+- Use the `ButtonGroup` component when you want to group buttons that perform an action.
+- Use the `ToggleGroup` component when you want to group buttons that toggle a state.
+
+## Examples
+
+### Orientation
+
+Set the `orientation` prop to change the button group layout.
+
+<ComponentPreview name="ButtonGroupOrientation" />
+
+### Size
+
+Control the size of buttons using the `size` prop on individual buttons.
+
+<ComponentPreview name="ButtonGroupSize" />
+
+### Separator
+
+The `ButtonGroupSeparator` component visually divides buttons within a group.
+
+Buttons with variant `outline` do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
+
+<ComponentPreview name="ButtonGroupSeparator" />
+
+### Input
+
+Wrap an `Input` component with buttons.
+
+<ComponentPreview name="ButtonGroupInput" />
+
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

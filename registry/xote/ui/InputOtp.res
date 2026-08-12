@@ -21,6 +21,9 @@ let make = (
   ~id: option<string>=?,
   ~name: option<string>=?,
   ~length: int=6,
+  ~maxLength: option<int>=?,
+  ~pattern: option<string>=?,
+  ~required: bool=false,
   ~value: option<MaybeSignal.t<string>>=?,
   ~defaultValue: string="",
   ~onValueChange: option<string => unit>=?,
@@ -29,6 +32,7 @@ let make = (
   ~ariaLabel: option<string>=?,
   ~children: View.node=View.fragment([]),
 ) => {
+  let length = maxLength->Option.getOr(length)
   let state = XoteBase.Internal.Controlled.make(~value, ~defaultValue, ~onChange=onValueChange)
   let focused = Signal.make(false)
 
@@ -49,6 +53,7 @@ let make = (
       name=?{name}
       value={MaybeSignal.computed(state.get)}
       disabled
+      required
       ariaLabel=?{ariaLabel}
       autoComplete="one-time-code"
       onInput={onInput}
@@ -57,7 +62,11 @@ let make = (
       class="cn-input-otp-input absolute inset-0 opacity-0 disabled:cursor-not-allowed"
       attrs=[
         View.attr("data-slot", "input-otp-input"),
-        View.attr("inputmode", "numeric"),
+        View.optionalAttr("pattern", pattern),
+        View.attr(
+          "inputmode",
+          pattern->Option.mapOr("numeric", _ => "text"),
+        ),
         View.attr("maxlength", length->Int.toString),
       ]
     />

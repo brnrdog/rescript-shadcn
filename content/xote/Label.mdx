@@ -7,8 +7,12 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="LabelDemo" />
+
+<Callout>
+  For form fields, use the [Field](/docs/components/base/field) component which
+  includes built-in label, description, and error handling.
+</Callout>
 
 ## Installation
 
@@ -51,10 +55,26 @@ npm install xote
 
 ## Usage
 
-```res
-<Label for_="email"> {"Your email address"} </Label>
+```res showLineNumbers
+<Label htmlFor="email"> {"Your email address"} </Label>
 ```
+
+## Label in Field
+
+For form fields, use the [Field](/docs/components/base/field) component which
+includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+
+```res showLineNumbers
+<Field>
+  <Field.Label htmlFor="email"> {"Your email address"} </FieldLabel>
+  <Input id="email" />
+</Field>
+```
+
+<ComponentPreview name="FieldDemo" />
 
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

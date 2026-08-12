@@ -14,6 +14,7 @@ module Size = {
   type t =
     | @as("default") Default
     | @as("sm") Sm
+    | @as("xs") Xs
 }
 
 module MediaVariant = {
@@ -63,6 +64,8 @@ module Group = {
 }
 
 module Media = {
+  module Variant = MediaVariant
+
   @xote.component
   let make = (
     ~className: option<string>=?,

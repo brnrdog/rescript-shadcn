@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="CardDemo" />
 
 ## Installation
@@ -30,12 +29,6 @@ npx shadcn@latest add @rescript-shadcn/Card
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
@@ -51,17 +44,38 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Card>
   <Card.Header>
     <Card.Title> {"Card Title"} </Card.Title>
     <Card.Description> {"Card Description"} </Card.Description>
+    <Card.Action> {"Card Action"} </Card.Action>
   </Card.Header>
-  <Card.Content> {"Card Content"} </Card.Content>
-  <Card.Footer> {"Card Footer"} </Card.Footer>
+  <Card.Content>
+    <p> {"Card Content"} </p>
+  </Card.Content>
+  <Card.Footer>
+    <p> {"Card Footer"} </p>
+  </Card.Footer>
 </Card>
 ```
 
+## Examples
+
+### Size
+
+Use the `size=Sm` prop to set the size of the card to small. The small size variant uses smaller spacing.
+
+<ComponentPreview name="CardSmall" />
+
+### Image
+
+Add an image before the card header to create a card with an image.
+
+<ComponentPreview name="CardImage" />
+
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

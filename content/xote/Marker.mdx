@@ -7,8 +7,9 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="MarkerDemo" />
+
+The `Marker` component displays conversation markers such as status updates, system notes, bordered rows, and labeled separators. Compose it with [`Message`](/components/base/Message) in a conversation thread.
 
 ## Installation
 
@@ -30,18 +31,9 @@ npx shadcn@latest add @rescript-shadcn/Marker
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource
-  name="Marker"
-  title="components/ui/Marker.res"
-/>
+<ComponentSource name="Marker" title="components/ui/Marker.res" />
 
 </Steps>
 
@@ -51,15 +43,53 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Marker>
   <Marker.Icon>
-    <Icons.Check />
+    <Icons.Info />
   </Marker.Icon>
-  <Marker.Content> {"Deployment finished"} </Marker.Content>
+  <Marker.Content>
+    {"New messages below"}
+  </Marker.Content>
 </Marker>
 ```
 
+## Composition
+
+```text
+Marker
+├── Marker.Icon
+└── Marker.Content
+```
+
+## Features
+
+- Inline marker, bordered row, and labeled separator variants
+- Decorative icon slot hidden from assistive technology
+- Status rows with `role="status"`
+- Shimmer utility support for streaming text
+- Custom styling through `className` on every part
+
+## Examples
+
+### Variants
+
+Use `variant` to switch between an inline marker, bordered row, and labeled separator.
+
+<ComponentPreview name="MarkerVariants" />
+
+### Status
+
+Set `role="status"` and include a `Spinner` for streaming or in-progress markers.
+
+<ComponentPreview name="MarkerStatus" />
+
+## Accessibility
+
+`Marker` is presentational by default. For progress updates such as “Thinking...” or “Loading earlier messages,” set `role="status"`. `Marker.Icon` is decorative and hidden with `aria-hidden`, so `Marker.Content` should carry the meaning.
+
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

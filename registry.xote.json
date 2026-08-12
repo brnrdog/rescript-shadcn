@@ -1139,6 +1139,73 @@
       ]
     },
     {
+      "name": "AccordionDisabled",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AccordionDisabled.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AlertAction",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Alert",
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AlertAction.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AlertBasic",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Alert",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AlertBasic.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AlertColors",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Alert",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AlertColors.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "AlertDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1151,6 +1218,23 @@
       "files": [
         {
           "path": "registry/xote/examples/AlertDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AlertDestructive",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Alert",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AlertDestructive.res",
           "type": "registry:example"
         }
       ]
@@ -1206,6 +1290,124 @@
       ]
     },
     {
+      "name": "AttachmentGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Attachment",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AttachmentGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AttachmentImage",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Attachment"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AttachmentImage.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AttachmentStates",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Attachment",
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AttachmentStates.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AttachmentTrigger",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Attachment",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AttachmentTrigger.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AvatarBadge",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AvatarBadge.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AvatarBadgeIcon",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AvatarBadgeIcon.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AvatarBasic",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AvatarBasic.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "AvatarDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1222,6 +1424,87 @@
       ]
     },
     {
+      "name": "AvatarGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AvatarGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AvatarGroupCount",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AvatarGroupCount.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AvatarGroupCountIcon",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AvatarGroupCountIcon.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AvatarSize",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AvatarSize.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "BadgeColors",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Badge"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BadgeColors.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "BadgeDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1233,6 +1516,55 @@
       "files": [
         {
           "path": "registry/xote/examples/BadgeDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "BadgeIcon",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Badge",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BadgeIcon.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "BadgeVariants",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Badge"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BadgeVariants.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "BreadcrumbBasic",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BreadcrumbBasic.res",
           "type": "registry:example"
         }
       ]
@@ -1271,6 +1603,56 @@
       ]
     },
     {
+      "name": "BubbleGroupDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Bubble"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BubbleGroupDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "BubbleReactions",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Bubble",
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BubbleReactions.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonDefault",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonDefault.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ButtonDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1288,6 +1670,38 @@
       ]
     },
     {
+      "name": "ButtonDestructive",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonDestructive.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonGhost",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonGhost.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ButtonGroupDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1300,6 +1714,160 @@
       "files": [
         {
           "path": "registry/xote/examples/ButtonGroupDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonGroupInput",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/ButtonGroup",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonGroupInput.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonGroupOrientation",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/ButtonGroup",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonGroupOrientation.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonGroupSeparator",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/ButtonGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonGroupSeparator.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonGroupSize",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/ButtonGroup",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonGroupSize.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonLink",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonLink.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonOutline",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonOutline.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonRounded",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonRounded.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonSecondary",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonSecondary.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonSize",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonSize.res",
           "type": "registry:example"
         }
       ]
@@ -1340,6 +1908,42 @@
       ]
     },
     {
+      "name": "CardImage",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Badge",
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Card"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CardImage.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "CardSmall",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Card",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CardSmall.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "CarouselDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1374,6 +1978,23 @@
       ]
     },
     {
+      "name": "CheckboxBasic",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Checkbox",
+        "@rescript-shadcn/Field"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CheckboxBasic.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "CheckboxDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1386,6 +2007,23 @@
       "files": [
         {
           "path": "registry/xote/examples/CheckboxDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "CheckboxDescription",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Checkbox",
+        "@rescript-shadcn/Field"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CheckboxDescription.res",
           "type": "registry:example"
         }
       ]
@@ -1443,6 +2081,38 @@
       ]
     },
     {
+      "name": "ContextMenuBasic",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuBasic.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ContextMenuCheckboxes",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuCheckboxes.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ContextMenuDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1454,6 +2124,72 @@
       "files": [
         {
           "path": "registry/xote/examples/ContextMenuDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ContextMenuDestructive",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuDestructive.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ContextMenuGroups",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuGroups.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ContextMenuIcons",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuIcons.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ContextMenuShortcuts",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuShortcuts.res",
           "type": "registry:example"
         }
       ]
@@ -1564,6 +2300,43 @@
       ]
     },
     {
+      "name": "EmptyAvatar",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar",
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Empty"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/EmptyAvatar.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "EmptyAvatarGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar",
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Empty",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/EmptyAvatarGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "EmptyDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1577,6 +2350,25 @@
       "files": [
         {
           "path": "registry/xote/examples/EmptyDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "EmptyInputGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Empty",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup",
+        "@rescript-shadcn/Kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/EmptyInputGroup.res",
           "type": "registry:example"
         }
       ]
@@ -1600,6 +2392,109 @@
       ]
     },
     {
+      "name": "FieldFieldset",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/FieldFieldset.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "FieldGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Checkbox",
+        "@rescript-shadcn/Field"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/FieldGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "FieldInput",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/FieldInput.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "FieldResponsive",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/FieldResponsive.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "FieldSwitch",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Switch"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/FieldSwitch.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "FieldTextarea",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/FieldTextarea.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "HoverCardDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1613,6 +2508,59 @@
       "files": [
         {
           "path": "registry/xote/examples/HoverCardDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputBadge",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Badge",
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputBadge.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputBasic",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputBasic.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputButtonGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/ButtonGroup",
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputButtonGroup.res",
           "type": "registry:example"
         }
       ]
@@ -1635,6 +2583,127 @@
       ]
     },
     {
+      "name": "InputField",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputField.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputFieldgroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputFieldgroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputFile",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputFile.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGrid",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGrid.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupBlockEnd",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupBlockEnd.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupBlockStart",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupBlockStart.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupCustom",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/InputGroup",
+        "@rescript-shadcn/Textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupCustom.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "InputGroupDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1652,6 +2721,220 @@
       ]
     },
     {
+      "name": "InputGroupIcon",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupIcon.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupInCard",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Card",
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupInCard.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupInlineEnd",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupInlineEnd.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupInlineStart",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupInlineStart.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupKbd",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup",
+        "@rescript-shadcn/Kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupKbd.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupSpinner",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup",
+        "@rescript-shadcn/Spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupSpinner.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupText",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupText.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupTextarea",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupTextarea.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupWithAddons",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupWithAddons.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputGroupWithButtons",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputGroupWithButtons.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputInline",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputInline.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputInputGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputInputGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "InputOtpDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1663,6 +2946,78 @@
       "files": [
         {
           "path": "registry/xote/examples/InputOtpDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputOtpForm",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Card",
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputOtp"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputOtpForm.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputOtpSeparator",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/InputOtp"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputOtpSeparator.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputRequired",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputRequired.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ItemAvatar",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar",
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Item"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ItemAvatar.res",
           "type": "registry:example"
         }
       ]
@@ -1686,6 +3041,75 @@
       ]
     },
     {
+      "name": "ItemIcon",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Item"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ItemIcon.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ItemSize",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Item"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ItemSize.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ItemVariant",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Item"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ItemVariant.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "KbdButton",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/KbdButton.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "KbdDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1697,6 +3121,40 @@
       "files": [
         {
           "path": "registry/xote/examples/KbdDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "KbdGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/KbdGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "KbdInputGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup",
+        "@rescript-shadcn/Kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/KbdInputGroup.res",
           "type": "registry:example"
         }
       ]
@@ -1736,6 +3194,40 @@
       ]
     },
     {
+      "name": "MarkerStatus",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Marker",
+        "@rescript-shadcn/Spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MarkerStatus.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "MarkerVariants",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Marker"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MarkerVariants.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "MenubarDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1747,6 +3239,60 @@
       "files": [
         {
           "path": "registry/xote/examples/MenubarDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "MenubarIcons",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Menubar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MenubarIcons.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "MessageAttachment",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Attachment",
+        "@rescript-shadcn/Bubble",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Message"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MessageAttachment.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "MessageAvatar",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar",
+        "@rescript-shadcn/Bubble",
+        "@rescript-shadcn/Message"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MessageAvatar.res",
           "type": "registry:example"
         }
       ]
@@ -1770,6 +3316,42 @@
       ]
     },
     {
+      "name": "MessageGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Bubble",
+        "@rescript-shadcn/Message"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MessageGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "MessageHeaderFooter",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Bubble",
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Message"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MessageHeaderFooter.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "MessageScrollerDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1782,6 +3364,23 @@
       "files": [
         {
           "path": "registry/xote/examples/MessageScrollerDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "MutedItemGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Item"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MutedItemGroup.res",
           "type": "registry:example"
         }
       ]
@@ -1804,6 +3403,54 @@
       ]
     },
     {
+      "name": "NativeSelectDisabled",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/NativeSelect"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/NativeSelectDisabled.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "NativeSelectGroups",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/NativeSelect"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/NativeSelectGroups.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "NativeSelectInvalid",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/NativeSelect"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/NativeSelectInvalid.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "NavigationMenuDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1821,6 +3468,23 @@
       ]
     },
     {
+      "name": "OutlineItemGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Item"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/OutlineItemGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "PaginationDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1832,6 +3496,40 @@
       "files": [
         {
           "path": "registry/xote/examples/PaginationDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "PaginationIconsOnly",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Pagination",
+        "@rescript-shadcn/Select"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/PaginationIconsOnly.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "PaginationSimple",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/PaginationSimple.res",
           "type": "registry:example"
         }
       ]
@@ -1872,6 +3570,23 @@
       ]
     },
     {
+      "name": "RadioGroupChoiceCard",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/RadioGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/RadioGroupChoiceCard.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "RadioGroupDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1884,6 +3599,23 @@
       "files": [
         {
           "path": "registry/xote/examples/RadioGroupDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "RadioGroupDescription",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/RadioGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/RadioGroupDescription.res",
           "type": "registry:example"
         }
       ]
@@ -1954,6 +3686,54 @@
       ]
     },
     {
+      "name": "SeparatorList",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Separator"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SeparatorList.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SeparatorMenu",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Separator"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SeparatorMenu.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SeparatorVertical",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Separator"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SeparatorVertical.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "SheetDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1990,6 +3770,56 @@
       ]
     },
     {
+      "name": "SidebarGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Sidebar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SidebarGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SkeletonAvatar",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SkeletonAvatar.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SkeletonCard",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Card",
+        "@rescript-shadcn/Skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SkeletonCard.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "SkeletonDemo",
       "type": "registry:example",
       "dependencies": [
@@ -2001,6 +3831,38 @@
       "files": [
         {
           "path": "registry/xote/examples/SkeletonDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SkeletonForm",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SkeletonForm.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SkeletonText",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SkeletonText.res",
           "type": "registry:example"
         }
       ]
@@ -2040,6 +3902,22 @@
       ]
     },
     {
+      "name": "SpinnerCustom",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SpinnerCustom.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "SpinnerDemo",
       "type": "registry:example",
       "dependencies": [
@@ -2051,6 +3929,75 @@
       "files": [
         {
           "path": "registry/xote/examples/SpinnerDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SpinnerEmpty",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Empty",
+        "@rescript-shadcn/Spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SpinnerEmpty.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SpinnerInputGroup",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/InputGroup",
+        "@rescript-shadcn/Spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SpinnerInputGroup.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SpinnerSize",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SpinnerSize.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SwitchChoiceCard",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Switch"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SwitchChoiceCard.res",
           "type": "registry:example"
         }
       ]
@@ -2068,6 +4015,40 @@
       "files": [
         {
           "path": "registry/xote/examples/SwitchDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SwitchDescription",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Switch"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SwitchDescription.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SwitchSizes",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Switch"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SwitchSizes.res",
           "type": "registry:example"
         }
       ]
@@ -2106,6 +4087,71 @@
       ]
     },
     {
+      "name": "TabsDisabled",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TabsDisabled.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TabsLine",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TabsLine.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TabsVertical",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TabsVertical.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TextareaButton",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TextareaButton.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "TextareaDemo",
       "type": "registry:example",
       "dependencies": [
@@ -2117,6 +4163,23 @@
       "files": [
         {
           "path": "registry/xote/examples/TextareaDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TextareaField",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TextareaField.res",
           "type": "registry:example"
         }
       ]
@@ -2156,6 +4219,22 @@
       ]
     },
     {
+      "name": "ToggleDisabled",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleDisabled.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ToggleGroupDemo",
       "type": "registry:example",
       "dependencies": [
@@ -2167,6 +4246,105 @@
       "files": [
         {
           "path": "registry/xote/examples/ToggleGroupDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleGroupDisabled",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/ToggleGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleGroupDisabled.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleGroupOutline",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ToggleGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleGroupOutline.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleGroupSizes",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ToggleGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleGroupSizes.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleOutline",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleOutline.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleSizes",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleSizes.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleText",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleText.res",
           "type": "registry:example"
         }
       ]
@@ -2189,6 +4367,19 @@
       ]
     },
     {
+      "name": "TypographyBlockquote",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyBlockquote.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "TypographyDemo",
       "type": "registry:example",
       "dependencies": [
@@ -2197,6 +4388,162 @@
       "files": [
         {
           "path": "registry/xote/examples/TypographyDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyH1",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyH1.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyH2",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyH2.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyH3",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyH3.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyH4",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyH4.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyInlineCode",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyInlineCode.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyLarge",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyLarge.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyLead",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyLead.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyList",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyList.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyMuted",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyMuted.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyP",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyP.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographySmall",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographySmall.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TypographyTable",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TypographyTable.res",
           "type": "registry:example"
         }
       ]

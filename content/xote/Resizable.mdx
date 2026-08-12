@@ -7,8 +7,11 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="ResizableDemo" />
+
+## About
+
+The `Resizable` component is built on top of [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels) by [bvaughn](https://github.com/bvaughn).
 
 ## Installation
 
@@ -51,17 +54,17 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-<Resizable defaultRatio=40.>
-  <Resizable.Panel> {"Sidebar"} </Resizable.Panel>
-  <Resizable.Handle withHandle=true />
-  <Resizable.Panel grow=true> {"Content"} </Resizable.Panel>
+```res showLineNumbers
+<Resizable orientation=Horizontal>
+  <Resizable.Panel> {"One"} </Resizable.Panel>
+  <Resizable.Handle />
+  <Resizable.Panel> {"Two"} </Resizable.Panel>
 </Resizable>
 ```
 
-The handle writes a percentage into a CSS variable on the group, so a drag is a
-single style write rather than a re-render. Arrow keys nudge it by 2%.
-
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

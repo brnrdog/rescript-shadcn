@@ -12,6 +12,8 @@ let make = (
   ~required: bool=false,
   ~readOnly: bool=false,
   ~rows: option<int>=?,
+  ~ariaLabel: option<string>=?,
+  ~dataSlot: string="textarea",
   ~onInput: option<Dom.event => unit>=?,
   ~onChange: option<Dom.event => unit>=?,
 ) =>
@@ -24,11 +26,12 @@ let make = (
     required
     readOnly
     rows=?{rows}
+    ariaLabel=?{ariaLabel}
     onInput=?{onInput}
     onChange=?{onChange}
     class={cn(
       "cn-textarea flex field-sizing-content min-h-16 w-full outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
-    attrs=[View.attr("data-slot", "textarea")]
+    attrs=[View.attr("data-slot", dataSlot)]
   />

@@ -3,11 +3,11 @@ title: Dropdown Menu
 description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
 base: xote
 component: true
+featured: true
 links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="DropdownMenuDemo" />
 
 ## Installation
@@ -51,24 +51,29 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
+```res showLineNumbers
 <DropdownMenu>
-  <DropdownMenu.Trigger> {"Open"} </DropdownMenu.Trigger>
+  <DropdownMenu.Trigger render={<Button variant=Outline />}>
+    {"Open"}
+  </DropdownMenu.Trigger>
   <DropdownMenu.Content>
-    <DropdownMenu.Label> {"My Account"} </DropdownMenu.Label>
-    <DropdownMenu.Separator />
-    <DropdownMenu.Item onSelect={() => Console.log("profile")}>
-      {"Profile"}
-      <DropdownMenu.Shortcut> {"⇧⌘P"} </DropdownMenu.Shortcut>
-    </DropdownMenu.Item>
+    <DropdownMenu.Group>
+      <DropdownMenu.Label> {"My Account"} </DropdownMenu.Label>
+      <DropdownMenu.Item> {"Profile"} </DropdownMenu.Item>
+      <DropdownMenu.Item> {"Billing"} </DropdownMenu.Item>
+      <DropdownMenu.Separator />
+    </DropdownMenu.Group>
+    <DropdownMenu.Group>
+      <DropdownMenu.Item> {"Team"} </DropdownMenu.Item>
+      <DropdownMenu.Item> {"Subscription"} </DropdownMenu.Item>
+    </DropdownMenu.Group>
   </DropdownMenu.Content>
 </DropdownMenu>
 ```
 
-The trigger opens on click or with the arrow keys; inside, the arrow keys move
-between items, Home and End jump to the ends, Enter activates, and Escape or a
-press outside closes and returns focus to the trigger.
-
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

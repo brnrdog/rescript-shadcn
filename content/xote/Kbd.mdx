@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="KbdDemo" />
 
 ## Installation
@@ -30,12 +29,6 @@ npx shadcn@latest add @rescript-shadcn/Kbd
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
@@ -52,12 +45,31 @@ npm install xote
 ## Usage
 
 ```res
-<Kbd.Group>
-  <Kbd> {"Ctrl"} </Kbd>
-  <Kbd> {"B"} </Kbd>
-</Kbd.Group>
+<Kbd> {"Ctrl"} </Kbd>
 ```
+
+## Examples
+
+### Group
+
+Use the `Kbd.Group` component to group keyboard keys together.
+
+<ComponentPreview name="KbdGroup" />
+
+### Button
+
+Use the `Kbd` component inside a `Button` component to display a keyboard key inside a button.
+
+<ComponentPreview name="KbdButton" />
+
+### Input Group
+
+You can use the `Kbd` component inside a `InputGroupAddon` component to display a keyboard key inside an input group.
+
+<ComponentPreview name="KbdInputGroup" />
 
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

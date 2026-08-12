@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="BreadcrumbDemo" />
 
 ## Installation
@@ -30,12 +29,6 @@ npx shadcn@latest add @rescript-shadcn/Breadcrumb
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
@@ -51,20 +44,36 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Breadcrumb>
   <Breadcrumb.List>
     <Breadcrumb.Item>
-      <Breadcrumb.Link href="/"> {"Home"} </Breadcrumb.Link>
+      <Breadcrumb.Link render={<a href="/" />}> {"Home"} </Breadcrumb.Link>
     </Breadcrumb.Item>
     <Breadcrumb.Separator />
     <Breadcrumb.Item>
-      <Breadcrumb.Page> {"Components"} </Breadcrumb.Page>
+      <Breadcrumb.Link render={<a href="/components" />}>
+        {"Components"}
+      </Breadcrumb.Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Separator />
+    <Breadcrumb.Item>
+      <Breadcrumb.Page> {"Breadcrumb"} </Breadcrumb.Page>
     </Breadcrumb.Item>
   </Breadcrumb.List>
 </Breadcrumb>
 ```
 
+## Examples
+
+### Basic
+
+A basic breadcrumb with a home link and a components link.
+
+<ComponentPreview name="BreadcrumbBasic" />
+
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

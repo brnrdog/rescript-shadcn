@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="AlertDemo" />
 
 ## Installation
@@ -30,18 +29,9 @@ npx shadcn@latest add @rescript-shadcn/Alert
 
 <Steps className="mb-0 pt-2">
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install xote
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource
-  name="Alert"
-  title="components/ui/Alert.res"
-/>
+<ComponentSource name="Alert" title="components/ui/Alert.res" />
 
 </Steps>
 
@@ -51,13 +41,44 @@ npm install xote
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Alert>
+  <Icons.Info />
   <Alert.Title> {"Heads up!"} </Alert.Title>
-  <Alert.Description> {"You can add components to your app."} </Alert.Description>
+  <Alert.Description>
+    {"You can add components and dependencies to your app using the cli."}
+  </Alert.Description>
 </Alert>
 ```
 
+## Examples
+
+### Basic
+
+A basic alert with an icon, title and description.
+
+<ComponentPreview name="AlertBasic" />
+
+### Destructive
+
+Use `variant=Destructive` to create a destructive alert.
+
+<ComponentPreview name="AlertDestructive" />
+
+### Action
+
+Use `Alert.Action` to add a button or other action element to the alert.
+
+<ComponentPreview name="AlertAction" />
+
+### Custom Colors
+
+You can customize the alert colors by adding custom classes such as `bg-amber-50 dark:bg-amber-950` to the `Alert` component.
+
+<ComponentPreview name="AlertColors" />
+
 ## API Reference
 
-This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

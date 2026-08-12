@@ -18,9 +18,11 @@ let make = (
   ~orientation: Orientation.t=Horizontal,
   ~variant: Variant.t=Default,
   ~size: Size.t=Default,
+  ~spacing: option<string>=?,
   ~children: View.node=View.fragment([]),
 ) =>
   <XoteBase.ToggleGroup.Root
+    dataSpacing=?{spacing}
     ?id
     ?value
     defaultValue

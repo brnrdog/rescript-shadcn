@@ -55,6 +55,20 @@ npm install xote rescript-xote-base
 <Checkbox id="terms" onCheckedChange={checked => Console.log(checked)} />
 ```
 
+## Examples
+
+### Basic
+
+Pair the checkbox with `Field` and `FieldLabel` for proper layout and labeling.
+
+<ComponentPreview name="CheckboxBasic" />
+
+### Description
+
+Use `FieldContent` and `FieldDescription` for helper text.
+
+<ComponentPreview name="CheckboxDescription" />
+
 ## API Reference
 
 Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

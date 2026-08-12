@@ -64,6 +64,33 @@ npm install xote rescript-xote-base
 `orientation` is `Vertical`, `Horizontal` or `Responsive`; the last switches at
 the field group's container breakpoint.
 
+## Examples
+
+### Input
+
+<ComponentPreview name="FieldInput" />
+
+### Textarea
+
+<ComponentPreview name="FieldTextarea" />
+
+### Field.Set
+
+<ComponentPreview name="FieldFieldset" />
+
+### Switch
+
+<ComponentPreview name="FieldSwitch" />
+
+### Field Group
+
+Stack `Field` components with `Field.Group`. Add `Field.Separator` to divide them.
+
+<ComponentPreview
+  name="FieldGroup"
+  previewClassName="h-96"
+/>
+
 ## API Reference
 
 Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="ProgressDemo" />
 
 ## Installation
@@ -51,10 +50,13 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-<Progress value={MaybeSignal.static(Some(33.))} />
+```res showLineNumbers
+<Progress value=33.0 />
 ```
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

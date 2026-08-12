@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="SeparatorDemo" />
 
 ## Installation
@@ -51,10 +50,33 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Separator />
 ```
 
+## Examples
+
+### Vertical
+
+Use `orientation="vertical"` for a vertical separator.
+
+<ComponentPreview name="SeparatorVertical" />
+
+### Menu
+
+Vertical separators between menu items with descriptions.
+
+<ComponentPreview name="SeparatorMenu" />
+
+### List
+
+Horizontal separators between list items.
+
+<ComponentPreview name="SeparatorList" />
+
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

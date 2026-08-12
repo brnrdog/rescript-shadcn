@@ -120,9 +120,11 @@ module Input = {
     ~value: option<MaybeSignal.t<string>>=?,
     ~placeholder: option<string>=?,
     ~disabled: bool=false,
+    ~ariaLabel: option<string>=?,
     ~onInput: option<Dom.event => unit>=?,
   ) =>
     <Input
+      ?ariaLabel
       ?id
       type_
       ?name

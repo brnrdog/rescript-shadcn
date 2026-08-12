@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="MenubarDemo" />
 
 ## Installation
@@ -51,20 +50,37 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Menubar>
   <Menubar.Menu>
     <Menubar.Trigger> {"File"} </Menubar.Trigger>
     <Menubar.Content>
-      <Menubar.Item> {"New Tab"} </Menubar.Item>
+      <Menubar.Group>
+        <Menubar.Item>
+          {"New Tab"}
+          <Menubar.Shortcut> {"\u2318T"} </Menubar.Shortcut>
+        </Menubar.Item>
+        <Menubar.Item> {"New Window"} </Menubar.Item>
+      </Menubar.Group>
+      <Menubar.Separator />
+      <Menubar.Group>
+        <Menubar.Item> {"Share"} </Menubar.Item>
+        <Menubar.Item> {"Print"} </Menubar.Item>
+      </Menubar.Group>
     </Menubar.Content>
   </Menubar.Menu>
 </Menubar>
 ```
 
-Each `Menubar.Menu` owns its open state. Moving the pointer across triggers does
-not yet hand an open menu over to its neighbour.
+## Examples
+
+### With Icons
+
+<ComponentPreview name="MenubarIcons" />
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

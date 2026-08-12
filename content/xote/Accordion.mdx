@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="AccordionDemo" />
 
 ## Installation
@@ -18,6 +17,7 @@ links:
   <TabsTrigger value="cli">Command</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
+
 <TabsContent value="cli">
 
 ```bash
@@ -51,15 +51,28 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
+```res showLineNumbers
 <Accordion defaultValue=["item-1"]>
   <Accordion.Item value="item-1">
     <Accordion.Trigger> {"Is it accessible?"} </Accordion.Trigger>
-    <Accordion.Content> {"Yes. It follows the WAI-ARIA pattern."} </Accordion.Content>
+    <Accordion.Content>
+      {"Yes. It adheres to the WAI-ARIA design pattern."}
+    </Accordion.Content>
   </Accordion.Item>
 </Accordion>
 ```
 
+## Examples
+
+### Disabled
+
+Use the `disabled` prop on `AccordionItem` to disable individual items.
+
+<ComponentPreview name="AccordionDisabled" />
+
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

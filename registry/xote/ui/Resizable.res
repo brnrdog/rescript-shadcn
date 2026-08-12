@@ -56,14 +56,17 @@ module Panel = {
     ~id: option<string>=?,
     /* The first panel follows the handle; the second takes what is left. */
     ~grow: bool=false,
+    ~defaultSize: option<float>=?,
     ~children: View.node=View.fragment([]),
   ) =>
     <div
       id=?{id}
       class={cn("cn-resizable-panel min-h-0 min-w-0 overflow-hidden", className)}
-      style={grow
-        ? "flex: 1 1 auto"
-        : "flex: 0 0 var(--resizable-ratio)"}
+      style={switch (grow, defaultSize) {
+      | (true, _) => "flex: 1 1 auto"
+      | (false, Some(size)) => `flex: 0 0 ${size->Float.toString}%`
+      | (false, None) => "flex: 0 0 var(--resizable-ratio)"
+      }}
       attrs=[View.attr("data-slot", "resizable-panel")]>
       {children}
     </div>

@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="ToggleDemo" />
 
 ## Installation
@@ -51,10 +50,35 @@ npm install xote rescript-xote-base
 
 ## Usage
 
-```res
-<Toggle ariaLabel="Toggle bold"> {"B"} </Toggle>
+```res showLineNumbers
+<Toggle> {"Toggle"} </Toggle>
 ```
+
+## Examples
+
+### Outline
+
+Use `variant=Outline` for an outline style.
+
+<ComponentPreview name="ToggleOutline" />
+
+### With Text
+
+<ComponentPreview name="ToggleText" />
+
+### Size
+
+Use the `size` prop to change the size of the toggle.
+
+<ComponentPreview name="ToggleSizes" />
+
+### Disabled
+
+<ComponentPreview name="ToggleDisabled" />
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

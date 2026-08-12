@@ -7,7 +7,6 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-
 <ComponentPreview name="SwitchDemo" />
 
 ## Installation
@@ -52,9 +51,30 @@ npm install xote rescript-xote-base
 ## Usage
 
 ```res
-<Switch id="airplane-mode" onCheckedChange={checked => Console.log(checked)} />
+<Switch />
 ```
+
+## Examples
+
+### Description
+
+<ComponentPreview name="SwitchDescription" />
+
+### Choice Card
+
+Card-style selection where `FieldLabel` wraps the entire `Field` for a clickable card pattern.
+
+<ComponentPreview name="SwitchChoiceCard" />
+
+### Size
+
+Use the `size` prop to change the size of the switch.
+
+<ComponentPreview name="SwitchSizes" />
 
 ## API Reference
 
-Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.
