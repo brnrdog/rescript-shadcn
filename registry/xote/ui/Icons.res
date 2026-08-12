@@ -126,3 +126,55 @@ module Loader = {
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
     </Svg>
 }
+
+module MoreHorizontal = {
+  @xote.component
+  let make = (
+    ~className: option<string>=?,
+    ~dataSlot: option<string>=?,
+    ~dataIcon: option<string>=?,
+  ) =>
+    <Svg ?className ?dataSlot ?dataIcon>
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="19" cy="12" r="1" />
+      <circle cx="5" cy="12" r="1" />
+    </Svg>
+}
+
+module ChevronLeft = {
+  @xote.component
+  let make = (
+    ~className: option<string>=?,
+    ~dataSlot: option<string>=?,
+    ~dataIcon: option<string>=?,
+  ) =>
+    <Svg ?className ?dataSlot ?dataIcon>
+      <path d="m15 18-6-6 6-6" />
+    </Svg>
+}
+
+module Plus = {
+  @xote.component
+  let make = (
+    ~className: option<string>=?,
+    ~dataSlot: option<string>=?,
+    ~dataIcon: option<string>=?,
+  ) =>
+    <Svg ?className ?dataSlot ?dataIcon>
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
+    </Svg>
+}
+
+module Search = {
+  @xote.component
+  let make = (
+    ~className: option<string>=?,
+    ~dataSlot: option<string>=?,
+    ~dataIcon: option<string>=?,
+  ) =>
+    <Svg ?className ?dataSlot ?dataIcon>
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </Svg>
+}

@@ -158,6 +158,23 @@
       ]
     },
     {
+      "name": "Breadcrumb",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Breadcrumb.res",
+          "type": "registry:file",
+          "target": "@ui/Breadcrumb.res"
+        }
+      ]
+    },
+    {
       "name": "Button",
       "type": "registry:ui",
       "dependencies": [
@@ -168,6 +185,24 @@
           "path": "registry/xote/ui/Button.res",
           "type": "registry:file",
           "target": "@ui/Button.res"
+        }
+      ]
+    },
+    {
+      "name": "ButtonGroup",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Separator"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/ButtonGroup.res",
+          "type": "registry:file",
+          "target": "@ui/ButtonGroup.res"
         }
       ]
     },
@@ -234,6 +269,20 @@
           "path": "registry/xote/ui/Dialog.res",
           "type": "registry:file",
           "target": "@ui/Dialog.res"
+        }
+      ]
+    },
+    {
+      "name": "Empty",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Empty.res",
+          "type": "registry:file",
+          "target": "@ui/Empty.res"
         }
       ]
     },
@@ -305,6 +354,41 @@
           "path": "registry/xote/ui/Label.res",
           "type": "registry:file",
           "target": "@ui/Label.res"
+        }
+      ]
+    },
+    {
+      "name": "NativeSelect",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/NativeSelect.res",
+          "type": "registry:file",
+          "target": "@ui/NativeSelect.res"
+        }
+      ]
+    },
+    {
+      "name": "Pagination",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Pagination.res",
+          "type": "registry:file",
+          "target": "@ui/Pagination.res"
         }
       ]
     },
@@ -411,6 +495,20 @@
           "path": "registry/xote/ui/Switch.res",
           "type": "registry:file",
           "target": "@ui/Switch.res"
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Table.res",
+          "type": "registry:file",
+          "target": "@ui/Table.res"
         }
       ]
     },
@@ -555,6 +653,23 @@
       ]
     },
     {
+      "name": "BreadcrumbDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Breadcrumb",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BreadcrumbDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ButtonDemo",
       "type": "registry:example",
       "dependencies": [
@@ -567,6 +682,23 @@
       "files": [
         {
           "path": "registry/xote/examples/ButtonDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonGroupDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/ButtonGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonGroupDemo.res",
           "type": "registry:example"
         }
       ]
@@ -645,6 +777,24 @@
       ]
     },
     {
+      "name": "EmptyDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Empty",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/EmptyDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "HoverCardDemo",
       "type": "registry:example",
       "dependencies": [
@@ -708,6 +858,39 @@
       "files": [
         {
           "path": "registry/xote/examples/LabelDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "NativeSelectDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Label",
+        "@rescript-shadcn/NativeSelect"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/NativeSelectDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "PaginationDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/PaginationDemo.res",
           "type": "registry:example"
         }
       ]
@@ -825,6 +1008,22 @@
       "files": [
         {
           "path": "registry/xote/examples/SwitchDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TableDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Table"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TableDemo.res",
           "type": "registry:example"
         }
       ]

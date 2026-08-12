@@ -1,0 +1,72 @@
+---
+title: Pagination
+description: Pagination with page navigation, next and previous links.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="PaginationDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Pagination
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Pagination"
+  title="components/ui/Pagination.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Pagination>
+  <Pagination.Content>
+    <Pagination.Item>
+      <Pagination.Previous href="#" />
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link href="#" isActive=true> {"1"} </Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Next href="#" />
+    </Pagination.Item>
+  </Pagination.Content>
+</Pagination>
+```
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.

@@ -1,0 +1,63 @@
+---
+title: Native Select
+description: A styled native HTML select element with consistent design system integration.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="NativeSelectDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/NativeSelect
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="NativeSelect"
+  title="components/ui/NativeSelect.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<NativeSelect name="framework">
+  <NativeSelect.Option value="next"> {"Next.js"} </NativeSelect.Option>
+  <NativeSelect.Option value="remix"> {"Remix"} </NativeSelect.Option>
+</NativeSelect>
+```
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
