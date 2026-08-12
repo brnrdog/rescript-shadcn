@@ -37,8 +37,19 @@ npm install react-aria-components rescript-react-aria
 
 </LibVariant>
 
-Base UI and React Aria components share the selected visual style. A small number of components may
-only be available for one library when the other library has no equivalent primitive.
+<LibVariant value="xote">
+
+```bash
+npm install xote rescript-base-xote
+```
+
+The xote components render DOM nodes directly, so they need neither `react` nor `lucide-react` —
+their icons are inline SVG.
+
+</LibVariant>
+
+Every library shares the selected visual style. A small number of components may only be available
+for one library when another has no equivalent primitive.
 
 ### Configure path aliases
 
@@ -259,6 +270,32 @@ Add the binding package for your selected library to your dependencies:
     ...
     "rescript-react-aria"
   ],
+  ...
+}
+```
+
+</LibVariant>
+
+<LibVariant value="xote">
+
+xote replaces the JSX transform, so it needs a little more than a dependency entry. The `ppx-flags`
+line enables the `@xote.component` annotation the components are written with, and it ships
+prebuilt — no OCaml toolchain required.
+
+```json {4-13} title="rescript.json" showLineNumbers
+{
+  ...
+  "dependencies": [
+    ...
+    "xote",
+    "rescript-base-xote"
+  ],
+  "jsx": {
+    "version": 4,
+    "module": "XoteJSX"
+  },
+  "ppx-flags": ["xote/ppx/ppx"],
+  "compiler-flags": ["-open Xote"],
   ...
 }
 ```

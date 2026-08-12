@@ -1,0 +1,27 @@
+{
+  "title": "Xote",
+  "pages": [
+    "Accordion",
+    "Alert",
+    "AspectRatio",
+    "Avatar",
+    "Badge",
+    "Button",
+    "Card",
+    "Checkbox",
+    "Collapsible",
+    "Dialog",
+    "Input",
+    "Kbd",
+    "Label",
+    "Progress",
+    "RadioGroup",
+    "Separator",
+    "Skeleton",
+    "Spinner",
+    "Switch",
+    "Tabs",
+    "Textarea",
+    "Toggle"
+  ]
+}

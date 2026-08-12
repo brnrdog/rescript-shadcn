@@ -1,0 +1,63 @@
+---
+title: Collapsible
+description: An interactive component which expands/collapses a panel.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="CollapsibleDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Collapsible
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-base-xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Collapsible"
+  title="components/ui/Collapsible.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Collapsible>
+  <Collapsible.Trigger> {"Toggle"} </Collapsible.Trigger>
+  <Collapsible.Content> {"Content"} </Collapsible.Content>
+</Collapsible>
+```
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-base-xote`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/base-xote); the component in your project owns the markup and the classes.

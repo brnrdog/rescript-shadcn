@@ -1,0 +1,67 @@
+---
+title: Card
+description: Displays a card with header, content, and footer.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="CardDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Card
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Card"
+  title="components/ui/Card.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Card>
+  <Card.Header>
+    <Card.Title> {"Card Title"} </Card.Title>
+    <Card.Description> {"Card Description"} </Card.Description>
+  </Card.Header>
+  <Card.Content> {"Card Content"} </Card.Content>
+  <Card.Footer> {"Card Footer"} </Card.Footer>
+</Card>
+```
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.

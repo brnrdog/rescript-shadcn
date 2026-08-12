@@ -6,7 +6,8 @@ let make = (~value: Config.Lib.t, ~children) => {
 
   switch (libStyle.lib, value) {
   | (Config.Lib.Base, Config.Lib.Base)
-  | (Config.Lib.Aria, Config.Lib.Aria) => children
+  | (Config.Lib.Aria, Config.Lib.Aria)
+  | (Config.Lib.Xote, Config.Lib.Xote) => children
   | _ => React.null
   }
 }

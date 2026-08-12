@@ -3,6 +3,7 @@
 type meta = {pages: array<string>}
 @module("@/content/base/meta.json") external baseMeta: meta = "default"
 @module("@/content/aria/meta.json") external ariaMeta: meta = "default"
+@module("@/content/xote/meta.json") external xoteMeta: meta = "default"
 
 @react.component
 let make = () => {
@@ -12,6 +13,7 @@ let make = () => {
   let pages = switch libStyle.lib {
   | Config.Lib.Base => baseMeta.pages
   | Config.Lib.Aria => ariaMeta.pages
+  | Config.Lib.Xote => xoteMeta.pages
   }
 
   <Sidebar>

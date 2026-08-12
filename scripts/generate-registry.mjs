@@ -7,13 +7,16 @@ import rescriptJson from "../rescript.json" with { type: "json" }
 
 const suffix = rescriptJson.suffix
 
+/** Registries published one per UI library. */
+const LIBS = ["base", "aria", "xote"]
+
 const packageRoot = new URL("..", import.meta.url).pathname
 const libIndex = process.argv.indexOf("--lib")
 const registryLib = libIndex === -1 ? null : process.argv[libIndex + 1]
 const isCheck = process.argv.includes("--check")
 
 if (registryLib === null) {
-  for (const lib of ["base", "aria"]) {
+  for (const lib of LIBS) {
     const result = spawnSync(
       process.execPath,
       [new URL(import.meta.url).pathname, "--lib", lib, ...(isCheck ? ["--check"] : [])],
@@ -39,8 +42,8 @@ if (registryLib === null) {
   process.exit(0)
 }
 
-if (!["base", "aria"].includes(registryLib)) {
-  console.error("Usage: generate-registry.mjs [--lib base|aria] [--check]")
+if (!LIBS.includes(registryLib)) {
+  console.error(`Usage: generate-registry.mjs [--lib ${LIBS.join("|")}] [--check]`)
   process.exit(1)
 }
 
@@ -68,6 +71,7 @@ const RESCRIPT_NAMESPACE_PACKAGES = [
   { namespace: "ShadcnReact", packageName: "rescript-shadcn-react" },
   { namespace: "BaseUi", packageName: "rescript-base-ui" },
   { namespace: "ReactAria", packageName: "rescript-react-aria" },
+  { namespace: "BaseXote", packageName: "rescript-base-xote" },
 ]
 
 /** Extract npm package name: "@base-ui/react/accordion" → "@base-ui/react" */
@@ -160,8 +164,12 @@ const astDir = path.join(baseDir, "lib", "ocaml")
 /** Modules to ignore in .ast dependency lists */
 const IGNORED_AST_DEPS = new Set([
   "BaseUi",
+  "BaseXote",
   "React",
   "ReactDOM",
+  "View",
+  "Signal",
+  "MaybeSignal",
 ])
 
 /** Build a set of all known registry module names for matching .ast deps */

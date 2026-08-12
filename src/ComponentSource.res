@@ -109,6 +109,7 @@ let make = async (
         src
         ->String.replace("/registry/base/", "")
         ->String.replace("/registry/aria/", "")
+        ->String.replace("/registry/xote/", "")
       (await Node.Fs.readFile(Node.Path.join([registryRoot(lib), relativePath]), "utf-8"))->Some
     }
   | (Some(name), None) =>

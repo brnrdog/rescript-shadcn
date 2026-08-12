@@ -1,0 +1,15 @@
+{
+  "name": "rescript-shadcn-xote",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "rescript": "^12.3.0",
+    "rescript-base-xote": "workspace:^",
+    "tailwind-merge": "^3.3.1",
+    "xote": "7.1.0-beta.7"
+  },
+  "scripts": {
+    "res:build": "rescript",
+    "res:clean": "rescript clean"
+  }
+}

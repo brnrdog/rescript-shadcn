@@ -1,0 +1,65 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="AccordionDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Accordion
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-base-xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Accordion"
+  title="components/ui/Accordion.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Accordion defaultValue=["item-1"]>
+  <Accordion.Item value="item-1">
+    <Accordion.Trigger> {"Is it accessible?"} </Accordion.Trigger>
+    <Accordion.Content> {"Yes. It follows the WAI-ARIA pattern."} </Accordion.Content>
+  </Accordion.Item>
+</Accordion>
+```
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-base-xote`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/base-xote); the component in your project owns the markup and the classes.

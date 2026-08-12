@@ -1,0 +1,32 @@
+{
+  "name": "rescript-base-xote",
+  "version": "0.1.0",
+  "description": "Headless UI primitives for ReScript, built on xote's fine-grained reactivity",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miriadhq/rescript-shadcn.git",
+    "directory": "packages/base-xote"
+  },
+  "keywords": [
+    "components",
+    "xote",
+    "rescript",
+    "headless"
+  ],
+  "dependencies": {
+    "rescript": "^12.3.0",
+    "xote": "7.1.0-beta.7"
+  },
+  "peerDependencies": {
+    "xote": "^7.1.0-beta.7"
+  },
+  "scripts": {
+    "res:build": "rescript",
+    "res:clean": "rescript clean",
+    "res:dev": "rescript watch"
+  }
+}

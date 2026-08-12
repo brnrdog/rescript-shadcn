@@ -1,0 +1,812 @@
+{
+  "name": "rescript-shadcn-xote",
+  "homepage": "https://github.com/miriadhq/rescript-shadcn",
+  "items": [
+    {
+      "name": "StyleLuma",
+      "type": "registry:style",
+      "files": [
+        {
+          "path": "registry/styles/style-luma.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "StyleLyra",
+      "type": "registry:style",
+      "files": [
+        {
+          "path": "registry/styles/style-lyra.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "StyleMaia",
+      "type": "registry:style",
+      "files": [
+        {
+          "path": "registry/styles/style-maia.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "StyleMira",
+      "type": "registry:style",
+      "files": [
+        {
+          "path": "registry/styles/style-mira.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "StyleNova",
+      "type": "registry:style",
+      "files": [
+        {
+          "path": "registry/styles/style-nova.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "StyleRhea",
+      "type": "registry:style",
+      "files": [
+        {
+          "path": "registry/styles/style-rhea.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "StyleSera",
+      "type": "registry:style",
+      "files": [
+        {
+          "path": "registry/styles/style-sera.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "StyleVega",
+      "type": "registry:style",
+      "files": [
+        {
+          "path": "registry/styles/style-vega.css",
+          "type": "registry:style"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Accordion.res",
+          "type": "registry:file",
+          "target": "@ui/Accordion.res"
+        }
+      ]
+    },
+    {
+      "name": "Alert",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Alert.res",
+          "type": "registry:file",
+          "target": "@ui/Alert.res"
+        }
+      ]
+    },
+    {
+      "name": "AspectRatio",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/AspectRatio.res",
+          "type": "registry:file",
+          "target": "@ui/AspectRatio.res"
+        }
+      ]
+    },
+    {
+      "name": "Avatar",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Avatar.res",
+          "type": "registry:file",
+          "target": "@ui/Avatar.res"
+        }
+      ]
+    },
+    {
+      "name": "Badge",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Badge.res",
+          "type": "registry:file",
+          "target": "@ui/Badge.res"
+        }
+      ]
+    },
+    {
+      "name": "Button",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Button.res",
+          "type": "registry:file",
+          "target": "@ui/Button.res"
+        }
+      ]
+    },
+    {
+      "name": "Card",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Card.res",
+          "type": "registry:file",
+          "target": "@ui/Card.res"
+        }
+      ]
+    },
+    {
+      "name": "Checkbox",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Checkbox.res",
+          "type": "registry:file",
+          "target": "@ui/Checkbox.res"
+        }
+      ]
+    },
+    {
+      "name": "Collapsible",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Collapsible.res",
+          "type": "registry:file",
+          "target": "@ui/Collapsible.res"
+        }
+      ]
+    },
+    {
+      "name": "Dialog",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Dialog.res",
+          "type": "registry:file",
+          "target": "@ui/Dialog.res"
+        }
+      ]
+    },
+    {
+      "name": "Icons",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Icons.res",
+          "type": "registry:file",
+          "target": "@ui/Icons.res"
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Input.res",
+          "type": "registry:file",
+          "target": "@ui/Input.res"
+        }
+      ]
+    },
+    {
+      "name": "Kbd",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Kbd.res",
+          "type": "registry:file",
+          "target": "@ui/Kbd.res"
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Label.res",
+          "type": "registry:file",
+          "target": "@ui/Label.res"
+        }
+      ]
+    },
+    {
+      "name": "Progress",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Progress.res",
+          "type": "registry:file",
+          "target": "@ui/Progress.res"
+        }
+      ]
+    },
+    {
+      "name": "RadioGroup",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/RadioGroup.res",
+          "type": "registry:file",
+          "target": "@ui/RadioGroup.res"
+        }
+      ]
+    },
+    {
+      "name": "Separator",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Separator.res",
+          "type": "registry:file",
+          "target": "@ui/Separator.res"
+        }
+      ]
+    },
+    {
+      "name": "Skeleton",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Skeleton.res",
+          "type": "registry:file",
+          "target": "@ui/Skeleton.res"
+        }
+      ]
+    },
+    {
+      "name": "Spinner",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Spinner.res",
+          "type": "registry:file",
+          "target": "@ui/Spinner.res"
+        }
+      ]
+    },
+    {
+      "name": "Switch",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Switch.res",
+          "type": "registry:file",
+          "target": "@ui/Switch.res"
+        }
+      ]
+    },
+    {
+      "name": "Tabs",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Tabs.res",
+          "type": "registry:file",
+          "target": "@ui/Tabs.res"
+        }
+      ]
+    },
+    {
+      "name": "Textarea",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Textarea.res",
+          "type": "registry:file",
+          "target": "@ui/Textarea.res"
+        }
+      ]
+    },
+    {
+      "name": "Toggle",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Toggle.res",
+          "type": "registry:file",
+          "target": "@ui/Toggle.res"
+        }
+      ]
+    },
+    {
+      "name": "AccordionDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AccordionDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AlertDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Alert",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AlertDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AspectRatioDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/AspectRatio"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AspectRatioDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "AvatarDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/AvatarDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "BadgeDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Badge"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BadgeDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ButtonDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ButtonDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "CardDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Card",
+        "@rescript-shadcn/Input",
+        "@rescript-shadcn/Label"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CardDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "CheckboxDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Checkbox",
+        "@rescript-shadcn/Label"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CheckboxDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "CollapsibleDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Collapsible",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CollapsibleDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "DialogDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Dialog",
+        "@rescript-shadcn/Input",
+        "@rescript-shadcn/Label"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/DialogDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "InputDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Input",
+        "@rescript-shadcn/Label"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/InputDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "KbdDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/KbdDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "LabelDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Checkbox",
+        "@rescript-shadcn/Label"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/LabelDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ProgressDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Progress"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ProgressDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "RadioGroupDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Label",
+        "@rescript-shadcn/RadioGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/RadioGroupDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SeparatorDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Separator"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SeparatorDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SkeletonDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SkeletonDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SpinnerDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SpinnerDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SwitchDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Label",
+        "@rescript-shadcn/Switch"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SwitchDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TabsDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Card",
+        "@rescript-shadcn/Tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TabsDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TextareaDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TextareaDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    }
+  ]
+}
