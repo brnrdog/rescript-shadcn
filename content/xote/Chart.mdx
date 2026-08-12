@@ -1,0 +1,68 @@
+---
+title: Chart
+description: Beautiful charts. Built using Recharts. Copy and paste into your apps.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="ChartDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Chart
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Chart"
+  title="components/ui/Chart.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+let data: array<Chart.point> = [
+  {label: "January", value: 186.},
+  {label: "February", value: 305.},
+]
+
+<Chart.Bar data ariaLabel="Visitors per month" />
+```
+
+Recharts is React-only, so this is a small SVG chart covering the bar and line
+shapes, drawn with the theme's `--chart-*` colours.
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.

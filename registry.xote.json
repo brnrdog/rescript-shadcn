@@ -288,6 +288,39 @@
       ]
     },
     {
+      "name": "Carousel",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Carousel.res",
+          "type": "registry:file",
+          "target": "@ui/Carousel.res"
+        }
+      ]
+    },
+    {
+      "name": "Chart",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Chart.res",
+          "type": "registry:file",
+          "target": "@ui/Chart.res"
+        }
+      ]
+    },
+    {
       "name": "Checkbox",
       "type": "registry:ui",
       "dependencies": [
@@ -373,6 +406,24 @@
           "path": "registry/xote/ui/ContextMenu.res",
           "type": "registry:file",
           "target": "@ui/ContextMenu.res"
+        }
+      ]
+    },
+    {
+      "name": "DataTable",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Table"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/DataTable.res",
+          "type": "registry:file",
+          "target": "@ui/DataTable.res"
         }
       ]
     },
@@ -1289,6 +1340,40 @@
       ]
     },
     {
+      "name": "CarouselDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Card",
+        "@rescript-shadcn/Carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CarouselDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ChartDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Card",
+        "@rescript-shadcn/Chart"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ChartDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "CheckboxDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1369,6 +1454,23 @@
       "files": [
         {
           "path": "registry/xote/examples/ContextMenuDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "DataTableDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/DataTable",
+        "@rescript-shadcn/Input"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/DataTableDemo.res",
           "type": "registry:example"
         }
       ]
