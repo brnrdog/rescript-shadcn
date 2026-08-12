@@ -6,6 +6,6 @@ let make = (~className: option<string>=?, ~id: option<string>=?, ~children: View
   <div
     id=?{id}
     class={cn("cn-skeleton animate-pulse", className)}
-    data={BaseXote.Attrs.data([("slot", "skeleton")])}>
+    attrs=[View.attr("data-slot", "skeleton")]>
     {children}
   </div>

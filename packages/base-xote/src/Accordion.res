@@ -53,23 +53,18 @@ module Item = {
       disabled,
     }
 
-    let inner = Internal.Context.provide(itemContext, itemCtx, children)
-
-    Internal.Node.stateful(
-      ~tag="div",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~state=() => {
-        let open_ = isOpen()
-        [("data-open", open_ ? Some("") : None), ("data-closed", open_ ? None : Some(""))]
-      },
-      ~children=inner,
-    )
+    <div
+      id={elementId}
+      class=?{className}
+      style=?{style}
+      attrs=[
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-open", isOpen),
+        Internal.flag("data-closed", () => !isOpen()),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {Internal.Context.provide(itemContext, itemCtx, children)}
+    </div>
   }
 }
 
@@ -82,16 +77,9 @@ module Header = {
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) =>
-    Internal.Node.make(
-      ~tag="h3",
-      ~attrs=[
-        ("id", id),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~children,
-    )
+    <h3 id=?{id} class=?{className} style=?{style} attrs=[View.attr("data-slot", dataSlot)]>
+      {children}
+    </h3>
 }
 
 module Trigger = {
@@ -107,11 +95,12 @@ module Trigger = {
   ) => {
     let item = Internal.Context.use(itemContext)
     let elementId = switch (id, item) {
-    | (Some(id), _) => id
-    | (None, Some({triggerId})) => triggerId
-    | (None, None) => Internal.Id.make("accordion-trigger")
+    | (Some(id), _) => Some(id)
+    | (None, Some({triggerId})) => Some(triggerId)
+    | (None, None) => None
     }
     let disabled = disabled || item->Option.mapOr(false, item => item.disabled)
+    let isOpen = () => item->Option.mapOr(false, item => item.isOpen())
 
     let activate = _ =>
       switch item {
@@ -119,31 +108,25 @@ module Trigger = {
       | _ => ()
       }
 
-    Internal.Node.stateful(
-      ~tag="button",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("type", Some("button")),
-        ("aria-label", ariaLabel),
-        ("aria-controls", item->Option.map(item => item.panelId)),
-        ("aria-disabled", disabled ? Some("true") : None),
-        ("data-slot", Some(dataSlot)),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~state=() => {
-        let open_ = item->Option.mapOr(false, item => item.isOpen())
-        [
-          ("aria-expanded", Some(open_ ? "true" : "false")),
-          ("data-panel-open", open_ ? Some("") : None),
-          ("data-open", open_ ? Some("") : None),
-          ("data-closed", open_ ? None : Some("")),
-        ]
-      },
-      ~events=[("click", activate)],
-      ~children,
-    )
+    <button
+      id=?{elementId}
+      type_="button"
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      ariaExpanded={isOpen}
+      onClick={activate}
+      attrs=[
+        View.optionalAttr("aria-controls", item->Option.map(item => item.panelId)),
+        View.optionalAttr("aria-disabled", disabled ? Some("true") : None),
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-panel-open", isOpen),
+        Internal.flag("data-open", isOpen),
+        Internal.flag("data-closed", () => !isOpen()),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {children}
+    </button>
   }
 }
 
@@ -163,29 +146,26 @@ module Panel = {
     | (None, None) => Internal.Id.make("accordion-panel")
     }
     let isOpen = item->Option.mapOr(() => true, item => item.isOpen)
-
-    Internal.Panel.bind(~id=elementId, ~cssVariable="--accordion-panel-height", ~isOpen)
-
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", Some(elementId)),
-        ("class", className),
-        ("style", style),
-        ("role", Some("region")),
-        ("aria-labelledby", item->Option.map(item => item.triggerId)),
-        ("data-slot", Some(dataSlot)),
-        ...Signal.untrack(() => {
-          let open_ = isOpen()
-          [
-            ("data-open", open_ ? Some("") : None),
-            ("data-closed", open_ ? None : Some("")),
-            ("hidden", open_ ? None : Some("")),
-          ]
-        }),
-      ],
-      ~children,
+    let panel = Internal.Panel.make(
+      ~id=elementId,
+      ~cssVariable="--accordion-panel-height",
+      ~isOpen,
     )
+
+    <div
+      id={elementId}
+      role="region"
+      class=?{className}
+      style=?{style}
+      attrs=[
+        View.optionalAttr("aria-labelledby", item->Option.map(item => item.triggerId)),
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-open", isOpen),
+        Internal.flag("data-closed", () => !isOpen()),
+        Internal.Panel.hiddenAttr(panel),
+      ]>
+      {children}
+    </div>
   }
 }
 
@@ -205,12 +185,7 @@ module Root = {
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
-    let elementId = id->Option.getOr(Internal.Id.make("accordion"))
-    let state = Internal.Controlled.make(
-      ~value,
-      ~defaultValue,
-      ~onChange=onValueChange,
-    )
+    let state = Internal.Controlled.make(~value, ~defaultValue, ~onChange=onValueChange)
 
     let isOpen = itemValue => state.get()->Array.includes(itemValue)
 
@@ -235,7 +210,7 @@ module Root = {
       let isPrevious = key === (orientation === Vertical ? "ArrowUp" : "ArrowLeft")
 
       if isNext || isPrevious || key === "Home" || key === "End" {
-        switch Internal.El.getElementById(elementId)->Nullable.toOption {
+        switch Internal.El.eventCurrentTarget(event)->Nullable.toOption {
         | None => ()
         | Some(root) =>
           let triggers =
@@ -269,20 +244,18 @@ module Root = {
     }
 
     let ctx: Ctx.t = {isOpen, toggle, disabled, loopFocus}
-    let inner = Internal.Context.provide(context, ctx, children)
 
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", Some(elementId)),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-        ("data-orientation", Some(orientation->Internal.Orientation.toString)),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~events=[("keydown", onKeyDown)],
-      ~children=inner,
-    )
+    <div
+      id=?{id}
+      class=?{className}
+      style=?{style}
+      onKeyDown={onKeyDown}
+      attrs=[
+        View.attr("data-slot", dataSlot),
+        View.attr("data-orientation", orientation->Internal.Orientation.toString),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {Internal.Context.provide(context, ctx, children)}
+    </div>
   }
 }

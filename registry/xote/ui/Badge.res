@@ -35,10 +35,10 @@ let make = (
   <span
     id=?{id}
     class={cn(base, badgeVariantClass(~variant), className)}
-    data={BaseXote.Attrs.dataOpt([
-      ("slot", Some("badge")),
-      ("variant", Some((variant :> string))),
-      ("icon", dataIcon),
-    ])}>
+    attrs=[
+      View.attr("data-slot", "badge"),
+      View.attr("data-variant", (variant :> string)),
+      View.optionalAttr("data-icon", dataIcon),
+    ]>
     {children}
   </span>

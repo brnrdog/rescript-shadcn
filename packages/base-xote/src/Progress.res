@@ -16,16 +16,9 @@ module Track = {
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) =>
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", id),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~children,
-    )
+    <div id=?{id} class=?{className} style=?{style} attrs=[View.attr("data-slot", dataSlot)]>
+      {children}
+    </div>
 }
 
 module Indicator = {
@@ -39,21 +32,17 @@ module Indicator = {
     let ctx = Internal.Context.use(context)
     let percentage = ctx->Option.mapOr(() => Some(0.), ctx => ctx.percentage)
 
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[("id", id), ("class", className), ("data-slot", Some(dataSlot))],
-      ~reactiveAttrs=[
-        (
-          "style",
-          () =>
-            switch percentage() {
-            | Some(value) => `width: ${value->Float.toString}%`
-            | None => "width: 100%"
-            },
-        ),
-      ],
-      ~children,
-    )
+    <div
+      id=?{id}
+      class=?{className}
+      style={() =>
+        switch percentage() {
+        | Some(value) => `width: ${value->Float.toString}%`
+        | None => "width: 100%"
+        }}
+      attrs=[View.attr("data-slot", dataSlot)]>
+      {children}
+    </div>
   }
 }
 
@@ -65,11 +54,7 @@ module Label = {
     ~dataSlot: string="progress-label",
     ~children: View.node=Internal.noChildren,
   ) =>
-    Internal.Node.make(
-      ~tag="span",
-      ~attrs=[("id", id), ("class", className), ("data-slot", Some(dataSlot))],
-      ~children,
-    )
+    <span id=?{id} class=?{className} attrs=[View.attr("data-slot", dataSlot)]> {children} </span>
 }
 
 module Value = {
@@ -83,13 +68,11 @@ module Value = {
     let ctx = Internal.Context.use(context)
     let formatted = ctx->Option.mapOr(() => "", ctx => ctx.formatted)
 
-    Internal.Node.make(
-      ~tag="span",
-      ~attrs=[("id", id), ("class", className), ("data-slot", Some(dataSlot))],
-      /* With no children the value renders itself, like Base UI's
-         `Progress.Value`. */
-      ~children=Internal.hasChildren(children) ? children : View.signalText(formatted),
-    )
+    <span id=?{id} class=?{className} attrs=[View.attr("data-slot", dataSlot)]>
+      {/* With no children the value renders itself, like Base UI's
+          `Progress.Value`. */
+      Internal.hasChildren(children) ? children : View.signalText(formatted)}
+    </span>
   }
 }
 
@@ -108,7 +91,6 @@ module Root = {
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
-    let elementId = id->Option.getOr(Internal.Id.make("progress"))
     let current = () =>
       switch value {
       | Some(value) => MaybeSignal.get(value)
@@ -128,33 +110,27 @@ module Root = {
       | None => ""
       }
 
-    let ctx: Ctx.t = {percentage, formatted}
-    let inner = Internal.Context.provide(context, ctx, children)
+    let isComplete = () => percentage()->Option.mapOr(false, percentage => percentage >= 100.)
 
-    Internal.Node.stateful(
-      ~tag="div",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("role", Some("progressbar")),
-        ("aria-label", ariaLabel),
-        ("aria-labelledby", ariaLabelledBy),
-        ("aria-valuemin", Some(min->Float.toString)),
-        ("aria-valuemax", Some(max->Float.toString)),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~state=() => {
-        let value = current()
-        let complete = percentage()->Option.mapOr(false, percentage => percentage >= 100.)
-        [
-          ("aria-valuenow", value->Option.map(value => value->Float.toString)),
-          ("data-indeterminate", value === None ? Some("") : None),
-          ("data-complete", complete ? Some("") : None),
-          ("data-progressing", value !== None && !complete ? Some("") : None),
-        ]
-      },
-      ~children=inner,
-    )
+    <div
+      id=?{id}
+      role="progressbar"
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      attrs=[
+        View.optionalAttr("aria-labelledby", ariaLabelledBy),
+        View.attr("aria-valuemin", min->Float.toString),
+        View.attr("aria-valuemax", max->Float.toString),
+        View.optionalComputedAttr("aria-valuenow", () =>
+          current()->Option.map(value => value->Float.toString)
+        ),
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-indeterminate", () => current() === None),
+        Internal.flag("data-complete", isComplete),
+        Internal.flag("data-progressing", () => current() !== None && !isComplete()),
+      ]>
+      {Internal.Context.provide(context, {percentage, formatted}, children)}
+    </div>
   }
 }

@@ -20,19 +20,18 @@ module Indicator = {
     | None => () => true
     }
 
-    let indicator = Internal.Node.make(
-      ~tag="span",
-      ~attrs=[
-        ("id", id),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~reactiveAttrs=keepMounted
-        ? [("data-checked", () => isChecked() ? "" : "false")]
-        : [],
-      ~children,
-    )
+    let indicator =
+      <span
+        id=?{id}
+        class=?{className}
+        style=?{style}
+        attrs=[
+          View.attr("data-slot", dataSlot),
+          Internal.flag("data-checked", isChecked),
+          Internal.flag("data-unchecked", () => !isChecked()),
+        ]>
+        {children}
+      </span>
 
     /* Base UI unmounts the indicator while unchecked; `keepMounted` keeps it in
        the tree so an exit animation can run. */
@@ -61,7 +60,6 @@ module Root = {
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
-    let elementId = id->Option.getOr(Internal.Id.make("checkbox"))
     let state = Internal.Controlled.make(
       ~value=checked,
       ~defaultValue=defaultChecked,
@@ -73,36 +71,31 @@ module Root = {
         state.set(!state.get())
       }
 
-    let inner = Internal.Context.provide(context, {isChecked: state.get, disabled}, children)
-
-    Internal.Node.stateful(
-      ~tag="button",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("type", Some("button")),
-        ("role", Some("checkbox")),
-        ("name", name),
-        ("aria-label", ariaLabel),
-        ("aria-labelledby", ariaLabelledBy),
-        ("aria-invalid", ariaInvalid->Option.map(invalid => invalid ? "true" : "false")),
-        ("aria-required", required ? Some("true") : None),
-        ("aria-readonly", readOnly ? Some("true") : None),
-        ("data-slot", Some(dataSlot)),
-        ("disabled", disabled ? Some("") : None),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~state=() => {
-        let checked = state.get()
-        [
-          ("aria-checked", Some(checked ? "true" : "false")),
-          ("data-checked", checked ? Some("") : None),
-          ("data-unchecked", checked ? None : Some("")),
-        ]
-      },
-      ~events=[("click", toggle)],
-      ~children=inner,
-    )
+    <button
+      id=?{id}
+      type_="button"
+      role="checkbox"
+      name=?{name}
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      disabled
+      onClick={toggle}
+      attrs=[
+        Internal.boolAttr("aria-checked", state.get),
+        Internal.flag("data-checked", state.get),
+        Internal.flag("data-unchecked", () => !state.get()),
+        View.optionalAttr("aria-labelledby", ariaLabelledBy),
+        View.optionalAttr(
+          "aria-invalid",
+          ariaInvalid->Option.map(invalid => invalid ? "true" : "false"),
+        ),
+        View.optionalAttr("aria-required", required ? Some("true") : None),
+        View.optionalAttr("aria-readonly", readOnly ? Some("true") : None),
+        View.attr("data-slot", dataSlot),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {Internal.Context.provide(context, {isChecked: state.get, disabled}, children)}
+    </button>
   }
 }

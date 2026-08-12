@@ -25,11 +25,12 @@ module Trigger = {
   ) => {
     let ctx = use()
     let elementId = switch (id, ctx) {
-    | (Some(id), _) => id
-    | (None, Some({triggerId})) => triggerId
-    | (None, None) => Internal.Id.make("collapsible-trigger")
+    | (Some(id), _) => Some(id)
+    | (None, Some({triggerId})) => Some(triggerId)
+    | (None, None) => None
     }
     let disabled = disabled || ctx->Option.mapOr(false, ctx => ctx.disabled)
+    let isOpen = () => ctx->Option.mapOr(false, ctx => ctx.isOpen())
 
     let toggle = _ =>
       switch ctx {
@@ -37,31 +38,25 @@ module Trigger = {
       | _ => ()
       }
 
-    Internal.Node.stateful(
-      ~tag="button",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("type", Some("button")),
-        ("aria-label", ariaLabel),
-        ("aria-controls", ctx->Option.map(ctx => ctx.panelId)),
-        ("data-slot", Some(dataSlot)),
-        ("disabled", disabled ? Some("") : None),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~state=() => {
-        let open_ = ctx->Option.mapOr(false, ctx => ctx.isOpen())
-        [
-          ("aria-expanded", Some(open_ ? "true" : "false")),
-          ("data-panel-open", open_ ? Some("") : None),
-          ("data-open", open_ ? Some("") : None),
-          ("data-closed", open_ ? None : Some("")),
-        ]
-      },
-      ~events=[("click", toggle)],
-      ~children,
-    )
+    <button
+      id=?{elementId}
+      type_="button"
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      ariaExpanded={isOpen}
+      disabled
+      onClick={toggle}
+      attrs=[
+        View.optionalAttr("aria-controls", ctx->Option.map(ctx => ctx.panelId)),
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-panel-open", isOpen),
+        Internal.flag("data-open", isOpen),
+        Internal.flag("data-closed", () => !isOpen()),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {children}
+    </button>
   }
 }
 
@@ -81,29 +76,26 @@ module Panel = {
     | (None, None) => Internal.Id.make("collapsible-panel")
     }
     let isOpen = ctx->Option.mapOr(() => true, ctx => ctx.isOpen)
-
-    Internal.Panel.bind(~id=elementId, ~cssVariable="--collapsible-panel-height", ~isOpen)
-
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", Some(elementId)),
-        ("class", className),
-        ("style", style),
-        ("role", Some("region")),
-        ("aria-labelledby", ctx->Option.map(ctx => ctx.triggerId)),
-        ("data-slot", Some(dataSlot)),
-        ...Signal.untrack(() => {
-          let open_ = isOpen()
-          [
-            ("data-open", open_ ? Some("") : None),
-            ("data-closed", open_ ? None : Some("")),
-            ("hidden", open_ ? None : Some("")),
-          ]
-        }),
-      ],
-      ~children,
+    let panel = Internal.Panel.make(
+      ~id=elementId,
+      ~cssVariable="--collapsible-panel-height",
+      ~isOpen,
     )
+
+    <div
+      id={elementId}
+      role="region"
+      class=?{className}
+      style=?{style}
+      attrs=[
+        View.optionalAttr("aria-labelledby", ctx->Option.map(ctx => ctx.triggerId)),
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-open", isOpen),
+        Internal.flag("data-closed", () => !isOpen()),
+        Internal.Panel.hiddenAttr(panel),
+      ]>
+      {children}
+    </div>
   }
 }
 
@@ -135,22 +127,17 @@ module Root = {
       disabled,
     }
 
-    let inner = Internal.Context.provide(context, ctx, children)
-
-    Internal.Node.stateful(
-      ~tag="div",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~state=() => {
-        let open_ = state.get()
-        [("data-open", open_ ? Some("") : None), ("data-closed", open_ ? None : Some(""))]
-      },
-      ~children=inner,
-    )
+    <div
+      id={elementId}
+      class=?{className}
+      style=?{style}
+      attrs=[
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-open", state.get),
+        Internal.flag("data-closed", () => !state.get()),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {Internal.Context.provide(context, ctx, children)}
+    </div>
   }
 }

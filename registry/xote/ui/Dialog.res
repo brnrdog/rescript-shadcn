@@ -94,7 +94,7 @@ module Header = {
     <div
       id=?{id}
       class={cn("cn-dialog-header flex flex-col", className)}
-      data={BaseXote.Attrs.data([("slot", "dialog-header")])}>
+      attrs=[View.attr("data-slot", "dialog-header")]>
       {children}
     </div>
 }
@@ -112,7 +112,7 @@ module Footer = {
         "cn-dialog-header cn-dialog-footer flex flex-col-reverse sm:flex-row sm:justify-end",
         className,
       )}
-      data={BaseXote.Attrs.data([("slot", "dialog-footer")])}>
+      attrs=[View.attr("data-slot", "dialog-footer")]>
       {children}
     </div>
 }

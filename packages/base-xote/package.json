@@ -19,10 +19,10 @@
   ],
   "dependencies": {
     "rescript": "^12.3.0",
-    "xote": "7.1.0-beta.7"
+    "xote": "7.1.0-beta.8"
   },
   "peerDependencies": {
-    "xote": "^7.1.0-beta.7"
+    "xote": "^7.1.0-beta.8"
   },
   "scripts": {
     "res:build": "rescript",

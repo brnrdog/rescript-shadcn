@@ -34,51 +34,49 @@ module List = {
       let isPrevious = key === (orientation === Vertical ? "ArrowUp" : "ArrowLeft")
 
       if isNext || isPrevious || key === "Home" || key === "End" {
-        switch Internal.El.eventTarget(event)->Nullable.toOption {
-        | None => ()
-        | Some(target) =>
-          switch target->Internal.El.closest(`[data-slot="tabs-list"]`)->Nullable.toOption {
+        switch (
+          Internal.El.eventCurrentTarget(event)->Nullable.toOption,
+          Internal.El.eventTarget(event)->Nullable.toOption,
+        ) {
+        | (Some(list), Some(target)) =>
+          let tabs = Internal.El.querySelectorAll(list, `[role="tab"]:not([disabled])`)
+          switch tabs->Array.findIndexOpt(tab => tab->Internal.El.contains(target)) {
           | None => ()
-          | Some(list) =>
-            let tabs = Internal.El.querySelectorAll(list, `[role="tab"]:not([disabled])`)
-            switch tabs->Array.findIndexOpt(tab => tab->Internal.El.contains(target)) {
+          | Some(index) =>
+            let last = tabs->Array.length - 1
+            let nextIndex = switch key {
+            | "Home" => 0
+            | "End" => last
+            | _ if isNext => index === last ? 0 : index + 1
+            | _ => index === 0 ? last : index - 1
+            }
+            switch tabs->Array.get(nextIndex) {
+            | Some(tab) =>
+              Internal.El.preventDefault(event)
+              tab->Internal.El.focus
+              tab->Internal.El.click
             | None => ()
-            | Some(index) =>
-              let last = tabs->Array.length - 1
-              let nextIndex = switch key {
-              | "Home" => 0
-              | "End" => last
-              | _ if isNext => index === last ? 0 : index + 1
-              | _ => index === 0 ? last : index - 1
-              }
-              switch tabs->Array.get(nextIndex) {
-              | Some(tab) =>
-                Internal.El.preventDefault(event)
-                tab->Internal.El.focus
-                tab->Internal.El.click
-              | None => ()
-              }
             }
           }
+        | _ => ()
         }
       }
     }
 
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", id),
-        ("class", className),
-        ("style", style),
-        ("role", Some("tablist")),
-        ("aria-label", ariaLabel),
-        ("aria-orientation", Some(orientation->Internal.Orientation.toString)),
-        ("data-slot", Some(dataSlot)),
-        ("data-variant", dataVariant),
-      ],
-      ~events=[("keydown", onKeyDown)],
-      ~children,
-    )
+    <div
+      id=?{id}
+      role="tablist"
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      onKeyDown={onKeyDown}
+      attrs=[
+        View.attr("aria-orientation", orientation->Internal.Orientation.toString),
+        View.attr("data-slot", dataSlot),
+        View.optionalAttr("data-variant", dataVariant),
+      ]>
+      {children}
+    </div>
   }
 }
 
@@ -96,7 +94,6 @@ module Tab = {
   ) => {
     let ctx = Internal.Context.use(context)
     let rootId = ctx->Option.mapOr("tabs", ctx => ctx.rootId)
-    let elementId = id->Option.getOr(tabId(rootId, value))
     let disabled = disabled || ctx->Option.mapOr(false, ctx => ctx.disabled)
     let isActive = () => ctx->Option.mapOr(false, ctx => ctx.activeValue() === value)
 
@@ -106,33 +103,27 @@ module Tab = {
       | _ => ()
       }
 
-    Internal.Node.stateful(
-      ~tag="button",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("type", Some("button")),
-        ("role", Some("tab")),
-        ("aria-label", ariaLabel),
-        ("aria-controls", Some(panelId(rootId, value))),
-        ("data-slot", Some(dataSlot)),
-        ("disabled", disabled ? Some("") : None),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~state=() => {
-        let active = isActive()
-        [
-          ("aria-selected", Some(active ? "true" : "false")),
-          ("tabindex", Some(active ? "0" : "-1")),
-          ("data-active", active ? Some("") : None),
-          ("data-selected", active ? Some("") : None),
-          ("data-inactive", active ? None : Some("")),
-        ]
-      },
-      ~events=[("click", select)],
-      ~children,
-    )
+    <button
+      id={id->Option.getOr(tabId(rootId, value))}
+      type_="button"
+      role="tab"
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      ariaSelected={isActive}
+      disabled
+      onClick={select}
+      attrs=[
+        View.attr("aria-controls", panelId(rootId, value)),
+        View.computedAttr("tabindex", () => isActive() ? "0" : "-1"),
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-active", isActive),
+        Internal.flag("data-selected", isActive),
+        Internal.flag("data-inactive", () => !isActive()),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {children}
+    </button>
   }
 }
 
@@ -149,33 +140,27 @@ module Panel = {
   ) => {
     let ctx = Internal.Context.use(context)
     let rootId = ctx->Option.mapOr("tabs", ctx => ctx.rootId)
-    let elementId = id->Option.getOr(panelId(rootId, value))
     let isActive = () => ctx->Option.mapOr(true, ctx => ctx.activeValue() === value)
 
-    let panel = Internal.Node.stateful(
-      ~tag="div",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("role", Some("tabpanel")),
-        ("tabindex", Some("0")),
-        ("aria-labelledby", Some(tabId(rootId, value))),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~state=() => {
-        let active = isActive()
-        [
-          ("hidden", active || !keepMounted ? None : Some("")),
-          ("data-active", active ? Some("") : None),
-        ]
-      },
-      ~children,
-    )
+    let panel =
+      <div
+        id={id->Option.getOr(panelId(rootId, value))}
+        role="tabpanel"
+        tabIndex={0}
+        class=?{className}
+        style=?{style}
+        attrs=[
+          View.attr("aria-labelledby", tabId(rootId, value)),
+          View.attr("data-slot", dataSlot),
+          Internal.flag("data-active", isActive),
+          View.optionalComputedAttr("hidden", () =>
+            !keepMounted || isActive() ? None : Some("true")
+          ),
+        ]>
+        {children}
+      </div>
 
-    keepMounted
-      ? panel
-      : View.Show.make({when_: MaybeSignal.computed(isActive), children: panel})
+    keepMounted ? panel : View.Show.make({when_: MaybeSignal.computed(isActive), children: panel})
   }
 }
 
@@ -195,6 +180,7 @@ module Root = {
   ) => {
     let elementId = id->Option.getOr(Internal.Id.make("tabs"))
     let state = Internal.Controlled.make(~value, ~defaultValue, ~onChange=onValueChange)
+    let name = orientation->Internal.Orientation.toString
 
     let ctx: Ctx.t = {
       activeValue: state.get,
@@ -204,20 +190,17 @@ module Root = {
       disabled,
     }
 
-    let inner = Internal.Context.provide(context, ctx, children)
-
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", Some(elementId)),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-        (`data-${orientation->Internal.Orientation.toString}`, Some("")),
-        ("data-orientation", Some(orientation->Internal.Orientation.toString)),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~children=inner,
-    )
+    <div
+      id={elementId}
+      class=?{className}
+      style=?{style}
+      attrs=[
+        View.attr("data-slot", dataSlot),
+        View.attr(`data-${name}`, ""),
+        View.attr("data-orientation", name),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {Internal.Context.provide(context, ctx, children)}
+    </div>
   }
 }

@@ -12,6 +12,6 @@ let make = (
     id=?{id}
     style={`--ratio: ${ratio}`}
     class={cn("relative aspect-(--ratio)", className)}
-    data={BaseXote.Attrs.data([("slot", "aspect-ratio")])}>
+    attrs=[View.attr("data-slot", "aspect-ratio")]>
     {children}
   </div>

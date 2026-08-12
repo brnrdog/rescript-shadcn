@@ -84,7 +84,12 @@ describe("Checkbox", () => {
 
   it("ignores clicks while disabled", async () => {
     const container = await render(CheckboxDemo)
-    const disabled = query(container, '[data-slot="checkbox"][data-disabled]')
+    const disabled = query(container, '[data-slot="checkbox"][data-disabled]') as HTMLButtonElement
+
+    // Not just the data attribute: the control is really disabled, so the
+    // `disabled:` style variants apply and it leaves the tab order.
+    expect(disabled.disabled).toBe(true)
+    expect(disabled.hasAttribute("disabled")).toBe(true)
 
     disabled.click()
     await flush()

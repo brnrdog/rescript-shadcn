@@ -28,16 +28,17 @@ module Indicator = {
     let item = Internal.Context.use(itemContext)
     let isChecked = item->Option.mapOr(() => true, item => item.isChecked)
 
-    let indicator = Internal.Node.make(
-      ~tag="span",
-      ~attrs=[
-        ("id", id),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~children,
-    )
+    let indicator =
+      <span
+        id=?{id}
+        class=?{className}
+        style=?{style}
+        attrs=[
+          View.attr("data-slot", dataSlot),
+          Internal.flag("data-checked", isChecked),
+        ]>
+        {children}
+      </span>
 
     keepMounted
       ? indicator
@@ -59,7 +60,6 @@ module Item = {
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
-    let elementId = id->Option.getOr(Internal.Id.make("radio-group-item"))
     let group = Internal.Context.use(context)
     let disabled = disabled || group->Option.mapOr(false, group => group.disabled)
     let readOnly = group->Option.mapOr(false, group => group.readOnly)
@@ -71,37 +71,32 @@ module Item = {
       | _ => ()
       }
 
-    let inner = Internal.Context.provide(itemContext, {isChecked: isChecked}, children)
-
-    Internal.Node.stateful(
-      ~tag="button",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("type", Some("button")),
-        ("role", Some("radio")),
-        ("value", Some(value)),
-        ("name", group->Option.flatMap(group => group.name)),
-        ("aria-label", ariaLabel),
-        ("aria-labelledby", ariaLabelledBy),
-        ("aria-invalid", ariaInvalid->Option.map(invalid => invalid ? "true" : "false")),
-        ("data-slot", Some(dataSlot)),
-        ("disabled", disabled ? Some("") : None),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~state=() => {
-        let checked = isChecked()
-        [
-          ("aria-checked", Some(checked ? "true" : "false")),
-          ("tabindex", Some(checked ? "0" : "-1")),
-          ("data-checked", checked ? Some("") : None),
-          ("data-unchecked", checked ? None : Some("")),
-        ]
-      },
-      ~events=[("click", select)],
-      ~children=inner,
-    )
+    <button
+      id=?{id}
+      type_="button"
+      role="radio"
+      value
+      name=?{group->Option.flatMap(group => group.name)}
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      disabled
+      onClick={select}
+      attrs=[
+        Internal.boolAttr("aria-checked", isChecked),
+        View.computedAttr("tabindex", () => isChecked() ? "0" : "-1"),
+        Internal.flag("data-checked", isChecked),
+        Internal.flag("data-unchecked", () => !isChecked()),
+        View.optionalAttr("aria-labelledby", ariaLabelledBy),
+        View.optionalAttr(
+          "aria-invalid",
+          ariaInvalid->Option.map(invalid => invalid ? "true" : "false"),
+        ),
+        View.attr("data-slot", dataSlot),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {Internal.Context.provide(itemContext, {isChecked: isChecked}, children)}
+    </button>
   }
 }
 
@@ -123,18 +118,17 @@ module Root = {
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
-    let elementId = id->Option.getOr(Internal.Id.make("radio-group"))
     let state = Internal.Controlled.make(~value, ~defaultValue, ~onChange=onValueChange)
 
-    /* Arrow keys move between radios and select as they go, per the radio
-       group pattern. */
+    /* Arrow keys move between radios and select as they go, per the radio group
+       pattern. */
     let onKeyDown = event => {
       let key = Internal.El.eventKey(event)
       let isNext = key === "ArrowDown" || key === "ArrowRight"
       let isPrevious = key === "ArrowUp" || key === "ArrowLeft"
 
       if isNext || isPrevious {
-        switch Internal.El.getElementById(elementId)->Nullable.toOption {
+        switch Internal.El.eventCurrentTarget(event)->Nullable.toOption {
         | None => ()
         | Some(root) =>
           let radios = Internal.El.querySelectorAll(root, `[role="radio"]:not([disabled])`)
@@ -168,24 +162,21 @@ module Root = {
       name,
     }
 
-    let inner = Internal.Context.provide(context, ctx, children)
-
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", Some(elementId)),
-        ("class", className),
-        ("style", style),
-        ("role", Some("radiogroup")),
-        ("aria-label", ariaLabel),
-        ("aria-labelledby", ariaLabelledBy),
-        ("aria-required", required ? Some("true") : None),
-        ("aria-readonly", readOnly ? Some("true") : None),
-        ("data-slot", Some(dataSlot)),
-        ("data-disabled", disabled ? Some("") : None),
-      ],
-      ~events=[("keydown", onKeyDown)],
-      ~children=inner,
-    )
+    <div
+      id=?{id}
+      role="radiogroup"
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      onKeyDown={onKeyDown}
+      attrs=[
+        View.optionalAttr("aria-labelledby", ariaLabelledBy),
+        View.optionalAttr("aria-required", required ? Some("true") : None),
+        View.optionalAttr("aria-readonly", readOnly ? Some("true") : None),
+        View.attr("data-slot", dataSlot),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+      ]>
+      {Internal.Context.provide(context, ctx, children)}
+    </div>
   }
 }

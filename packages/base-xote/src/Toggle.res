@@ -13,7 +13,6 @@ let make = (
   ~style: option<string>=?,
   ~children: View.node=Internal.noChildren,
 ) => {
-  let elementId = id->Option.getOr(Internal.Id.make("toggle"))
   let state = Internal.Controlled.make(
     ~value=pressed,
     ~defaultValue=defaultPressed,
@@ -25,29 +24,23 @@ let make = (
       state.set(!state.get())
     }
 
-  Internal.Node.stateful(
-    ~tag="button",
-    ~id=elementId,
-    ~attrs=[
-      ("class", className),
-      ("style", style),
-      ("type", Some("button")),
-      ("aria-label", ariaLabel),
-      ("data-slot", Some(dataSlot)),
-      ("data-variant", dataVariant),
-      ("data-size", dataSize),
-      ("disabled", disabled ? Some("") : None),
-      ("data-disabled", disabled ? Some("") : None),
-    ],
-    ~state=() => {
-      let pressed = state.get()
-      [
-        ("aria-pressed", Some(pressed ? "true" : "false")),
-        ("data-pressed", pressed ? Some("") : None),
-        ("data-unpressed", pressed ? None : Some("")),
-      ]
-    },
-    ~events=[("click", toggle)],
-    ~children,
-  )
+  <button
+    id=?{id}
+    type_="button"
+    class=?{className}
+    style=?{style}
+    ariaLabel=?{ariaLabel}
+    disabled
+    onClick={toggle}
+    attrs=[
+      Internal.boolAttr("aria-pressed", state.get),
+      Internal.flag("data-pressed", state.get),
+      Internal.flag("data-unpressed", () => !state.get()),
+      View.attr("data-slot", dataSlot),
+      View.optionalAttr("data-variant", dataVariant),
+      View.optionalAttr("data-size", dataSize),
+      View.optionalAttr("data-disabled", disabled ? Some("") : None),
+    ]>
+    {children}
+  </button>
 }

@@ -67,7 +67,7 @@ module Group = {
         "cn-avatar-group *:data-[slot=avatar]:ring-background group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2",
         className,
       )}
-      data={BaseXote.Attrs.data([("slot", "avatar-group")])}>
+      attrs=[View.attr("data-slot", "avatar-group")]>
       {children}
     </div>
 }
@@ -81,7 +81,7 @@ module GroupCount = {
         "cn-avatar-group-count ring-background relative flex shrink-0 items-center justify-center ring-2",
         className,
       )}
-      data={BaseXote.Attrs.data([("slot", "avatar-group-count")])}>
+      attrs=[View.attr("data-slot", "avatar-group-count")]>
       {children}
     </div>
 }
@@ -95,7 +95,7 @@ module Badge = {
         "cn-avatar-image cn-avatar-badge absolute right-0 bottom-0 z-10 inline-flex items-center justify-center bg-blend-color ring-2 select-none group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2 group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
         className,
       )}
-      data={BaseXote.Attrs.data([("slot", "avatar-badge")])}>
+      attrs=[View.attr("data-slot", "avatar-badge")]>
       {children}
     </span>
 }

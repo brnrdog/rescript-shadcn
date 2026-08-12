@@ -72,10 +72,10 @@ let make = (
     ariaLabel=?{ariaLabel}
     onClick=?{onClick}
     class={buttonVariants(~variant, ~size, ~className?)}
-    data={BaseXote.Attrs.data([
-      ("slot", dataSlot),
-      ("variant", (variant :> string)),
-      ("size", (size :> string)),
-    ])}>
+    attrs=[
+      View.attr("data-slot", dataSlot),
+      View.attr("data-variant", (variant :> string)),
+      View.attr("data-size", (size :> string)),
+    ]>
     {children}
   </button>

@@ -22,7 +22,7 @@ module Svg = {
       class=?{className}
       role=?{role}
       ariaLabel=?{ariaLabel}
-      data={BaseXote.Attrs.dataOpt([("slot", dataSlot), ("icon", dataIcon)])}>
+      attrs=[View.optionalAttr("data-slot", dataSlot), View.optionalAttr("data-icon", dataIcon)]>
       {children}
     </svg>
 }

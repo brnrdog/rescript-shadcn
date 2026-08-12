@@ -8,16 +8,18 @@ let make = (
   ~decorative: bool=false,
   ~dataSlot: string="separator",
   ~style: option<string>=?,
-) =>
-  Internal.Node.make(
-    ~tag="div",
-    ~attrs=[
-      ("id", id),
-      ("class", className),
-      ("style", style),
-      ("role", decorative ? Some("none") : Some("separator")),
-      ("aria-orientation", decorative ? None : Some(orientation->Orientation.toString)),
-      ("data-slot", Some(dataSlot)),
-      (`data-${orientation->Orientation.toString}`, Some("")),
-    ],
-  )
+) => {
+  let name = orientation->Orientation.toString
+
+  <div
+    id=?{id}
+    class=?{className}
+    style=?{style}
+    role={decorative ? "none" : "separator"}
+    attrs=[
+      View.optionalAttr("aria-orientation", decorative ? None : Some(name)),
+      View.attr("data-slot", dataSlot),
+      View.attr(`data-${name}`, ""),
+    ]
+  />
+}

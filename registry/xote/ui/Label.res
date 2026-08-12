@@ -16,6 +16,6 @@ let make = (
       "cn-label flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed",
       className,
     )}
-    data={BaseXote.Attrs.data([("slot", dataSlot)])}>
+    attrs=[View.attr("data-slot", dataSlot)]>
     {children}
   </label>

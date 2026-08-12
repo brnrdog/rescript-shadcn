@@ -47,30 +47,46 @@ let checked = Signal.make(false)
 
 ## How it works
 
-xote builds real DOM nodes eagerly, so three things React gives a primitive library for free are
-provided by `Internal`:
+Components are plain Xote JSX. Presence-toggled state attributes — the ones the
+shadcn styles select on — are declared with the `attrs` escape hatch, where a
+`None` value removes the attribute rather than writing an empty one:
 
-**Context.** JSX wraps component calls in `View.LazyComponent`, evaluated during render — long after
-a parent returned. `Context.provide` forces the children subtree while the value is set, which
-restores React-like scoping. Content mounted later (a portal) has to re-enter the scope; see
-`Dialog.Portal`.
+```rescript
+<button
+  role="switch"
+  ariaLabel=?{ariaLabel}
+  disabled
+  onClick={toggle}
+  attrs=[
+    Internal.boolAttr("aria-checked", state.get),
+    Internal.flag("data-checked", state.get),
+    Internal.flag("data-unchecked", () => !state.get()),
+  ]>
+```
 
-**Element access.** JSX exposes no ref, so a component that needs its own node — to measure
-`--accordion-panel-height`, or to focus the first control in a dialog — looks it up by id on the
-microtask after mount (`El.withElement`).
+Both are xote 7.1.0-beta.8 features. Before them the primitives had to build
+elements outside JSX and apply state through an effect bound to the mounted
+node; that layer is gone.
 
-**Attribute removal.** This is the load-bearing one. `RuntimeDom.setAttrOrProp` only removes
-attributes on a fixed boolean list; everything else is written with `setAttribute`, so a reactive
-`data-checked` would be permanently present and a switch would render permanently checked. State
-attributes therefore go through an effect bound to the mounted node, which can call
-`removeAttribute`. The initial values are also applied untracked while the element is built, so the
-first paint is correct rather than one microtask late.
+What `Internal` still provides is what xote has no equivalent for:
 
-`Internal.Node` exists only because of the last two points, plus the closed JSX attribute
-surface — `Elements.props` types four ARIA attributes, and primitives need `aria-controls`,
-`aria-labelledby`, `aria-orientation`, `aria-valuenow` and friends. Once xote grows an attribute
-escape hatch and treats a `None` attribute value as removal, these components can be written as
-plain JSX and `Internal.Node` can go away. The styled layer in `registry/xote` already is plain JSX.
+**Context.** JSX wraps component calls in `View.LazyComponent`, evaluated during
+render — long after a parent returned. `Context.provide` forces the children
+subtree while the value is set, which restores React-like scoping. Content
+mounted later (a portal) has to re-enter the scope; see `Dialog.Portal`.
+
+**Element access.** There is no ref, so the two components that must read their
+own node look it up by id on the microtask after mount (`El.withElement`): a
+disclosure panel measuring the height its animation grows into, and a dialog
+focusing its first control. A panel measures by revealing, reading and
+re-hiding within one synchronous block, since a hidden element measures zero.
+
+**Portals.** Overlay content is mounted into a container appended to
+`document.body` and disposed on close.
+
+One smaller gap remains: `Elements.props` has no `load` / `error` events, so
+`Avatar.Image` preloads through an `Image()` instead — which is what Radix and
+Base UI do anyway, since the browser then serves the real `<img>` from cache.
 
 ## Development
 

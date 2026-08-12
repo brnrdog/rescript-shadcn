@@ -18,7 +18,7 @@ let make = (
   <div
     id=?{id}
     class={cn("cn-card group/card flex flex-col", className)}
-    data={BaseXote.Attrs.data([("slot", "card"), ("size", (size :> string))])}>
+    attrs=[View.attr("data-slot", "card"), View.attr("data-size", (size :> string))]>
     {children}
   </div>
 
@@ -31,7 +31,7 @@ module Header = {
         "cn-card-header group/card-header @container/card-header grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
         className,
       )}
-      data={BaseXote.Attrs.data([("slot", "card-header")])}>
+      attrs=[View.attr("data-slot", "card-header")]>
       {children}
     </div>
 }
@@ -42,7 +42,7 @@ module Title = {
     <div
       id=?{id}
       class={cn("cn-card-title cn-font-heading", className)}
-      data={BaseXote.Attrs.data([("slot", "card-title")])}>
+      attrs=[View.attr("data-slot", "card-title")]>
       {children}
     </div>
 }
@@ -53,7 +53,7 @@ module Description = {
     <div
       id=?{id}
       class={cn("cn-card-description", className)}
-      data={BaseXote.Attrs.data([("slot", "card-description")])}>
+      attrs=[View.attr("data-slot", "card-description")]>
       {children}
     </div>
 }
@@ -67,7 +67,7 @@ module Action = {
         "cn-card-action col-start-2 row-span-2 row-start-1 self-start justify-self-end",
         className,
       )}
-      data={BaseXote.Attrs.data([("slot", "card-action")])}>
+      attrs=[View.attr("data-slot", "card-action")]>
       {children}
     </div>
 }
@@ -78,7 +78,7 @@ module Content = {
     <div
       id=?{id}
       class={cn("cn-card-content", className)}
-      data={BaseXote.Attrs.data([("slot", "card-content")])}>
+      attrs=[View.attr("data-slot", "card-content")]>
       {children}
     </div>
 }
@@ -89,7 +89,7 @@ module Footer = {
     <div
       id=?{id}
       class={cn("cn-card-footer flex items-center", className)}
-      data={BaseXote.Attrs.data([("slot", "card-footer")])}>
+      attrs=[View.attr("data-slot", "card-footer")]>
       {children}
     </div>
 }

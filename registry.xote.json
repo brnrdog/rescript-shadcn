@@ -104,7 +104,6 @@
       "name": "Alert",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -119,7 +118,6 @@
       "name": "AspectRatio",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -149,7 +147,6 @@
       "name": "Badge",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -164,7 +161,6 @@
       "name": "Button",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -179,7 +175,6 @@
       "name": "Card",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -246,7 +241,6 @@
       "name": "Icons",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -261,7 +255,6 @@
       "name": "Input",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -276,7 +269,6 @@
       "name": "Kbd",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -291,7 +283,6 @@
       "name": "Label",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -351,7 +342,6 @@
       "name": "Skeleton",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [
@@ -413,7 +403,6 @@
       "name": "Textarea",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
         "xote"
       ],
       "files": [

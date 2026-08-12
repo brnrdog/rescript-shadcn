@@ -28,10 +28,11 @@ module Trigger = {
   ) => {
     let ctx = use()
     let elementId = switch (id, ctx) {
-    | (Some(id), _) => id
-    | (None, Some({triggerId})) => triggerId
-    | (None, None) => Internal.Id.make("dialog-trigger")
+    | (Some(id), _) => Some(id)
+    | (None, Some({triggerId})) => Some(triggerId)
+    | (None, None) => None
     }
+    let isOpen = () => ctx->Option.mapOr(false, ctx => ctx.isOpen())
 
     let open_ = _ =>
       switch ctx {
@@ -39,29 +40,23 @@ module Trigger = {
       | _ => ()
       }
 
-    Internal.Node.stateful(
-      ~tag="button",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("type", Some("button")),
-        ("aria-label", ariaLabel),
-        ("aria-haspopup", Some("dialog")),
-        ("aria-controls", ctx->Option.map(ctx => ctx.popupId)),
-        ("data-slot", Some(dataSlot)),
-        ("disabled", disabled ? Some("") : None),
-      ],
-      ~state=() => {
-        let open_ = ctx->Option.mapOr(false, ctx => ctx.isOpen())
-        [
-          ("aria-expanded", Some(open_ ? "true" : "false")),
-          ("data-popup-open", open_ ? Some("") : None),
-        ]
-      },
-      ~events=[("click", open_)],
-      ~children,
-    )
+    <button
+      id=?{elementId}
+      type_="button"
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      ariaExpanded={isOpen}
+      disabled
+      onClick={open_}
+      attrs=[
+        View.attr("aria-haspopup", "dialog"),
+        View.optionalAttr("aria-controls", ctx->Option.map(ctx => ctx.popupId)),
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-popup-open", isOpen),
+      ]>
+      {children}
+    </button>
   }
 }
 
@@ -77,28 +72,20 @@ module Close = {
   ) => {
     let ctx = use()
 
-    Internal.Node.make(
-      ~tag="button",
-      ~attrs=[
-        ("id", id),
-        ("class", className),
-        ("style", style),
-        ("type", Some("button")),
-        ("aria-label", ariaLabel),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~events=[
-        (
-          "click",
-          _ =>
-            switch ctx {
-            | Some({setOpen}) => setOpen(false)
-            | None => ()
-            },
-        ),
-      ],
-      ~children,
-    )
+    <button
+      id=?{id}
+      type_="button"
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      onClick={_ =>
+        switch ctx {
+        | Some({setOpen}) => setOpen(false)
+        | None => ()
+        }}
+      attrs=[View.attr("data-slot", dataSlot)]>
+      {children}
+    </button>
   }
 }
 
@@ -112,26 +99,17 @@ module Backdrop = {
   ) => {
     let ctx = use()
 
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", id),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-        ("data-open", Some("")),
-      ],
-      ~events=[
-        (
-          "click",
-          _ =>
-            switch ctx {
-            | Some({setOpen, dismissible}) if dismissible => setOpen(false)
-            | _ => ()
-            },
-        ),
-      ],
-    )
+    <div
+      id=?{id}
+      class=?{className}
+      style=?{style}
+      onClick={_ =>
+        switch ctx {
+        | Some({setOpen, dismissible}) if dismissible => setOpen(false)
+        | _ => ()
+        }}
+      attrs=[View.attr("data-slot", dataSlot), View.attr("data-open", "")]
+    />
   }
 }
 
@@ -153,26 +131,31 @@ module Popup = {
     | (None, None) => Internal.Id.make("dialog-popup")
     }
 
-    Internal.Node.make(
-      ~tag="div",
-      ~attrs=[
-        ("id", Some(elementId)),
-        ("class", className),
-        ("style", style),
-        ("role", Some("dialog")),
-        ("tabindex", Some("-1")),
-        ("aria-modal", ctx->Option.mapOr(true, ctx => ctx.modal) ? Some("true") : None),
-        ("aria-label", ariaLabel),
-        ("aria-labelledby", ariaLabel === None ? ctx->Option.map(ctx => ctx.titleId) : None),
-        ("aria-describedby", ctx->Option.map(ctx => ctx.descriptionId)),
-        ("data-slot", Some(dataSlot)),
-        ("data-size", dataSize),
+    <div
+      id={elementId}
+      role="dialog"
+      tabIndex={-1}
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      attrs=[
+        View.optionalAttr(
+          "aria-modal",
+          ctx->Option.mapOr(true, ctx => ctx.modal) ? Some("true") : None,
+        ),
+        View.optionalAttr(
+          "aria-labelledby",
+          ariaLabel === None ? ctx->Option.map(ctx => ctx.titleId) : None,
+        ),
+        View.optionalAttr("aria-describedby", ctx->Option.map(ctx => ctx.descriptionId)),
+        View.attr("data-slot", dataSlot),
+        View.optionalAttr("data-size", dataSize),
         /* The popup only exists while the dialog is open, so its open state is
            part of the markup rather than a reactive attribute. */
-        ("data-open", Some("")),
-      ],
-      ~children,
-    )
+        View.attr("data-open", ""),
+      ]>
+      {children}
+    </div>
   }
 }
 
@@ -187,16 +170,13 @@ module Title = {
   ) => {
     let ctx = use()
 
-    Internal.Node.make(
-      ~tag="h2",
-      ~attrs=[
-        ("id", id->Option.orElse(ctx->Option.map(ctx => ctx.titleId))),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~children,
-    )
+    <h2
+      id=?{id->Option.orElse(ctx->Option.map(ctx => ctx.titleId))}
+      class=?{className}
+      style=?{style}
+      attrs=[View.attr("data-slot", dataSlot)]>
+      {children}
+    </h2>
   }
 }
 
@@ -211,25 +191,20 @@ module Description = {
   ) => {
     let ctx = use()
 
-    Internal.Node.make(
-      ~tag="p",
-      ~attrs=[
-        ("id", id->Option.orElse(ctx->Option.map(ctx => ctx.descriptionId))),
-        ("class", className),
-        ("style", style),
-        ("data-slot", Some(dataSlot)),
-      ],
-      ~children,
-    )
+    <p
+      id=?{id->Option.orElse(ctx->Option.map(ctx => ctx.descriptionId))}
+      class=?{className}
+      style=?{style}
+      attrs=[View.attr("data-slot", dataSlot)]>
+      {children}
+    </p>
   }
 }
 
 module Portal = {
   @xote.component
   let make = (~children: View.node=Internal.noChildren) => {
-    let ctx = use()
-
-    switch ctx {
+    switch use() {
     | Some(ctx) =>
       let onMount = element => {
         let previouslyFocused = Internal.El.activeElement()->Nullable.toOption

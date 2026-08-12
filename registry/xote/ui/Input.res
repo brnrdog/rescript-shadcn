@@ -32,5 +32,5 @@ let make = (
       "cn-input file:text-foreground placeholder:text-muted-foreground w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
-    data={BaseXote.Attrs.data([("slot", "input")])}
+    attrs=[View.attr("data-slot", "input")]
   />

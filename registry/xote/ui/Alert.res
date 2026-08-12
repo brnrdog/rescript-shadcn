@@ -30,7 +30,7 @@ let make = (
     id=?{id}
     role="alert"
     class={cn(base, alertVariantClass(~variant), className)}
-    data={BaseXote.Attrs.data([("slot", "alert"), ("variant", (variant :> string))])}>
+    attrs=[View.attr("data-slot", "alert"), View.attr("data-variant", (variant :> string))]>
     {children}
   </div>
 
@@ -43,7 +43,7 @@ module Title = {
         "cn-alert-title [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
         className,
       )}
-      data={BaseXote.Attrs.data([("slot", "alert-title")])}>
+      attrs=[View.attr("data-slot", "alert-title")]>
       {children}
     </div>
 }
@@ -57,7 +57,7 @@ module Description = {
         "cn-alert-description [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
         className,
       )}
-      data={BaseXote.Attrs.data([("slot", "alert-description")])}>
+      attrs=[View.attr("data-slot", "alert-description")]>
       {children}
     </div>
 }
@@ -68,7 +68,7 @@ module Action = {
     <div
       id=?{id}
       class={cn2("cn-alert-action", className)}
-      data={BaseXote.Attrs.data([("slot", "alert-action")])}>
+      attrs=[View.attr("data-slot", "alert-action")]>
       {children}
     </div>
 }

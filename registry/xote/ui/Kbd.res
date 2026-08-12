@@ -14,7 +14,7 @@ let make = (
       "cn-kbd pointer-events-none inline-flex items-center justify-center select-none",
       className,
     )}
-    data={BaseXote.Attrs.dataOpt([("slot", Some("kbd")), ("icon", dataIcon)])}>
+    attrs=[View.attr("data-slot", "kbd"), View.optionalAttr("data-icon", dataIcon)]>
     {children}
   </kbd>
 
@@ -24,7 +24,7 @@ module Group = {
     <kbd
       id=?{id}
       class={cn("cn-kbd-group inline-flex items-center", className)}
-      data={BaseXote.Attrs.data([("slot", "kbd-group")])}>
+      attrs=[View.attr("data-slot", "kbd-group")]>
       {children}
     </kbd>
 }

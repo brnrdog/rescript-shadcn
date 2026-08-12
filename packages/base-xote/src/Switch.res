@@ -12,25 +12,22 @@ module Thumb = {
     ~dataSlot: string="switch-thumb",
     ~style: option<string>=?,
   ) => {
-    let elementId = id->Option.getOr(Internal.Id.make("switch-thumb"))
     let ctx = Internal.Context.use(context)
     let isChecked = switch ctx {
     | Some({isChecked}) => isChecked
     | None => () => false
     }
 
-    Internal.Node.stateful(
-      ~tag="span",
-      ~id=elementId,
-      ~attrs=[("class", className), ("style", style), ("data-slot", Some(dataSlot))],
-      ~state=() => {
-        let checked = isChecked()
-        [
-          ("data-checked", checked ? Some("") : None),
-          ("data-unchecked", checked ? None : Some("")),
-        ]
-      },
-    )
+    <span
+      id=?{id}
+      class=?{className}
+      style=?{style}
+      attrs=[
+        View.attr("data-slot", dataSlot),
+        Internal.flag("data-checked", isChecked),
+        Internal.flag("data-unchecked", () => !isChecked()),
+      ]
+    />
   }
 }
 
@@ -54,7 +51,6 @@ module Root = {
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
-    let elementId = id->Option.getOr(Internal.Id.make("switch"))
     let state = Internal.Controlled.make(
       ~value=checked,
       ~defaultValue=defaultChecked,
@@ -66,38 +62,33 @@ module Root = {
         state.set(!state.get())
       }
 
-    let inner = Internal.Context.provide(context, {isChecked: state.get, disabled}, children)
-
-    Internal.Node.stateful(
-      ~tag="button",
-      ~id=elementId,
-      ~attrs=[
-        ("class", className),
-        ("style", style),
-        ("type", Some("button")),
-        ("role", Some("switch")),
-        ("name", name),
-        ("aria-label", ariaLabel),
-        ("aria-labelledby", ariaLabelledBy),
-        ("aria-invalid", ariaInvalid->Option.map(invalid => invalid ? "true" : "false")),
-        ("aria-required", required ? Some("true") : None),
-        ("aria-readonly", readOnly ? Some("true") : None),
-        ("data-slot", Some(dataSlot)),
-        ("data-size", dataSize),
-        ("disabled", disabled ? Some("") : None),
-        ("data-disabled", disabled ? Some("") : None),
-        ("data-readonly", readOnly ? Some("") : None),
-      ],
-      ~state=() => {
-        let checked = state.get()
-        [
-          ("aria-checked", Some(checked ? "true" : "false")),
-          ("data-checked", checked ? Some("") : None),
-          ("data-unchecked", checked ? None : Some("")),
-        ]
-      },
-      ~events=[("click", toggle)],
-      ~children=inner,
-    )
+    <button
+      id=?{id}
+      type_="button"
+      role="switch"
+      name=?{name}
+      class=?{className}
+      style=?{style}
+      ariaLabel=?{ariaLabel}
+      disabled
+      onClick={toggle}
+      attrs=[
+        Internal.boolAttr("aria-checked", state.get),
+        Internal.flag("data-checked", state.get),
+        Internal.flag("data-unchecked", () => !state.get()),
+        View.optionalAttr("aria-labelledby", ariaLabelledBy),
+        View.optionalAttr(
+          "aria-invalid",
+          ariaInvalid->Option.map(invalid => invalid ? "true" : "false"),
+        ),
+        View.optionalAttr("aria-required", required ? Some("true") : None),
+        View.optionalAttr("aria-readonly", readOnly ? Some("true") : None),
+        View.attr("data-slot", dataSlot),
+        View.optionalAttr("data-size", dataSize),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+        View.optionalAttr("data-readonly", readOnly ? Some("") : None),
+      ]>
+      {Internal.Context.provide(context, {isChecked: state.get, disabled}, children)}
+    </button>
   }
 }
