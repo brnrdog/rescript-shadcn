@@ -256,6 +256,24 @@
       ]
     },
     {
+      "name": "Calendar",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Calendar.res",
+          "type": "registry:file",
+          "target": "@ui/Calendar.res"
+        }
+      ]
+    },
+    {
       "name": "Card",
       "type": "registry:ui",
       "dependencies": [
@@ -355,6 +373,25 @@
           "path": "registry/xote/ui/ContextMenu.res",
           "type": "registry:file",
           "target": "@ui/ContextMenu.res"
+        }
+      ]
+    },
+    {
+      "name": "DatePicker",
+      "type": "registry:ui",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Calendar",
+        "@rescript-shadcn/Popover"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/DatePicker.res",
+          "type": "registry:file",
+          "target": "@ui/DatePicker.res"
         }
       ]
     },
@@ -1217,6 +1254,22 @@
       ]
     },
     {
+      "name": "CalendarDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CalendarDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "CardDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1316,6 +1369,22 @@
       "files": [
         {
           "path": "registry/xote/examples/ContextMenuDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "DatePickerDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/DatePicker"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/DatePickerDemo.res",
           "type": "registry:example"
         }
       ]

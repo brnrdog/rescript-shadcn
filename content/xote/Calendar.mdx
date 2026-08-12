@@ -1,0 +1,69 @@
+---
+title: Calendar
+description: A calendar component that allows users to select a date or a range of dates.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="CalendarDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Calendar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Calendar"
+  title="components/ui/Calendar.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+let selected = Signal.make(Some(Date.make()))
+
+<Calendar
+  selected={MaybeSignal.reactive(selected)}
+  onSelect={date => Signal.set(selected, Some(date))}
+/>
+```
+
+The React registries use react-day-picker, which has no framework-agnostic core,
+so this is a month grid written against `Date`: six rows always, so the grid
+never changes height between months.
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
