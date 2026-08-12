@@ -1,0 +1,68 @@
+---
+title: Item
+description: A versatile component for displaying content with media, title, description, and actions.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="ItemDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Item
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Item"
+  title="components/ui/Item.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Item variant=Outline>
+  <Item.Media variant=Icon>
+    <Icons.Check />
+  </Item.Media>
+  <Item.Content>
+    <Item.Title> {"Deployment complete"} </Item.Title>
+    <Item.Description> {"Your project is live."} </Item.Description>
+  </Item.Content>
+</Item>
+```
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.
