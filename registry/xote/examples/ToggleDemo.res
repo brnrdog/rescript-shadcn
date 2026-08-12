@@ -1,6 +1,6 @@
 @xote.component
 let make = () =>
-  <Toggle ariaLabel="Toggle bookmark" size=Sm variant=Outline>
-    <Icons.Check className="group-aria-pressed/toggle:fill-foreground" />
+  <Toggle ariaLabel="Toggle bookmark" size=Toggle.Size.Sm variant=Outline>
+    <Icons.Bookmark className="group-aria-pressed/toggle:fill-foreground" />
     {"Bookmark"}
   </Toggle>

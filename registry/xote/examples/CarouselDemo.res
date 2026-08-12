@@ -1,6 +1,6 @@
 @xote.component
 let make = () =>
-  <Carousel className="w-full max-w-xs">
+  <Carousel className="w-full max-w-[12rem] sm:max-w-xs">
     <Carousel.Content>
       <View.For
         each={MaybeSignal.static([1, 2, 3, 4, 5])}

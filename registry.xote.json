@@ -2078,6 +2078,23 @@
       ]
     },
     {
+      "name": "CheckboxInvalid",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Checkbox",
+        "@rescript-shadcn/Field"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CheckboxInvalid.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "CollapsibleDemo",
       "type": "registry:example",
       "dependencies": [
@@ -2294,6 +2311,22 @@
       "files": [
         {
           "path": "registry/xote/examples/ContextMenuShortcuts.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ContextMenuSubmenu",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuSubmenu.res",
           "type": "registry:example"
         }
       ]
@@ -2676,8 +2709,8 @@
         "xote"
       ],
       "registryDependencies": [
-        "@rescript-shadcn/Input",
-        "@rescript-shadcn/Label"
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Input"
       ],
       "files": [
         {
@@ -3288,7 +3321,8 @@
       ],
       "registryDependencies": [
         "@rescript-shadcn/Icons",
-        "@rescript-shadcn/Marker"
+        "@rescript-shadcn/Marker",
+        "@rescript-shadcn/Spinner"
       ],
       "files": [
         {
@@ -3365,6 +3399,22 @@
       ]
     },
     {
+      "name": "MenubarSubmenu",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Menubar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MenubarSubmenu.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "MessageAttachment",
       "type": "registry:example",
       "dependencies": [
@@ -3408,7 +3458,6 @@
         "xote"
       ],
       "registryDependencies": [
-        "@rescript-shadcn/Avatar",
         "@rescript-shadcn/Bubble",
         "@rescript-shadcn/Message"
       ],
@@ -3496,7 +3545,6 @@
         "xote"
       ],
       "registryDependencies": [
-        "@rescript-shadcn/Label",
         "@rescript-shadcn/NativeSelect"
       ],
       "files": [
@@ -4028,6 +4076,7 @@
         "xote"
       ],
       "registryDependencies": [
+        "@rescript-shadcn/Item",
         "@rescript-shadcn/Spinner"
       ],
       "files": [
@@ -4136,6 +4185,23 @@
       "files": [
         {
           "path": "registry/xote/examples/SwitchDescription.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SwitchInvalid",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/Switch"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SwitchInvalid.res",
           "type": "registry:example"
         }
       ]
@@ -4345,6 +4411,7 @@
         "xote"
       ],
       "registryDependencies": [
+        "@rescript-shadcn/Icons",
         "@rescript-shadcn/ToggleGroup"
       ],
       "files": [

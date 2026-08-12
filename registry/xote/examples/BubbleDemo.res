@@ -1,10 +1,15 @@
 @xote.component
 let make = () =>
-  <Bubble.Group className="w-full max-w-md gap-2">
-    <Bubble>
-      <Bubble.Content> {"Hey, are we still on for tomorrow?"} </Bubble.Content>
+  <div class="flex w-full max-w-md flex-col gap-8">
+    <Bubble variant=Muted>
+      <Bubble.Content>
+        {"I checked the registry output and found one stale dependency."}
+      </Bubble.Content>
     </Bubble>
-    <Bubble variant=Muted align=End className="self-end">
-      <Bubble.Content> {"Yes — 10am works."} </Bubble.Content>
+    <Bubble align=End>
+      <Bubble.Content> {"Remove it and rerun the build."} </Bubble.Content>
+      <Bubble.Reactions>
+        <span> {"+1"} </span>
+      </Bubble.Reactions>
     </Bubble>
-  </Bubble.Group>
+  </div>

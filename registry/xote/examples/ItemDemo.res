@@ -1,6 +1,6 @@
 @xote.component
 let make = () =>
-  <Item.Group className="w-full max-w-md gap-2">
+  <Item.Group className="flex w-full max-w-md flex-col gap-6">
     <Item variant=Outline>
       <Item.Media variant=Icon>
         <Icons.Check />

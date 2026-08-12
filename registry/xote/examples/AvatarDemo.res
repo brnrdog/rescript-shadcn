@@ -19,6 +19,10 @@ let make = () =>
         <Avatar.Image src="https://github.com/maxleiter.png" alt="@maxleiter" />
         <Avatar.Fallback> {"LR"} </Avatar.Fallback>
       </Avatar>
+      <Avatar>
+        <Avatar.Image src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
+        <Avatar.Fallback> {"ER"} </Avatar.Fallback>
+      </Avatar>
       <Avatar.GroupCount> {"+3"} </Avatar.GroupCount>
     </Avatar.Group>
   </div>

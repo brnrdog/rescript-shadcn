@@ -19,7 +19,7 @@ let inputValue: Dom.event => string = %raw(`function (event) { return event.targ
 let make = () => {
   let filter = Signal.make("")
 
-  <div class="flex w-full max-w-2xl flex-col gap-4">
+  <div class="flex w-full flex-col gap-4">
     <Input
       placeholder="Filter emails..."
       value={MaybeSignal.reactive(filter)}

@@ -1,16 +1,19 @@
 @xote.component
 let make = () =>
-  <div class="flex w-full max-w-md flex-col gap-3">
+  <div class="flex w-full max-w-md flex-col gap-5">
+    <Marker>
+      <Marker.Content> {"A default marker"} </Marker.Content>
+    </Marker>
     <Marker>
       <Marker.Icon>
-        <Icons.Check />
+        <Icons.FileText />
       </Marker.Icon>
-      <Marker.Content> {"Deployment finished"} </Marker.Content>
+      <Marker.Content> {"Opened implementation notes"} </Marker.Content>
     </Marker>
-    <Marker variant=Separator>
-      <Marker.Content> {"Today"} </Marker.Content>
-    </Marker>
-    <Marker variant=Border>
-      <Marker.Content> {"Draft saved"} </Marker.Content>
+    <Marker role="status">
+      <Marker.Icon>
+        <Spinner />
+      </Marker.Icon>
+      <Marker.Content> {"Reading 4 files"} </Marker.Content>
     </Marker>
   </div>

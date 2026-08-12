@@ -56,9 +56,9 @@ module Content = {
     <div
       id=?{ctx->Option.map(ctx => ctx.viewportId)}
       class={cn(
-        `cn-carousel-content flex snap-mandatory overflow-auto scrollbar-none ${vertical
-            ? "snap-y flex-col"
-            : "snap-x"}`,
+        `cn-carousel-content flex snap-mandatory overflow-hidden overflow-x-auto scrollbar-none ${vertical
+            ? "-mt-4 snap-y flex-col"
+            : "-ml-4 snap-x"}`,
         className,
       )}
       attrs=[View.attr("data-slot", "carousel-content")]>
@@ -73,14 +73,22 @@ module Item = {
     ~className: option<string>=?,
     ~id: option<string>=?,
     ~children: View.node=View.fragment([]),
-  ) =>
+  ) => {
+    let vertical = use()->Option.mapOr(false, ctx => ctx.orientation === Vertical)
+
     <div
       id=?{id}
       role="group"
-      class={cn("cn-carousel-item min-w-0 shrink-0 grow-0 basis-full snap-start", className)}
+      class={cn(
+        `cn-carousel-item min-w-0 shrink-0 grow-0 basis-full snap-start ${vertical
+            ? "pt-4"
+            : "pl-4"}`,
+        className,
+      )}
       attrs=[View.attr("data-slot", "carousel-item"), View.attr("aria-roledescription", "slide")]>
       {children}
     </div>
+  }
 }
 
 let scrollButton = (~ctx: option<Ctx.t>, ~direction: int) => (_: Dom.event) =>

@@ -202,3 +202,59 @@ module Shortcut = {
       {children}
     </span>
 }
+
+/* Submenus: the trigger is an item of the parent menu, and the panel opens to
+   the side rather than below. */
+module Sub = {
+  @xote.component
+  let make = (
+    ~open_: option<MaybeSignal.t<bool>>=?,
+    ~defaultOpen: bool=false,
+    ~onOpenChange: option<bool => unit>=?,
+    ~children: View.node=View.fragment([]),
+  ) =>
+    <XoteBase.Menu.Sub ?open_ defaultOpen ?onOpenChange modal=false> {children} </XoteBase.Menu.Sub>
+}
+
+module SubTrigger = {
+  @xote.component
+  let make = (
+    ~className: option<string>=?,
+    ~id: option<string>=?,
+    ~disabled: bool=false,
+    ~inset: bool=false,
+    ~children: View.node=View.fragment([]),
+  ) =>
+    <XoteBase.Menu.SubTrigger
+      ?id
+      disabled
+      dataSlot="dropdown-menu-sub-trigger"
+      dataInset=?{inset ? Some("true") : None}
+      className={cn("cn-dropdown-menu-sub-trigger flex cursor-default items-center outline-hidden select-none data-[popup-open]:bg-accent [&_svg]:pointer-events-none [&_svg]:shrink-0", className)}>
+      {children}
+      <Icons.ChevronRight className="ml-auto size-4" />
+    </XoteBase.Menu.SubTrigger>
+}
+
+module SubContent = {
+  @xote.component
+  let make = (
+    ~className: option<string>=?,
+    ~id: option<string>=?,
+    ~sideOffset: float=4.,
+    ~children: View.node=View.fragment([]),
+  ) =>
+    <XoteBase.Menu.Positioner side=Right align=Start sideOffset>
+      <XoteBase.Menu.Popup
+        ?id dataSlot="dropdown-menu-subcontent" className={cn("cn-dropdown-menu-subcontent cn-dropdown-menu-content-logical cn-menu-target cn-menu-translucent z-50 min-w-32 origin-(--transform-origin) overflow-hidden outline-none", className)}>
+        {children}
+      </XoteBase.Menu.Popup>
+    </XoteBase.Menu.Positioner>
+}
+
+/* The base registries portal submenu content explicitly; here the positioner
+   already does, so this is a pass-through kept for source compatibility. */
+module Portal = {
+  @xote.component
+  let make = (~children: View.node=View.fragment([])) => children
+}

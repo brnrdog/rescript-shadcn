@@ -1,6 +1,6 @@
 @xote.component
 let make = () =>
-  <Menubar ariaLabel="Main">
+  <Menubar ariaLabel="Main" className="w-72">
     <Menubar.Menu>
       <Menubar.Trigger> {"File"} </Menubar.Trigger>
       <Menubar.Content>

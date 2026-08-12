@@ -1,6 +1,6 @@
 @xote.component
 let make = () =>
-  <Resizable className="h-48 w-full max-w-md rounded-lg border" defaultRatio=40.>
+  <Resizable className="h-48 w-full max-w-sm rounded-lg border" defaultRatio=40.>
     <Resizable.Panel className="flex items-center justify-center p-4 text-sm">
       {"Sidebar"}
     </Resizable.Panel>

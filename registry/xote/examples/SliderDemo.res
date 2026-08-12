@@ -2,7 +2,7 @@
 let make = () => {
   let value = Signal.make(33.)
 
-  <div class="flex w-full max-w-sm flex-col gap-3">
+  <div class="mx-auto flex w-full max-w-xs flex-col gap-3">
     <Slider
       value={MaybeSignal.reactive(value)}
       onValueChange={next => Signal.set(value, next)}

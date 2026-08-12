@@ -1,6 +1,6 @@
 @xote.component
 let make = () =>
-  <Command className="w-full max-w-sm rounded-lg border shadow-md" ariaLabel="Command palette">
+  <Command className="max-w-sm rounded-lg border shadow-md" ariaLabel="Command palette">
     <Command.Input placeholder="Type a command or search..." />
     <Command.List>
       <Command.Empty> {"No results found."} </Command.Empty>

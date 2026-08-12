@@ -1,6 +1,6 @@
 @xote.component
 let make = () =>
-  <Field.Group className="w-full max-w-sm gap-4">
+  <Field.Group className="w-full max-w-md gap-4">
     <Field>
       <Field.Label for_="field-demo-name"> {"Name"} </Field.Label>
       <Input id="field-demo-name" placeholder="Evil Rabbit" />

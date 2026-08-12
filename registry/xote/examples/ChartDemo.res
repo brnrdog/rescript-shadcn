@@ -9,7 +9,7 @@ let data: array<Chart.point> = [
 
 @xote.component
 let make = () =>
-  <Card className="w-full max-w-md">
+  <Card className="w-full max-w-lg">
     <Card.Header>
       <Card.Title> {"Visitors"} </Card.Title>
       <Card.Description> {"January – June 2024"} </Card.Description>

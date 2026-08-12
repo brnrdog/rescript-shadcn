@@ -2,7 +2,7 @@ let messages = Array.fromInitializer(~length=12, index => `Message ${(index + 1)
 
 @xote.component
 let make = () =>
-  <div class="h-64 w-full max-w-md rounded-lg border">
+  <div class="h-[480px] w-full max-w-xl rounded-lg border">
     <MessageScroller ariaLabel="Conversation">
       <View.For
         each={MaybeSignal.static(messages)}

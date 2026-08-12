@@ -1,10 +1,9 @@
 @xote.component
 let make = () =>
-  <div class="flex w-full max-w-sm flex-col gap-2">
-    <Label for_="native-select-demo"> {"Framework"} </Label>
-    <NativeSelect id="native-select-demo" name="framework">
-      <NativeSelect.Option value="next"> {"Next.js"} </NativeSelect.Option>
-      <NativeSelect.Option value="remix"> {"Remix"} </NativeSelect.Option>
-      <NativeSelect.Option value="astro"> {"Astro"} </NativeSelect.Option>
-    </NativeSelect>
-  </div>
+  <NativeSelect>
+    <NativeSelect.Option value=""> {"Select status"} </NativeSelect.Option>
+    <NativeSelect.Option value="todo"> {"Todo"} </NativeSelect.Option>
+    <NativeSelect.Option value="in-progress"> {"In Progress"} </NativeSelect.Option>
+    <NativeSelect.Option value="done"> {"Done"} </NativeSelect.Option>
+    <NativeSelect.Option value="cancelled"> {"Cancelled"} </NativeSelect.Option>
+  </NativeSelect>

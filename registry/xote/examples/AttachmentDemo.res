@@ -1,27 +1,32 @@
 @xote.component
 let make = () =>
-  <Attachment.Group className="w-full max-w-md gap-2">
-    <Attachment className="w-64 rounded-lg p-2">
-      <Attachment.Media variant=Icon>
-        <Icons.Check />
+  <div class="flex w-full max-w-md flex-col gap-3">
+    <Attachment className="w-full">
+      <Attachment.Media>
+        <Icons.FileText />
       </Attachment.Media>
       <Attachment.Content>
-        <Attachment.Title> {"design-system.pdf"} </Attachment.Title>
-        <Attachment.Description> {"2.4 MB"} </Attachment.Description>
+        <Attachment.Title> {"sales-dashboard.pdf"} </Attachment.Title>
+        <Attachment.Description> {"PDF - 2.4 MB"} </Attachment.Description>
       </Attachment.Content>
       <Attachment.Actions>
-        <Attachment.Action ariaLabel="Remove attachment">
+        <Attachment.Action ariaLabel="Remove sales-dashboard.pdf">
           <Icons.X />
         </Attachment.Action>
       </Attachment.Actions>
     </Attachment>
-    <Attachment state=Uploading className="w-64 rounded-lg p-2">
-      <Attachment.Media variant=Icon>
-        <Icons.Loader className="animate-spin" />
+    <Attachment className="w-full">
+      <Attachment.Media>
+        <Icons.FileCode />
       </Attachment.Media>
       <Attachment.Content>
-        <Attachment.Title> {"screenshot.png"} </Attachment.Title>
-        <Attachment.Description> {"Uploading…"} </Attachment.Description>
+        <Attachment.Title> {"message-renderer.res"} </Attachment.Title>
+        <Attachment.Description> {"ReScript - 12 KB"} </Attachment.Description>
       </Attachment.Content>
+      <Attachment.Actions>
+        <Attachment.Action ariaLabel="Download message-renderer.res">
+          <Icons.Download />
+        </Attachment.Action>
+      </Attachment.Actions>
     </Attachment>
-  </Attachment.Group>
+  </div>

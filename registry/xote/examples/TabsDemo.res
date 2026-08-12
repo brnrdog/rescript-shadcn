@@ -5,6 +5,7 @@ let make = () =>
       <Tabs.Trigger value="overview"> {"Overview"} </Tabs.Trigger>
       <Tabs.Trigger value="analytics"> {"Analytics"} </Tabs.Trigger>
       <Tabs.Trigger value="reports"> {"Reports"} </Tabs.Trigger>
+      <Tabs.Trigger value="settings"> {"Settings"} </Tabs.Trigger>
     </Tabs.List>
     <Tabs.Content value="overview">
       <Card>
@@ -42,6 +43,19 @@ let make = () =>
         </Card.Header>
         <Card.Content className="text-muted-foreground text-sm">
           {"You have 5 reports ready and available to export."}
+        </Card.Content>
+      </Card>
+    </Tabs.Content>
+    <Tabs.Content value="settings">
+      <Card>
+        <Card.Header>
+          <Card.Title> {"Settings"} </Card.Title>
+          <Card.Description>
+            {"Manage your account preferences and options. Customize your experience to fit your needs."}
+          </Card.Description>
+        </Card.Header>
+        <Card.Content className="text-muted-foreground text-sm">
+          {"Configure notifications, security, and themes."}
         </Card.Content>
       </Card>
     </Tabs.Content>

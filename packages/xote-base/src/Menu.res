@@ -500,6 +500,64 @@ module Positioner = {
     }
 }
 
+/* A submenu is a menu whose trigger is an item of its parent. */
+module SubTrigger = {
+  @xote.component
+  let make = (
+    ~className: option<string>=?,
+    ~id: option<string>=?,
+    ~disabled: bool=false,
+    ~dataSlot: string="menu-sub-trigger",
+    ~dataInset: option<string>=?,
+    ~style: option<string>=?,
+    ~children: View.node=Internal.noChildren,
+  ) => {
+    let ctx = use()
+    let isOpen = () => ctx->Option.mapOr(false, ctx => ctx.isOpen())
+
+    let open_ = () =>
+      switch ctx {
+      | Some({setOpen}) if !disabled => setOpen(true)
+      | _ => ()
+      }
+
+    /* Pointer opens it, ArrowRight opens it from the keyboard, ArrowLeft or
+       Escape closes it and hands focus back to the parent menu. */
+    let onKeyDown = event =>
+      switch (ctx, Internal.El.eventKey(event)) {
+      | (Some(_), "ArrowRight" | "Enter" | " ") =>
+        Internal.El.preventDefault(event)
+        open_()
+      | (Some({setOpen}), "ArrowLeft") =>
+        Internal.El.preventDefault(event)
+        setOpen(false)
+      | _ => ()
+      }
+
+    <div
+      id=?{ctx->Option.map(ctx => ctx.triggerId)->Option.orElse(id)}
+      role="menuitem"
+      tabIndex={-1}
+      class=?{className}
+      style=?{style}
+      onPointerEnter={_ => open_()}
+      onClick={_ => open_()}
+      onKeyDown={onKeyDown}
+      attrs=[
+        View.attr("aria-haspopup", "menu"),
+        Internal.boolAttr("aria-expanded", isOpen),
+        View.optionalAttr("aria-controls", ctx->Option.map(ctx => ctx.popupId)),
+        View.attr("data-slot", dataSlot),
+        View.optionalAttr("data-inset", dataInset),
+        View.optionalAttr("aria-disabled", disabled ? Some("true") : None),
+        View.optionalAttr("data-disabled", disabled ? Some("") : None),
+        Internal.flag("data-popup-open", isOpen),
+      ]>
+      {children}
+    </div>
+  }
+}
+
 module Root = {
   @xote.component
   let make = (
@@ -528,3 +586,6 @@ module Root = {
     Internal.Context.provide(context, ctx, children)
   }
 }
+
+/* A submenu is an independent menu: its own open state, its own popup. */
+module Sub = Root
