@@ -303,6 +303,25 @@
       ]
     },
     {
+      "name": "Combobox",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Command",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Combobox.res",
+          "type": "registry:file",
+          "target": "@ui/Combobox.res"
+        }
+      ]
+    },
+    {
       "name": "Command",
       "type": "registry:ui",
       "dependencies": [
@@ -641,6 +660,24 @@
           "path": "registry/xote/ui/NativeSelect.res",
           "type": "registry:file",
           "target": "@ui/NativeSelect.res"
+        }
+      ]
+    },
+    {
+      "name": "NavigationMenu",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/NavigationMenu.res",
+          "type": "registry:file",
+          "target": "@ui/NavigationMenu.res"
         }
       ]
     },
@@ -1180,6 +1217,24 @@
       ]
     },
     {
+      "name": "ComboboxDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Combobox",
+        "@rescript-shadcn/Command"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ComboboxDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "CommandDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1519,6 +1574,23 @@
       "files": [
         {
           "path": "registry/xote/examples/NativeSelectDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "NavigationMenuDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/NavigationMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/NavigationMenuDemo.res",
           "type": "registry:example"
         }
       ]
