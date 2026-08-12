@@ -75,6 +75,51 @@ module Trigger = {
   }
 }
 
+/* A context menu opens at the pointer, not against an element, so the trigger
+   also renders a zero-size anchor it moves under the cursor. */
+module ContextTrigger = {
+  let placeAnchor: (Dom.element, Dom.event) => unit = %raw(`function (anchor, event) {
+    anchor.style.position = "fixed"
+    anchor.style.left = event.clientX + "px"
+    anchor.style.top = event.clientY + "px"
+  }`)
+
+  @xote.component
+  let make = (
+    ~className: option<string>=?,
+    ~id: option<string>=?,
+    ~disabled: bool=false,
+    ~dataSlot: string="menu-context-trigger",
+    ~style: option<string>=?,
+    ~children: View.node=Internal.noChildren,
+  ) => {
+    let ctx = use()
+    let anchorId = ctx->Option.mapOr(Internal.Id.make("menu-anchor"), ctx => ctx.triggerId)
+
+    let onContextMenu = event =>
+      switch ctx {
+      | Some({setOpen}) if !disabled =>
+        Internal.El.preventDefault(event)
+        switch Internal.El.getElementById(anchorId)->Nullable.toOption {
+        | Some(anchor) => placeAnchor(anchor, event)
+        | None => ()
+        }
+        setOpen(true)
+      | _ => ()
+      }
+
+    <div
+      id=?{id}
+      class=?{className}
+      style=?{style}
+      onContextMenu={onContextMenu}
+      attrs=[View.attr("data-slot", dataSlot)]>
+      <span id={anchorId} ariaHidden={true} />
+      {children}
+    </div>
+  }
+}
+
 module Item = {
   @xote.component
   let make = (

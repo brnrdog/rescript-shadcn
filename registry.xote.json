@@ -272,6 +272,24 @@
       ]
     },
     {
+      "name": "ContextMenu",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/ContextMenu.res",
+          "type": "registry:file",
+          "target": "@ui/ContextMenu.res"
+        }
+      ]
+    },
+    {
       "name": "Dialog",
       "type": "registry:ui",
       "dependencies": [
@@ -390,6 +408,24 @@
           "path": "registry/xote/ui/Label.res",
           "type": "registry:file",
           "target": "@ui/Label.res"
+        }
+      ]
+    },
+    {
+      "name": "Menubar",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Menubar.res",
+          "type": "registry:file",
+          "target": "@ui/Menubar.res"
         }
       ]
     },
@@ -877,6 +913,22 @@
       ]
     },
     {
+      "name": "ContextMenuDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "DialogDemo",
       "type": "registry:example",
       "dependencies": [
@@ -994,6 +1046,22 @@
       "files": [
         {
           "path": "registry/xote/examples/LabelDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "MenubarDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Menubar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MenubarDemo.res",
           "type": "registry:example"
         }
       ]
