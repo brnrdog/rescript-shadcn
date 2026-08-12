@@ -94,6 +94,8 @@ module El = {
   @send external focus: Dom.element => unit = "focus"
   @send external click: Dom.element => unit = "click"
   @send external contains: (Dom.element, Dom.element) => bool = "contains"
+  @send
+  external addEventListener: (Dom.element, string, Dom.event => unit) => unit = "addEventListener"
   @send external setAttribute: (Dom.element, string, string) => unit = "setAttribute"
   @send external removeAttribute: (Dom.element, string) => unit = "removeAttribute"
   @send external hasAttribute: (Dom.element, string) => bool = "hasAttribute"

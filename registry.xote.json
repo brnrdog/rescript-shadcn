@@ -303,6 +303,25 @@
       ]
     },
     {
+      "name": "Command",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Separator"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Command.res",
+          "type": "registry:file",
+          "target": "@ui/Command.res"
+        }
+      ]
+    },
+    {
       "name": "ContextMenu",
       "type": "registry:ui",
       "dependencies": [
@@ -590,6 +609,25 @@
       ]
     },
     {
+      "name": "MessageScroller",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/MessageScroller.res",
+          "type": "registry:file",
+          "target": "@ui/MessageScroller.res"
+        }
+      ]
+    },
+    {
       "name": "NativeSelect",
       "type": "registry:ui",
       "dependencies": [
@@ -666,6 +704,24 @@
           "path": "registry/xote/ui/RadioGroup.res",
           "type": "registry:file",
           "target": "@ui/RadioGroup.res"
+        }
+      ]
+    },
+    {
+      "name": "Resizable",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Resizable.res",
+          "type": "registry:file",
+          "target": "@ui/Resizable.res"
         }
       ]
     },
@@ -1124,6 +1180,22 @@
       ]
     },
     {
+      "name": "CommandDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Command"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/CommandDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ContextMenuDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1418,6 +1490,23 @@
       ]
     },
     {
+      "name": "MessageScrollerDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Bubble",
+        "@rescript-shadcn/MessageScroller"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/MessageScrollerDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "NativeSelectDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1498,6 +1587,22 @@
       "files": [
         {
           "path": "registry/xote/examples/RadioGroupDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ResizableDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ResizableDemo.res",
           "type": "registry:example"
         }
       ]
