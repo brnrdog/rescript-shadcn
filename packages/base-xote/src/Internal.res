@@ -152,6 +152,12 @@ module El = {
     return typeof document === "undefined" ? null : document.activeElement
   }`)
 
+  let onWindow: (string, unit => unit) => unit => unit = %raw(`function (type, handler) {
+    if (typeof window === "undefined") { return function () {} }
+    window.addEventListener(type, handler, true)
+    return function () { window.removeEventListener(type, handler, true) }
+  }`)
+
   let onDocument: (string, Dom.event => unit) => unit => unit = %raw(`function (type, handler) {
     if (typeof document === "undefined") { return function () {} }
     document.addEventListener(type, handler, true)
@@ -379,6 +385,42 @@ module Controlled = {
           },
         }
       }
+    }
+  }
+}
+
+/* Overlays close on Escape and on a pointer press outside of themselves. Both
+   listen on the document, so they are attached when the overlay mounts and
+   removed with it. */
+module Dismiss = {
+  let attach = (~ids: array<string>, ~onDismiss: unit => unit, ~escape: bool=true): (unit => unit) => {
+    let isInside = target =>
+      ids->Array.some(id =>
+        switch El.getElementById(id)->Nullable.toOption {
+        | Some(element) => element->El.contains(target)
+        | None => false
+        }
+      )
+
+    let removePointerDown = El.onDocument("pointerdown", event =>
+      switch El.eventTarget(event)->Nullable.toOption {
+      | Some(target) if !isInside(target) => onDismiss()
+      | _ => ()
+      }
+    )
+
+    let removeKeyDown = escape
+      ? El.onDocument("keydown", event =>
+          if El.eventKey(event) === "Escape" {
+            El.preventDefault(event)
+            onDismiss()
+          }
+        )
+      : () => ()
+
+    () => {
+      removePointerDown()
+      removeKeyDown()
     }
   }
 }

@@ -7,7 +7,9 @@ import { mount } from "xote/src/View.res.mjs"
 import { make as AccordionDemo } from "rescript-shadcn-xote/examples/AccordionDemo.res.mjs"
 import { make as CheckboxDemo } from "rescript-shadcn-xote/examples/CheckboxDemo.res.mjs"
 import { make as DialogDemo } from "rescript-shadcn-xote/examples/DialogDemo.res.mjs"
+import { make as PopoverDemo } from "rescript-shadcn-xote/examples/PopoverDemo.res.mjs"
 import { make as SwitchDemo } from "rescript-shadcn-xote/examples/SwitchDemo.res.mjs"
+import { make as TooltipDemo } from "rescript-shadcn-xote/examples/TooltipDemo.res.mjs"
 import { make as TabsDemo } from "rescript-shadcn-xote/examples/TabsDemo.res.mjs"
 
 /** State attributes are applied by effects bound to the mounted node, which run
@@ -16,6 +18,9 @@ const flush = async () => {
   await Promise.resolve()
   await Promise.resolve()
 }
+
+/** The styled tooltip opens on a delay, so hover assertions have to outwait it. */
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const render = async (component: (props: {}) => unknown) => {
   const container = document.createElement("div")
@@ -193,5 +198,77 @@ describe("Dialog", () => {
     await flush()
 
     expect(document.querySelector('[role="dialog"]')).toBeNull()
+  })
+})
+
+describe("Popover", () => {
+  it("portals the content, wires it to the trigger and closes on Escape", async () => {
+    const container = await render(PopoverDemo)
+    const trigger = query(container, '[data-slot="popover-trigger"]')
+
+    expect(trigger.getAttribute("aria-expanded")).toBe("false")
+    expect(document.querySelector('[data-slot="popover-content"]')).toBeNull()
+
+    trigger.click()
+    await flush()
+
+    const content = query(document, '[data-slot="popover-content"]')
+    expect(content.closest("[data-xote-portal]")?.parentElement).toBe(document.body)
+    expect(trigger.getAttribute("aria-controls")).toBe(content.id)
+    expect(trigger.getAttribute("aria-expanded")).toBe("true")
+    // The positioner resolves a side, which the enter animation styles select on.
+    expect(content.getAttribute("data-side")).toMatch(/top|bottom|left|right/)
+
+    document.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }))
+    await flush()
+
+    expect(document.querySelector('[data-slot="popover-content"]')).toBeNull()
+  })
+
+  it("closes on a press outside and stays open on a press inside", async () => {
+    const container = await render(PopoverDemo)
+    query(container, '[data-slot="popover-trigger"]').click()
+    await flush()
+
+    const content = query(document, '[data-slot="popover-content"]')
+    content.dispatchEvent(new window.MouseEvent("pointerdown", { bubbles: true }))
+    await flush()
+    expect(document.querySelector('[data-slot="popover-content"]')).not.toBeNull()
+
+    document.body.dispatchEvent(new window.MouseEvent("pointerdown", { bubbles: true }))
+    await flush()
+    expect(document.querySelector('[data-slot="popover-content"]')).toBeNull()
+  })
+})
+
+describe("Tooltip", () => {
+  it("opens on hover, describes the trigger and closes on leave", async () => {
+    const container = await render(TooltipDemo)
+    const trigger = container.querySelectorAll('[data-slot="tooltip-trigger"]')[0] as HTMLElement
+
+    trigger.dispatchEvent(new window.MouseEvent("mouseenter", { bubbles: true }))
+    await wait(250)
+
+    const content = query(document, '[data-slot="tooltip-content"]')
+    expect(content.getAttribute("role")).toBe("tooltip")
+    expect(trigger.getAttribute("aria-describedby")).toBe(content.id)
+
+    trigger.dispatchEvent(new window.MouseEvent("mouseleave", { bubbles: true }))
+    await flush()
+
+    expect(document.querySelector('[data-slot="tooltip-content"]')).toBeNull()
+  })
+
+  it("opens on keyboard focus too", async () => {
+    const container = await render(TooltipDemo)
+    const trigger = container.querySelectorAll('[data-slot="tooltip-trigger"]')[0] as HTMLElement
+
+    trigger.dispatchEvent(new window.FocusEvent("focus", { bubbles: true }))
+    await wait(250)
+    expect(document.querySelector('[data-slot="tooltip-content"]')).not.toBeNull()
+
+    trigger.dispatchEvent(new window.FocusEvent("blur", { bubbles: true }))
+    await flush()
+    expect(document.querySelector('[data-slot="tooltip-content"]')).toBeNull()
   })
 })

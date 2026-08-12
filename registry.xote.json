@@ -238,6 +238,21 @@
       ]
     },
     {
+      "name": "HoverCard",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/HoverCard.res",
+          "type": "registry:file",
+          "target": "@ui/HoverCard.res"
+        }
+      ]
+    },
+    {
       "name": "Icons",
       "type": "registry:ui",
       "dependencies": [
@@ -290,6 +305,21 @@
           "path": "registry/xote/ui/Label.res",
           "type": "registry:file",
           "target": "@ui/Label.res"
+        }
+      ]
+    },
+    {
+      "name": "Popover",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Popover.res",
+          "type": "registry:file",
+          "target": "@ui/Popover.res"
         }
       ]
     },
@@ -425,6 +455,21 @@
           "path": "registry/xote/ui/Toggle.res",
           "type": "registry:file",
           "target": "@ui/Toggle.res"
+        }
+      ]
+    },
+    {
+      "name": "Tooltip",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-base-xote",
+        "xote"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Tooltip.res",
+          "type": "registry:file",
+          "target": "@ui/Tooltip.res"
         }
       ]
     },
@@ -600,6 +645,24 @@
       ]
     },
     {
+      "name": "HoverCardDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Avatar",
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/HoverCard"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/HoverCardDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "InputDemo",
       "type": "registry:example",
       "dependencies": [
@@ -645,6 +708,25 @@
       "files": [
         {
           "path": "registry/xote/examples/LabelDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "PopoverDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Input",
+        "@rescript-shadcn/Label",
+        "@rescript-shadcn/Popover"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/PopoverDemo.res",
           "type": "registry:example"
         }
       ]
@@ -793,6 +875,23 @@
       "files": [
         {
           "path": "registry/xote/examples/ToggleDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "TooltipDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/TooltipDemo.res",
           "type": "registry:example"
         }
       ]
