@@ -42,6 +42,15 @@ let place: (
   float,
   float,
 ) => string = %raw(`function (anchor, popup, side, align, sideOffset, alignOffset) {
+  // Take the element out of flow *before* measuring it. A block-level div in
+  // the portal is as wide as the body, and placing from that rect puts the
+  // overlay in the wrong place and flips it for the wrong reason.
+  popup.style.position = "fixed"
+  popup.style.top = "0px"
+  popup.style.left = "0px"
+  popup.style.width = "max-content"
+  popup.style.maxWidth = "100vw"
+
   const a = anchor.getBoundingClientRect()
   const p = popup.getBoundingClientRect()
   const vw = window.innerWidth
@@ -83,9 +92,23 @@ let place: (
     top = clamp(top, vh - p.height - margin)
   }
 
-  popup.style.position = "fixed"
   popup.style.top = Math.round(top) + "px"
   popup.style.left = Math.round(left) + "px"
+
+  // The variables the shadcn classes read: an overlay that should match its
+  // trigger's width, and one that should not outgrow the space it has.
+  popup.style.setProperty("--anchor-width", Math.round(a.width) + "px")
+  popup.style.setProperty("--available-width", Math.round(vw - margin * 2) + "px")
+  popup.style.setProperty(
+    "--available-height",
+    Math.round(
+      resolved === "top"
+        ? a.top - sideOffset - margin
+        : resolved === "bottom"
+          ? vh - a.bottom - sideOffset - margin
+          : vh - margin * 2,
+    ) + "px",
+  )
   popup.style.setProperty(
     "--transform-origin",
     resolved === "top"

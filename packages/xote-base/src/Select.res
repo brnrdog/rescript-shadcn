@@ -160,7 +160,10 @@ module Root = {
     }
 
     <Menu.Root ?id ?open_ defaultOpen ?onOpenChange modal=false>
-      {Internal.Context.provide(context, ctx, children)}
+      {/* Deferred so the menu context is in scope while the select context is
+          layered on top of it — evaluating it inline would run the children
+          before `Menu.Root` provided anything. */
+      View.LazyComponent(() => Internal.Context.provide(context, ctx, children))}
     </Menu.Root>
   }
 }

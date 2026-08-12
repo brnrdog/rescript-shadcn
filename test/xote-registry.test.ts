@@ -7,7 +7,9 @@ import { mount } from "xote/src/View.res.mjs"
 import { make as AccordionDemo } from "rescript-shadcn-xote/examples/AccordionDemo.res.mjs"
 import { make as CheckboxDemo } from "rescript-shadcn-xote/examples/CheckboxDemo.res.mjs"
 import { make as DialogDemo } from "rescript-shadcn-xote/examples/DialogDemo.res.mjs"
+import { make as DropdownMenuDemo } from "rescript-shadcn-xote/examples/DropdownMenuDemo.res.mjs"
 import { make as PopoverDemo } from "rescript-shadcn-xote/examples/PopoverDemo.res.mjs"
+import { make as SelectDemo } from "rescript-shadcn-xote/examples/SelectDemo.res.mjs"
 import { make as SwitchDemo } from "rescript-shadcn-xote/examples/SwitchDemo.res.mjs"
 import { make as TooltipDemo } from "rescript-shadcn-xote/examples/TooltipDemo.res.mjs"
 import { make as TabsDemo } from "rescript-shadcn-xote/examples/TabsDemo.res.mjs"
@@ -270,5 +272,52 @@ describe("Tooltip", () => {
     trigger.dispatchEvent(new window.FocusEvent("blur", { bubbles: true }))
     await flush()
     expect(document.querySelector('[data-slot="tooltip-content"]')).toBeNull()
+  })
+})
+
+describe("Select", () => {
+  it("opens a listbox, renders the selected label and closes on pick", async () => {
+    const container = await render(SelectDemo)
+    const trigger = query(container, '[data-slot="select-trigger"]')
+
+    expect(trigger.getAttribute("role")).toBe("combobox")
+    expect(query(container, '[data-slot="select-value"]').textContent).toBe("Select a fruit")
+
+    trigger.click()
+    await flush()
+
+    const listbox = query(document, '[data-slot="select-content"]')
+    expect(listbox.getAttribute("role")).toBe("listbox")
+
+    const options = document.querySelectorAll('[role="option"]')
+    expect(options.length).toBeGreaterThan(1)
+    ;(options[1] as HTMLElement).click()
+    await flush()
+
+    expect(document.querySelector('[data-slot="select-content"]')).toBeNull()
+    expect(query(container, '[data-slot="select-value"]').textContent).toBe("Banana")
+  })
+})
+
+describe("anchored overlays", () => {
+  // The positioner is built while the portal is still closed, so the lookup
+  // that places it has to survive until the content actually mounts. When that
+  // broke, the overlay stayed in flow at the bottom of the page.
+  it.each([
+    ["popover", PopoverDemo, '[data-slot="popover-trigger"]', '[data-slot="popover-content"]'],
+    ["dropdown menu", DropdownMenuDemo, '[data-slot="dropdown-menu-trigger"]', '[data-slot="dropdown-menu-content"]'],
+    ["select", SelectDemo, '[data-slot="select-trigger"]', '[data-slot="select-content"]'],
+  ])("%s takes its content out of flow when it opens", async (_name, demo, triggerSel, popupSel) => {
+    const container = await render(demo as (props: {}) => unknown)
+    query(container, triggerSel as string).click()
+    await flush()
+
+    const positioner = query(document, popupSel as string).closest(
+      '[data-slot$="-positioner"]'
+    ) as HTMLElement
+    expect(positioner).not.toBeNull()
+    expect(positioner.style.position).toBe("fixed")
+    expect(positioner.style.getPropertyValue("--anchor-width")).not.toBe("")
+    expect(positioner.style.getPropertyValue("--transform-origin")).not.toBe("")
   })
 })
