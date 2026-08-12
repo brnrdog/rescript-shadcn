@@ -1,6 +1,6 @@
 {
-  "name": "rescript-base-xote",
-  "namespace": "base-xote",
+  "name": "rescript-xote-base",
+  "namespace": "xote-base",
   "sources": [
     {
       "dir": "src",

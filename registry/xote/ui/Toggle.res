@@ -47,7 +47,7 @@ let make = (
   ~size: Size.t=Default,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Toggle
+  <XoteBase.Toggle
     ?id
     ?pressed
     defaultPressed
@@ -59,4 +59,4 @@ let make = (
     dataSize={(size :> string)}
     className={cn(toggleVariants(~variant, ~size), className)}>
     {children}
-  </BaseXote.Toggle>
+  </XoteBase.Toggle>

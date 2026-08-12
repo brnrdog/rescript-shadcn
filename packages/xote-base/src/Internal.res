@@ -1,4 +1,4 @@
-/* Shared plumbing for the base-xote primitives.
+/* Shared plumbing for the xote-base primitives.
 
    Components declare their own markup, including presence-toggled state
    attributes, through the JSX `attrs` escape hatch:

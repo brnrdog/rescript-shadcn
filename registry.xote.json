@@ -86,7 +86,7 @@
       "name": "Accordion",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "registryDependencies": [
@@ -132,7 +132,7 @@
       "name": "Avatar",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -189,7 +189,7 @@
       "name": "Checkbox",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "registryDependencies": [
@@ -207,7 +207,7 @@
       "name": "Collapsible",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -222,7 +222,7 @@
       "name": "Dialog",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "registryDependencies": [
@@ -241,7 +241,7 @@
       "name": "HoverCard",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -312,7 +312,7 @@
       "name": "Popover",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -327,7 +327,7 @@
       "name": "Progress",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -342,7 +342,7 @@
       "name": "RadioGroup",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -357,7 +357,7 @@
       "name": "Separator",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -403,7 +403,7 @@
       "name": "Switch",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -418,7 +418,7 @@
       "name": "Tabs",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -447,7 +447,7 @@
       "name": "Toggle",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [
@@ -462,7 +462,7 @@
       "name": "Tooltip",
       "type": "registry:ui",
       "dependencies": [
-        "rescript-base-xote",
+        "rescript-xote-base",
         "xote"
       ],
       "files": [

@@ -1,4 +1,4 @@
-# base-xote
+# xote-base
 
 Headless UI primitives for ReScript, built on [xote](https://xote.dev/)'s fine-grained
 reactivity. They are the xote counterpart of `rescript-base-ui`: behaviour, ARIA wiring and
@@ -38,11 +38,11 @@ Base UI:
 ```rescript
 let checked = Signal.make(false)
 
-<BaseXote.Switch.Root
+<XoteBase.Switch.Root
   checked={MaybeSignal.reactive(checked)}
   onCheckedChange={next => Signal.set(checked, next)}>
-  <BaseXote.Switch.Thumb />
-</BaseXote.Switch.Root>
+  <XoteBase.Switch.Thumb />
+</XoteBase.Switch.Root>
 ```
 
 ## How it works
@@ -91,6 +91,6 @@ Base UI do anyway, since the browser then serves the real `<img>` from cache.
 ## Development
 
 ```bash
-yarn workspace rescript-base-xote res:build
+yarn workspace rescript-xote-base res:build
 yarn test:xote   # jsdom coverage of the primitives, driven through the registry demos
 ```

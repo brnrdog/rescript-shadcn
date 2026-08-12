@@ -1,7 +1,7 @@
 @module("tailwind-merge")
 external cn: (string, option<string>) => string = "twMerge"
 
-module Orientation = BaseXote.Internal.Orientation
+module Orientation = XoteBase.Internal.Orientation
 
 module Variant = {
   @unboxed
@@ -30,7 +30,7 @@ let make = (
   ~disabled: bool=false,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Tabs.Root
+  <XoteBase.Tabs.Root
     ?id
     ?value
     defaultValue
@@ -40,7 +40,7 @@ let make = (
     dataSlot="tabs"
     className={cn("cn-tabs group/tabs flex data-horizontal:flex-col", className)}>
     {children}
-  </BaseXote.Tabs.Root>
+  </XoteBase.Tabs.Root>
 
 module List = {
   @xote.component
@@ -51,14 +51,14 @@ module List = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Tabs.List
+    <XoteBase.Tabs.List
       ?id
       ?ariaLabel
       dataSlot="tabs-list"
       dataVariant={(variant :> string)}
       className={cn(tabsListVariants(~variant), className)}>
       {children}
-    </BaseXote.Tabs.List>
+    </XoteBase.Tabs.List>
 }
 
 module Trigger = {
@@ -71,7 +71,7 @@ module Trigger = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Tabs.Tab
+    <XoteBase.Tabs.Tab
       value
       ?id
       disabled
@@ -82,7 +82,7 @@ module Trigger = {
         className,
       )}>
       {children}
-    </BaseXote.Tabs.Tab>
+    </XoteBase.Tabs.Tab>
 }
 
 module Content = {
@@ -93,11 +93,11 @@ module Content = {
     ~id: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Tabs.Panel
+    <XoteBase.Tabs.Panel
       value
       ?id
       dataSlot="tabs-content"
       className={cn("cn-tabs-content flex-1 outline-none", className)}>
       {children}
-    </BaseXote.Tabs.Panel>
+    </XoteBase.Tabs.Panel>
 }

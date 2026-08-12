@@ -42,7 +42,7 @@ jobs:
 
       - name: Compile xote packages
         run: |
-          yarn workspace rescript-base-xote res:build
+          yarn workspace rescript-xote-base res:build
           yarn workspace rescript-shadcn-xote res:build
 
       - name: check xote registry behaviour

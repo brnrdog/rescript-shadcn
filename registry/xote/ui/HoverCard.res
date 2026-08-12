@@ -1,8 +1,8 @@
 @module("tailwind-merge")
 external cn: (string, option<string>) => string = "twMerge"
 
-module Side = BaseXote.Anchored.Side
-module Align = BaseXote.Anchored.Align
+module Side = XoteBase.Anchored.Side
+module Align = XoteBase.Anchored.Align
 
 /* Same machinery as the tooltip, with a dialog role, a longer delay and card
    sized content. */
@@ -15,9 +15,9 @@ let make = (
   ~closeDelay: int=100,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Tooltip.Root ?open_ defaultOpen ?onOpenChange delay closeDelay role="dialog">
+  <XoteBase.Tooltip.Root ?open_ defaultOpen ?onOpenChange delay closeDelay role="dialog">
     {children}
-  </BaseXote.Tooltip.Root>
+  </XoteBase.Tooltip.Root>
 
 module Trigger = {
   @xote.component
@@ -27,9 +27,9 @@ module Trigger = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Tooltip.Trigger ?className ?id ?ariaLabel dataSlot="hover-card-trigger">
+    <XoteBase.Tooltip.Trigger ?className ?id ?ariaLabel dataSlot="hover-card-trigger">
       {children}
-    </BaseXote.Tooltip.Trigger>
+    </XoteBase.Tooltip.Trigger>
 }
 
 module Content = {
@@ -43,8 +43,8 @@ module Content = {
     ~alignOffset: float=0.,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Tooltip.Positioner side align sideOffset alignOffset className="isolate z-50">
-      <BaseXote.Tooltip.Popup
+    <XoteBase.Tooltip.Positioner side align sideOffset alignOffset className="isolate z-50">
+      <XoteBase.Tooltip.Popup
         ?id
         dataSlot="hover-card-content"
         className={cn(
@@ -52,6 +52,6 @@ module Content = {
           className,
         )}>
         {children}
-      </BaseXote.Tooltip.Popup>
-    </BaseXote.Tooltip.Positioner>
+      </XoteBase.Tooltip.Popup>
+    </XoteBase.Tooltip.Positioner>
 }

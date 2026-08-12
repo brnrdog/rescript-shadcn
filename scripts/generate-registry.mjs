@@ -71,7 +71,7 @@ const RESCRIPT_NAMESPACE_PACKAGES = [
   { namespace: "ShadcnReact", packageName: "rescript-shadcn-react" },
   { namespace: "BaseUi", packageName: "rescript-base-ui" },
   { namespace: "ReactAria", packageName: "rescript-react-aria" },
-  { namespace: "BaseXote", packageName: "rescript-base-xote" },
+  { namespace: "XoteBase", packageName: "rescript-xote-base" },
 ]
 
 /** Extract npm package name: "@base-ui/react/accordion" → "@base-ui/react" */
@@ -164,7 +164,7 @@ const astDir = path.join(baseDir, "lib", "ocaml")
 /** Modules to ignore in .ast dependency lists */
 const IGNORED_AST_DEPS = new Set([
   "BaseUi",
-  "BaseXote",
+  "XoteBase",
   "React",
   "ReactDOM",
   "View",

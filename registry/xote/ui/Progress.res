@@ -11,7 +11,7 @@ let make = (
   ~ariaLabel: option<string>=?,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Progress.Root
+  <XoteBase.Progress.Root
     ?id
     ?value
     min
@@ -20,28 +20,28 @@ let make = (
     dataSlot="progress"
     className={cn("cn-progress-root flex flex-wrap gap-3", className)}>
     {children}
-    <BaseXote.Progress.Track
+    <XoteBase.Progress.Track
       dataSlot="progress-track"
       className="cn-progress-track relative flex w-full items-center overflow-x-hidden">
-      <BaseXote.Progress.Indicator
+      <XoteBase.Progress.Indicator
         dataSlot="progress-indicator" className="cn-progress-indicator h-full transition-all"
       />
-    </BaseXote.Progress.Track>
-  </BaseXote.Progress.Root>
+    </XoteBase.Progress.Track>
+  </XoteBase.Progress.Root>
 
 module Label = {
   @xote.component
   let make = (~className: option<string>=?, ~id: option<string>=?, ~children: View.node=View.fragment([])) =>
-    <BaseXote.Progress.Label
+    <XoteBase.Progress.Label
       ?id dataSlot="progress-label" className={cn("cn-progress-label", className)}>
       {children}
-    </BaseXote.Progress.Label>
+    </XoteBase.Progress.Label>
 }
 
 module Value = {
   @xote.component
   let make = (~className: option<string>=?, ~id: option<string>=?, ~children: View.node=View.fragment([])) =>
-    <BaseXote.Progress.Value
+    <XoteBase.Progress.Value
       ?id children dataSlot="progress-value" className={cn("cn-progress-value", className)}
     />
 }

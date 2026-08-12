@@ -1,8 +1,8 @@
 @module("tailwind-merge")
 external cn: (string, option<string>) => string = "twMerge"
 
-module Side = BaseXote.Anchored.Side
-module Align = BaseXote.Anchored.Align
+module Side = XoteBase.Anchored.Side
+module Align = XoteBase.Anchored.Align
 
 @xote.component
 let make = (
@@ -13,9 +13,9 @@ let make = (
   ~closeDelay: int=0,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Tooltip.Root ?open_ defaultOpen ?onOpenChange delay closeDelay>
+  <XoteBase.Tooltip.Root ?open_ defaultOpen ?onOpenChange delay closeDelay>
     {children}
-  </BaseXote.Tooltip.Root>
+  </XoteBase.Tooltip.Root>
 
 module Trigger = {
   @xote.component
@@ -25,9 +25,9 @@ module Trigger = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Tooltip.Trigger ?className ?id ?ariaLabel dataSlot="tooltip-trigger">
+    <XoteBase.Tooltip.Trigger ?className ?id ?ariaLabel dataSlot="tooltip-trigger">
       {children}
-    </BaseXote.Tooltip.Trigger>
+    </XoteBase.Tooltip.Trigger>
 }
 
 module Content = {
@@ -41,8 +41,8 @@ module Content = {
     ~alignOffset: float=0.,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Tooltip.Positioner side align sideOffset alignOffset>
-      <BaseXote.Tooltip.Popup
+    <XoteBase.Tooltip.Positioner side align sideOffset alignOffset>
+      <XoteBase.Tooltip.Popup
         ?id
         dataSlot="tooltip-content"
         className={cn(
@@ -50,10 +50,10 @@ module Content = {
           className,
         )}>
         {children}
-        <BaseXote.Tooltip.Arrow
+        <XoteBase.Tooltip.Arrow
           dataSlot="tooltip-arrow"
           className="cn-tooltip-arrow cn-tooltip-arrow-logical bg-foreground fill-foreground absolute z-50 data-[side=bottom]:top-1 data-[side=left]:top-1/2! data-[side=left]:-right-1 data-[side=left]:-translate-y-1/2 data-[side=right]:top-1/2! data-[side=right]:-left-1 data-[side=right]:-translate-y-1/2 data-[side=top]:-bottom-2.5"
         />
-      </BaseXote.Tooltip.Popup>
-    </BaseXote.Tooltip.Positioner>
+      </XoteBase.Tooltip.Popup>
+    </XoteBase.Tooltip.Positioner>
 }

@@ -11,7 +11,7 @@ let make = (
   ~disabled: bool=false,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Accordion.Root
+  <XoteBase.Accordion.Root
     ?id
     ?value
     defaultValue
@@ -20,7 +20,7 @@ let make = (
     dataSlot="accordion"
     className={cn("cn-accordion flex w-full flex-col", className)}>
     {children}
-  </BaseXote.Accordion.Root>
+  </XoteBase.Accordion.Root>
 
 module Multiple = {
   @xote.component
@@ -33,7 +33,7 @@ module Multiple = {
     ~disabled: bool=false,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Accordion.Root
+    <XoteBase.Accordion.Root
       ?id
       ?value
       defaultValue
@@ -43,7 +43,7 @@ module Multiple = {
       dataSlot="accordion"
       className={cn("cn-accordion flex w-full flex-col", className)}>
       {children}
-    </BaseXote.Accordion.Root>
+    </XoteBase.Accordion.Root>
 }
 
 module Item = {
@@ -55,10 +55,10 @@ module Item = {
     ~disabled: bool=false,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Accordion.Item
+    <XoteBase.Accordion.Item
       ?id ?value disabled dataSlot="accordion-item" className={cn("cn-accordion-item", className)}>
       {children}
-    </BaseXote.Accordion.Item>
+    </XoteBase.Accordion.Item>
 }
 
 module Trigger = {
@@ -70,8 +70,8 @@ module Trigger = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Accordion.Header className="flex">
-      <BaseXote.Accordion.Trigger
+    <XoteBase.Accordion.Header className="flex">
+      <XoteBase.Accordion.Trigger
         ?id
         disabled
         ?ariaLabel
@@ -89,14 +89,14 @@ module Trigger = {
           dataSlot="accordion-trigger-icon"
           className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
-      </BaseXote.Accordion.Trigger>
-    </BaseXote.Accordion.Header>
+      </XoteBase.Accordion.Trigger>
+    </XoteBase.Accordion.Header>
 }
 
 module Content = {
   @xote.component
   let make = (~className: option<string>=?, ~id: option<string>=?, ~children: View.node=View.fragment([])) =>
-    <BaseXote.Accordion.Panel
+    <XoteBase.Accordion.Panel
       ?id dataSlot="accordion-content" className="cn-accordion-content overflow-hidden">
       <div
         class={cn(
@@ -105,5 +105,5 @@ module Content = {
         )}>
         {children}
       </div>
-    </BaseXote.Accordion.Panel>
+    </XoteBase.Accordion.Panel>
 }

@@ -1,7 +1,7 @@
 @module("tailwind-merge")
 external cn: (string, option<string>) => string = "twMerge"
 
-module Orientation = BaseXote.Internal.Orientation
+module Orientation = XoteBase.Internal.Orientation
 
 @xote.component
 let make = (
@@ -11,7 +11,7 @@ let make = (
   ~decorative: bool=false,
   ~dataSlot: string="separator",
 ) =>
-  <BaseXote.Separator
+  <XoteBase.Separator
     ?id
     orientation
     decorative

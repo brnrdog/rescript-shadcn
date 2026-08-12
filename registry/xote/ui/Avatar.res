@@ -16,7 +16,7 @@ let make = (
   ~size: Size.t=Default,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Avatar.Root
+  <XoteBase.Avatar.Root
     ?id
     dataSlot="avatar"
     dataSize={(size :> string)}
@@ -25,7 +25,7 @@ let make = (
       className,
     )}>
     {children}
-  </BaseXote.Avatar.Root>
+  </XoteBase.Avatar.Root>
 
 module Image = {
   @xote.component
@@ -35,7 +35,7 @@ module Image = {
     ~className: option<string>=?,
     ~id: option<string>=?,
   ) =>
-    <BaseXote.Avatar.Image
+    <XoteBase.Avatar.Image
       src
       alt
       ?id
@@ -47,7 +47,7 @@ module Image = {
 module Fallback = {
   @xote.component
   let make = (~className: option<string>=?, ~id: option<string>=?, ~children: View.node=View.fragment([])) =>
-    <BaseXote.Avatar.Fallback
+    <XoteBase.Avatar.Fallback
       ?id
       dataSlot="avatar-fallback"
       className={cn(
@@ -55,7 +55,7 @@ module Fallback = {
         className,
       )}>
       {children}
-    </BaseXote.Avatar.Fallback>
+    </XoteBase.Avatar.Fallback>
 }
 
 module Group = {

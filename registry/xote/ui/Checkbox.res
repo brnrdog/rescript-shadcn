@@ -15,7 +15,7 @@ let make = (
   ~ariaLabel: option<string>=?,
   ~ariaInvalid: option<bool>=?,
 ) =>
-  <BaseXote.Checkbox.Root
+  <XoteBase.Checkbox.Root
     ?id
     ?name
     ?checked
@@ -31,9 +31,9 @@ let make = (
       "cn-checkbox peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}>
-    <BaseXote.Checkbox.Indicator
+    <XoteBase.Checkbox.Indicator
       dataSlot="checkbox-indicator"
       className="cn-checkbox-indicator grid place-content-center text-current transition-none">
       <Icons.Check />
-    </BaseXote.Checkbox.Indicator>
-  </BaseXote.Checkbox.Root>
+    </XoteBase.Checkbox.Indicator>
+  </XoteBase.Checkbox.Root>

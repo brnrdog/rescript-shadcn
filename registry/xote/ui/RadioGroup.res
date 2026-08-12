@@ -15,7 +15,7 @@ let make = (
   ~ariaLabel: option<string>=?,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.RadioGroup.Root
+  <XoteBase.RadioGroup.Root
     ?id
     ?name
     ?value
@@ -28,7 +28,7 @@ let make = (
     dataSlot="radio-group"
     className={cn("cn-radio-group w-full", className)}>
     {children}
-  </BaseXote.RadioGroup.Root>
+  </XoteBase.RadioGroup.Root>
 
 module Item = {
   @xote.component
@@ -41,7 +41,7 @@ module Item = {
     ~ariaInvalid: option<bool>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.RadioGroup.Item
+    <XoteBase.RadioGroup.Item
       value
       ?id
       disabled
@@ -52,10 +52,10 @@ module Item = {
         "cn-radio-group-item group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}>
-      <BaseXote.RadioGroup.Indicator
+      <XoteBase.RadioGroup.Indicator
         dataSlot="radio-group-indicator" className="cn-radio-group-indicator">
         <span class="cn-radio-group-indicator-icon" />
-      </BaseXote.RadioGroup.Indicator>
+      </XoteBase.RadioGroup.Indicator>
       {children}
-    </BaseXote.RadioGroup.Item>
+    </XoteBase.RadioGroup.Item>
 }

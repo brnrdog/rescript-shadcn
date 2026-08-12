@@ -9,9 +9,9 @@ let make = (
   ~modal: bool=true,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Dialog.Root ?open_ defaultOpen ?onOpenChange modal>
+  <XoteBase.Dialog.Root ?open_ defaultOpen ?onOpenChange modal>
     {children}
-  </BaseXote.Dialog.Root>
+  </XoteBase.Dialog.Root>
 
 module Trigger = {
   @xote.component
@@ -22,9 +22,9 @@ module Trigger = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Dialog.Trigger ?className ?id disabled ?ariaLabel dataSlot="dialog-trigger">
+    <XoteBase.Dialog.Trigger ?className ?id disabled ?ariaLabel dataSlot="dialog-trigger">
       {children}
-    </BaseXote.Dialog.Trigger>
+    </XoteBase.Dialog.Trigger>
 }
 
 module Close = {
@@ -35,15 +35,15 @@ module Close = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Dialog.Close ?className ?id ?ariaLabel dataSlot="dialog-close">
+    <XoteBase.Dialog.Close ?className ?id ?ariaLabel dataSlot="dialog-close">
       {children}
-    </BaseXote.Dialog.Close>
+    </XoteBase.Dialog.Close>
 }
 
 module Overlay = {
   @xote.component
   let make = (~className: option<string>=?, ~id: option<string>=?) =>
-    <BaseXote.Dialog.Backdrop
+    <XoteBase.Dialog.Backdrop
       ?id
       dataSlot="dialog-overlay"
       className={cn("cn-dialog-overlay fixed inset-0 isolate z-50", className)}
@@ -58,9 +58,9 @@ module Content = {
     ~showCloseButton: bool=true,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Dialog.Portal>
+    <XoteBase.Dialog.Portal>
       <Overlay />
-      <BaseXote.Dialog.Popup
+      <XoteBase.Dialog.Popup
         ?id
         dataSlot="dialog-content"
         className={cn(
@@ -69,7 +69,7 @@ module Content = {
         )}>
         {children}
         {showCloseButton
-          ? <BaseXote.Dialog.Close
+          ? <XoteBase.Dialog.Close
               dataSlot="dialog-close"
               className={Button.buttonVariants(
                 ~variant=Ghost,
@@ -78,10 +78,10 @@ module Content = {
               )}>
               <Icons.X />
               <span class="sr-only"> {"Close"} </span>
-            </BaseXote.Dialog.Close>
+            </XoteBase.Dialog.Close>
           : View.fragment([])}
-      </BaseXote.Dialog.Popup>
-    </BaseXote.Dialog.Portal>
+      </XoteBase.Dialog.Popup>
+    </XoteBase.Dialog.Portal>
 }
 
 module Header = {
@@ -124,10 +124,10 @@ module Title = {
     ~id: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Dialog.Title
+    <XoteBase.Dialog.Title
       ?id dataSlot="dialog-title" className={cn("cn-dialog-title cn-font-heading", className)}>
       {children}
-    </BaseXote.Dialog.Title>
+    </XoteBase.Dialog.Title>
 }
 
 module Description = {
@@ -137,8 +137,8 @@ module Description = {
     ~id: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Dialog.Description
+    <XoteBase.Dialog.Description
       ?id dataSlot="dialog-description" className={cn("cn-dialog-description", className)}>
       {children}
-    </BaseXote.Dialog.Description>
+    </XoteBase.Dialog.Description>
 }

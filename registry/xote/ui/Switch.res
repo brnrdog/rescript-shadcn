@@ -23,7 +23,7 @@ let make = (
   ~ariaInvalid: option<bool>=?,
   ~size: Size.t=Default,
 ) =>
-  <BaseXote.Switch.Root
+  <XoteBase.Switch.Root
     ?id
     ?name
     ?checked
@@ -40,8 +40,8 @@ let make = (
       "cn-switch peer group/switch relative inline-flex items-center transition-all outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-50",
       className,
     )}>
-    <BaseXote.Switch.Thumb
+    <XoteBase.Switch.Thumb
       dataSlot="switch-thumb"
       className="cn-switch-thumb pointer-events-none block ring-0 transition-transform"
     />
-  </BaseXote.Switch.Root>
+  </XoteBase.Switch.Root>

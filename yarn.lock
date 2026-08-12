@@ -8749,17 +8749,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"rescript-base-xote@workspace:^, rescript-base-xote@workspace:packages/base-xote":
-  version: 0.0.0-use.local
-  resolution: "rescript-base-xote@workspace:packages/base-xote"
-  dependencies:
-    rescript: "npm:^12.3.0"
-    xote: "npm:7.1.0-beta.8"
-  peerDependencies:
-    xote: ^7.1.0-beta.8
-  languageName: unknown
-  linkType: soft
-
 "rescript-react-aria@workspace:^, rescript-react-aria@workspace:packages/react-aria":
   version: 0.0.0-use.local
   resolution: "rescript-react-aria@workspace:packages/react-aria"
@@ -8863,7 +8852,7 @@ __metadata:
   resolution: "rescript-shadcn-xote@workspace:registry/xote"
   dependencies:
     rescript: "npm:^12.3.0"
-    rescript-base-xote: "workspace:^"
+    rescript-xote-base: "workspace:^"
     tailwind-merge: "npm:^3.3.1"
     xote: "npm:7.1.0-beta.8"
   languageName: unknown
@@ -8915,13 +8904,13 @@ __metadata:
     rehype-pretty-code: "npm:^0.14.3"
     rescript: "npm:^12.3.0"
     rescript-base-ui: "workspace:^"
-    rescript-base-xote: "workspace:^"
     rescript-react-aria: "workspace:^"
     rescript-shadcn-aria: "workspace:^"
     rescript-shadcn-base: "workspace:^"
     rescript-shadcn-react: "workspace:^"
     rescript-shadcn-xote: "workspace:^"
     rescript-signals: "npm:^1.3.4"
+    rescript-xote-base: "workspace:^"
     shadcn: "npm:^3.0.0"
     sharp: "npm:^0.34.5"
     shiki: "npm:^4.0.1"
@@ -8948,6 +8937,17 @@ __metadata:
   checksum: 10c0/d7498c55de879d31e711eb336a9f5a3259083d0e5b77a87e7e8f9b0418b08cf81ef1849591a59014aaed4bfb69f4b81d2a0b6f528bebe8978c6c3cf9b1dc97a8
   languageName: node
   linkType: hard
+
+"rescript-xote-base@workspace:^, rescript-xote-base@workspace:packages/xote-base":
+  version: 0.0.0-use.local
+  resolution: "rescript-xote-base@workspace:packages/xote-base"
+  dependencies:
+    rescript: "npm:^12.3.0"
+    xote: "npm:7.1.0-beta.8"
+  peerDependencies:
+    xote: ^7.1.0-beta.8
+  languageName: unknown
+  linkType: soft
 
 "rescript@npm:^12.3.0":
   version: 12.3.0

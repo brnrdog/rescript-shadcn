@@ -8,10 +8,10 @@ let make = (
   ~disabled: bool=false,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Collapsible.Root
+  <XoteBase.Collapsible.Root
     ?className ?id ?open_ defaultOpen ?onOpenChange disabled dataSlot="collapsible">
     {children}
-  </BaseXote.Collapsible.Root>
+  </XoteBase.Collapsible.Root>
 
 module Trigger = {
   @xote.component
@@ -22,16 +22,16 @@ module Trigger = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Collapsible.Trigger
+    <XoteBase.Collapsible.Trigger
       ?className ?id disabled ?ariaLabel dataSlot="collapsible-trigger">
       {children}
-    </BaseXote.Collapsible.Trigger>
+    </XoteBase.Collapsible.Trigger>
 }
 
 module Content = {
   @xote.component
   let make = (~className: option<string>=?, ~id: option<string>=?, ~children: View.node=View.fragment([])) =>
-    <BaseXote.Collapsible.Panel ?className ?id dataSlot="collapsible-content">
+    <XoteBase.Collapsible.Panel ?className ?id dataSlot="collapsible-content">
       {children}
-    </BaseXote.Collapsible.Panel>
+    </XoteBase.Collapsible.Panel>
 }

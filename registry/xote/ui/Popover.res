@@ -1,8 +1,8 @@
 @module("tailwind-merge")
 external cn: (string, option<string>) => string = "twMerge"
 
-module Side = BaseXote.Anchored.Side
-module Align = BaseXote.Anchored.Align
+module Side = XoteBase.Anchored.Side
+module Align = XoteBase.Anchored.Align
 
 @xote.component
 let make = (
@@ -12,9 +12,9 @@ let make = (
   ~modal: bool=false,
   ~children: View.node=View.fragment([]),
 ) =>
-  <BaseXote.Popover.Root ?open_ defaultOpen ?onOpenChange modal>
+  <XoteBase.Popover.Root ?open_ defaultOpen ?onOpenChange modal>
     {children}
-  </BaseXote.Popover.Root>
+  </XoteBase.Popover.Root>
 
 module Trigger = {
   @xote.component
@@ -25,9 +25,9 @@ module Trigger = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Popover.Trigger ?className ?id disabled ?ariaLabel dataSlot="popover-trigger">
+    <XoteBase.Popover.Trigger ?className ?id disabled ?ariaLabel dataSlot="popover-trigger">
       {children}
-    </BaseXote.Popover.Trigger>
+    </XoteBase.Popover.Trigger>
 }
 
 module Content = {
@@ -41,8 +41,8 @@ module Content = {
     ~alignOffset: float=0.,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Popover.Positioner side align sideOffset alignOffset>
-      <BaseXote.Popover.Popup
+    <XoteBase.Popover.Positioner side align sideOffset alignOffset>
+      <XoteBase.Popover.Popup
         ?id
         dataSlot="popover-content"
         className={cn(
@@ -50,8 +50,8 @@ module Content = {
           className,
         )}>
         {children}
-      </BaseXote.Popover.Popup>
-    </BaseXote.Popover.Positioner>
+      </XoteBase.Popover.Popup>
+    </XoteBase.Popover.Positioner>
 }
 
 module Header = {
@@ -76,10 +76,10 @@ module Title = {
     ~id: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Popover.Title
+    <XoteBase.Popover.Title
       ?id dataSlot="popover-title" className={cn("cn-popover-title", className)}>
       {children}
-    </BaseXote.Popover.Title>
+    </XoteBase.Popover.Title>
 }
 
 module Description = {
@@ -89,10 +89,10 @@ module Description = {
     ~id: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Popover.Description
+    <XoteBase.Popover.Description
       ?id dataSlot="popover-description" className={cn("cn-popover-description", className)}>
       {children}
-    </BaseXote.Popover.Description>
+    </XoteBase.Popover.Description>
 }
 
 module Close = {
@@ -103,7 +103,7 @@ module Close = {
     ~ariaLabel: option<string>=?,
     ~children: View.node=View.fragment([]),
   ) =>
-    <BaseXote.Popover.Close ?className ?id ?ariaLabel dataSlot="popover-close">
+    <XoteBase.Popover.Close ?className ?id ?ariaLabel dataSlot="popover-close">
       {children}
-    </BaseXote.Popover.Close>
+    </XoteBase.Popover.Close>
 }
