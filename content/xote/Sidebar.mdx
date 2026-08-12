@@ -1,0 +1,79 @@
+---
+title: Sidebar
+description: A composable, themeable and customizable sidebar component.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="SidebarDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Sidebar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Sidebar"
+  title="components/ui/Sidebar.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Sidebar.Provider>
+  <Sidebar>
+    <Sidebar.Content>
+      <Sidebar.Group>
+        <Sidebar.GroupLabel> {"Platform"} </Sidebar.GroupLabel>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton href="#" active=true> {"Playground"} </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Group>
+    </Sidebar.Content>
+  </Sidebar>
+  <Sidebar.Inset>
+    <Sidebar.Trigger />
+  </Sidebar.Inset>
+</Sidebar.Provider>
+```
+
+`Sidebar.Provider` owns the open state; `Sidebar.Trigger` toggles it and the
+root carries `data-state="expanded" | "collapsed"` for the styles.
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

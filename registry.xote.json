@@ -829,6 +829,27 @@
       ]
     },
     {
+      "name": "Sidebar",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Input",
+        "@rescript-shadcn/Separator"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Sidebar.res",
+          "type": "registry:file",
+          "target": "@ui/Sidebar.res"
+        }
+      ]
+    },
+    {
       "name": "Skeleton",
       "type": "registry:ui",
       "dependencies": [
@@ -854,6 +875,20 @@
           "path": "registry/xote/ui/Slider.res",
           "type": "registry:file",
           "target": "@ui/Slider.res"
+        }
+      ]
+    },
+    {
+      "name": "Sonner",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "@rescript-shadcn/Toast"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Sonner.res",
+          "type": "registry:file",
+          "target": "@ui/Sonner.res"
         }
       ]
     },
@@ -929,6 +964,25 @@
           "path": "registry/xote/ui/Textarea.res",
           "type": "registry:file",
           "target": "@ui/Textarea.res"
+        }
+      ]
+    },
+    {
+      "name": "Toast",
+      "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/ui/Toast.res",
+          "type": "registry:file",
+          "target": "@ui/Toast.res"
         }
       ]
     },
@@ -1748,6 +1802,23 @@
       ]
     },
     {
+      "name": "SidebarDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/Sidebar"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SidebarDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "SkeletonDemo",
       "type": "registry:example",
       "dependencies": [
@@ -1775,6 +1846,24 @@
       "files": [
         {
           "path": "registry/xote/examples/SliderDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SonnerDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Sonner",
+        "@rescript-shadcn/Toast"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SonnerDemo.res",
           "type": "registry:example"
         }
       ]
@@ -1857,6 +1946,23 @@
       "files": [
         {
           "path": "registry/xote/examples/TextareaDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToastDemo",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Toast"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToastDemo.res",
           "type": "registry:example"
         }
       ]
