@@ -69,12 +69,13 @@ module Content = {
     ~align: Align.t=Start,
     ~sideOffset: float=4.,
     ~alignOffset: float=0.,
+    ~dataSlot: string="menubar-content",
     ~children: View.node=View.fragment([]),
   ) =>
     <XoteBase.Menu.Positioner side align sideOffset alignOffset>
       <XoteBase.Menu.Popup
         ?id
-        dataSlot="menubar-content"
+        dataSlot
         className={cn(
           "cn-menubar-content cn-menubar-content-logical cn-menu-target cn-menu-translucent z-50 max-h-(--available-height) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none data-closed:overflow-hidden",
           className,
@@ -253,9 +254,12 @@ module SubTrigger = {
       disabled
       dataSlot="menubar-sub-trigger"
       dataInset=?{inset ? Some("true") : None}
-      className={cn("cn-menubar-sub-trigger flex cursor-default items-center outline-hidden select-none data-[popup-open]:bg-accent [&_svg]:pointer-events-none [&_svg]:shrink-0", className)}>
+      className={cn(
+        "cn-menubar-sub-trigger data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center outline-hidden select-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        className,
+      )}>
       {children}
-      <Icons.ChevronRight className="ml-auto size-4" />
+      <Icons.ChevronRight className="cn-rtl-flip ml-auto" />
     </XoteBase.Menu.SubTrigger>
 }
 
@@ -264,15 +268,22 @@ module SubContent = {
   let make = (
     ~className: option<string>=?,
     ~id: option<string>=?,
-    ~sideOffset: float=4.,
+    ~side: Side.t=Right,
+    ~align: Align.t=Start,
+    ~sideOffset: float=0.,
+    ~alignOffset: float=-3.,
     ~children: View.node=View.fragment([]),
   ) =>
-    <XoteBase.Menu.Positioner side=Right align=Start sideOffset>
-      <XoteBase.Menu.Popup
-        ?id dataSlot="menubar-subcontent" className={cn("cn-menubar-subcontent cn-menubar-content-logical cn-menu-target cn-menu-translucent z-50 min-w-32 origin-(--transform-origin) overflow-hidden outline-none", className)}>
-        {children}
-      </XoteBase.Menu.Popup>
-    </XoteBase.Menu.Positioner>
+    <Content
+      ?id
+      side
+      align
+      sideOffset
+      alignOffset
+      dataSlot="menubar-sub-content"
+      className={cn("cn-menubar-sub-content w-auto", className)}>
+      {children}
+    </Content>
 }
 
 /* The base registries portal submenu content explicitly; here the positioner
