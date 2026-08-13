@@ -969,8 +969,13 @@
     {
       "name": "Sonner",
       "type": "registry:ui",
+      "dependencies": [
+        "rescript-xote-base",
+        "xote"
+      ],
       "registryDependencies": [
-        "@rescript-shadcn/Toast"
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Icons"
       ],
       "files": [
         {
@@ -4042,8 +4047,7 @@
       ],
       "registryDependencies": [
         "@rescript-shadcn/Button",
-        "@rescript-shadcn/Sonner",
-        "@rescript-shadcn/Toast"
+        "@rescript-shadcn/Sonner"
       ],
       "files": [
         {
