@@ -56,9 +56,9 @@ module Content = {
     <div
       id=?{ctx->Option.map(ctx => ctx.viewportId)}
       class={cn(
-        `cn-carousel-content flex snap-mandatory overflow-hidden overflow-x-auto scrollbar-none ${vertical
-            ? "-mt-4 snap-y flex-col"
-            : "-ml-4 snap-x"}`,
+        `cn-carousel-content no-scrollbar flex snap-mandatory ${vertical
+            ? "-mt-4 snap-y flex-col overflow-x-hidden overflow-y-auto"
+            : "-ml-4 snap-x overflow-x-auto overflow-y-hidden"}`,
         className,
       )}
       attrs=[View.attr("data-slot", "carousel-content")]>
@@ -105,13 +105,19 @@ module Previous = {
   @xote.component
   let make = (~className: option<string>=?) => {
     let ctx = use()
+    let vertical = ctx->Option.mapOr(false, ctx => ctx.orientation === Vertical)
 
     <Button
       variant=Outline
       size=IconSm
       ariaLabel="Previous slide"
       dataSlot="carousel-previous"
-      className={cn("cn-carousel-previous absolute top-1/2 -left-4 -translate-y-1/2 rounded-full", className)}
+      className={cn(
+        `cn-carousel-previous absolute touch-manipulation rounded-full ${vertical
+            ? "-top-12 left-1/2 -translate-x-1/2 rotate-90"
+            : "top-1/2 -left-12 -translate-y-1/2"}`,
+        className,
+      )}
       onClick={scrollButton(~ctx, ~direction=-1)}>
       <Icons.ChevronLeft />
     </Button>
@@ -122,13 +128,19 @@ module Next = {
   @xote.component
   let make = (~className: option<string>=?) => {
     let ctx = use()
+    let vertical = ctx->Option.mapOr(false, ctx => ctx.orientation === Vertical)
 
     <Button
       variant=Outline
       size=IconSm
       ariaLabel="Next slide"
       dataSlot="carousel-next"
-      className={cn("cn-carousel-next absolute top-1/2 -right-4 -translate-y-1/2 rounded-full", className)}
+      className={cn(
+        `cn-carousel-next absolute touch-manipulation rounded-full ${vertical
+            ? "-bottom-12 left-1/2 -translate-x-1/2 rotate-90"
+            : "top-1/2 -right-12 -translate-y-1/2"}`,
+        className,
+      )}
       onClick={scrollButton(~ctx, ~direction=1)}>
       <Icons.ChevronRight />
     </Button>

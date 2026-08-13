@@ -1643,6 +1643,22 @@
       ]
     },
     {
+      "name": "BubbleVariants",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Bubble"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/BubbleVariants.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ButtonDefault",
       "type": "registry:example",
       "dependencies": [
@@ -2307,6 +2323,22 @@
       ]
     },
     {
+      "name": "ContextMenuRadio",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuRadio.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ContextMenuShortcuts",
       "type": "registry:example",
       "dependencies": [
@@ -2318,6 +2350,22 @@
       "files": [
         {
           "path": "registry/xote/examples/ContextMenuShortcuts.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ContextMenuSides",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ContextMenu"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ContextMenuSides.res",
           "type": "registry:example"
         }
       ]
@@ -2420,6 +2468,60 @@
       "files": [
         {
           "path": "registry/xote/examples/DrawerDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "DrawerDialog",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Dialog",
+        "@rescript-shadcn/Drawer",
+        "@rescript-shadcn/Input",
+        "@rescript-shadcn/Label"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/DrawerDialog.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "DrawerScrollableContent",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/DrawerScrollableContent.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "DrawerSides",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/Drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/DrawerSides.res",
           "type": "registry:example"
         }
       ]
@@ -4442,6 +4544,23 @@
       ]
     },
     {
+      "name": "ToggleGroupFontWeightSelector",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Field",
+        "@rescript-shadcn/ToggleGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleGroupFontWeightSelector.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "ToggleGroupOutline",
       "type": "registry:example",
       "dependencies": [
@@ -4469,6 +4588,39 @@
       "files": [
         {
           "path": "registry/xote/examples/ToggleGroupSizes.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleGroupSpacing",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/ToggleGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleGroupSpacing.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "ToggleGroupVertical",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Icons",
+        "@rescript-shadcn/ToggleGroup"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/ToggleGroupVertical.res",
           "type": "registry:example"
         }
       ]

@@ -45,10 +45,10 @@ module Content = {
   let make = (
     ~className: option<string>=?,
     ~id: option<string>=?,
-    ~side: Side.t=Bottom,
+    ~side: Side.t=Right,
     ~align: Align.t=Start,
-    ~sideOffset: float=4.,
-    ~alignOffset: float=0.,
+    ~sideOffset: float=0.,
+    ~alignOffset: float=4.,
     ~children: View.node=View.fragment([]),
   ) =>
     <XoteBase.Menu.Positioner side align sideOffset alignOffset>
@@ -244,10 +244,11 @@ module SubContent = {
   let make = (
     ~className: option<string>=?,
     ~id: option<string>=?,
-    ~sideOffset: float=4.,
+    ~sideOffset: float=0.,
+    ~alignOffset: float=4.,
     ~children: View.node=View.fragment([]),
   ) =>
-    <XoteBase.Menu.Positioner side=Right align=Start sideOffset>
+    <XoteBase.Menu.Positioner side=Right align=Start sideOffset alignOffset>
       <XoteBase.Menu.Popup
         ?id dataSlot="context-menu-subcontent" className={cn("cn-context-menu-subcontent cn-context-menu-content-logical cn-menu-target cn-menu-translucent z-50 min-w-32 origin-(--transform-origin) overflow-hidden outline-none", className)}>
         {children}

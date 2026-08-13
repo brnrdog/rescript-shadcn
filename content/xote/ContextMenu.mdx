@@ -7,7 +7,10 @@ links:
   doc: https://xote.dev/
   api: https://github.com/brnrdog/xote#readme
 ---
-<ComponentPreview name="ContextMenuDemo" />
+<ComponentPreview
+  name="ContextMenuDemo"
+  description="A context menu with sub menu items."
+/>
 
 ## Installation
 
@@ -70,6 +73,12 @@ A simple context menu with a few actions.
 
 <ComponentPreview name="ContextMenuBasic" />
 
+### Submenu
+
+Use `ContextMenuSub` to nest secondary actions.
+
+<ComponentPreview name="ContextMenuSubmenu" />
+
 ### Shortcuts
 
 Add `ContextMenuShortcut` to show keyboard hints.
@@ -94,11 +103,23 @@ Use `ContextMenuCheckboxItem` for toggles.
 
 <ComponentPreview name="ContextMenuCheckboxes" />
 
+### Radio
+
+Use `ContextMenuRadioItem` for exclusive choices.
+
+<ComponentPreview name="ContextMenuRadio" />
+
 ### Destructive
 
 Use `variant=Destructive` to style the menu item as destructive.
 
 <ComponentPreview name="ContextMenuDestructive" />
+
+### Sides
+
+Control submenu placement with side and align props.
+
+<ComponentPreview name="ContextMenuSides" />
 
 ## API Reference
 

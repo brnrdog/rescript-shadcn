@@ -66,6 +66,26 @@ npm install xote rescript-xote-base
 The drawer is a dialog pinned to an edge, chosen with `direction`. Dragging it
 shut is not implemented — it closes through its actions, Escape or the overlay.
 
+## Examples
+
+### Scrollable Content
+
+Keep actions visible while the content scrolls.
+
+<ComponentPreview name="DrawerScrollableContent" />
+
+### Sides
+
+Use the `direction` prop on `Drawer.Content` to set the side of the drawer. Available options are `Top`, `Right`, `Bottom`, and `Left`.
+
+<ComponentPreview name="DrawerSides" />
+
+### Responsive Dialog
+
+You can combine the `Dialog` and `Drawer` components to create a responsive dialog. This renders a `Dialog` component on desktop and a `Drawer` on mobile.
+
+<ComponentPreview name="DrawerDialog" />
+
 ## API Reference
 
 Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

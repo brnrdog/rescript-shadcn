@@ -24,6 +24,16 @@ let radioContext: Internal.Context.t<RadioCtx.t> = Internal.Context.make()
 
 let use = () => Internal.Context.use(context)
 
+/* Pointing at an item highlights it: the styles select the highlight with
+   `:focus`, so hovering has to move focus the way arrow keys do. */
+let highlightOnHover = (~disabled: bool) => event =>
+  if !disabled {
+    switch Internal.El.eventCurrentTarget(event)->Nullable.toOption {
+    | Some(element) => element->Internal.El.focus
+    | None => ()
+    }
+  }
+
 module Trigger = {
   @xote.component
   let make = (
@@ -162,6 +172,7 @@ module Item = {
       class=?{className}
       style=?{style}
       onClick={select}
+      onPointerEnter={highlightOnHover(~disabled)}
       attrs={Array.concat(
         [
           View.attr("data-slot", dataSlot),
@@ -215,6 +226,7 @@ module CheckboxItem = {
       class=?{className}
       style=?{style}
       onClick={toggle}
+      onPointerEnter={highlightOnHover(~disabled)}
       attrs=[
         Internal.boolAttr("aria-checked", state.get),
         Internal.flag("data-checked", state.get),
@@ -300,6 +312,7 @@ module RadioItem = {
       class=?{className}
       style=?{style}
       onClick={select}
+      onPointerEnter={highlightOnHover(~disabled)}
       attrs=[
         Internal.boolAttr("aria-checked", isChecked),
         Internal.flag("data-checked", isChecked),
@@ -540,7 +553,10 @@ module SubTrigger = {
       tabIndex={-1}
       class=?{className}
       style=?{style}
-      onPointerEnter={_ => open_()}
+      onPointerEnter={event => {
+        highlightOnHover(~disabled)(event)
+        open_()
+      }}
       onClick={_ => open_()}
       onKeyDown={onKeyDown}
       attrs=[

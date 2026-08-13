@@ -22,6 +22,7 @@ module Item = {
     ~dataSlot: string="toggle-group-item",
     ~dataVariant: option<string>=?,
     ~dataSize: option<string>=?,
+    ~dataSpacing: option<string>=?,
     ~style: option<string>=?,
     ~children: View.node=Internal.noChildren,
   ) => {
@@ -51,6 +52,7 @@ module Item = {
         View.attr("data-slot", dataSlot),
         View.optionalAttr("data-variant", dataVariant),
         View.optionalAttr("data-size", dataSize),
+        View.optionalAttr("data-spacing", dataSpacing),
         View.optionalAttr("data-disabled", disabled ? Some("") : None),
       ]>
       {children}

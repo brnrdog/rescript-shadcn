@@ -13,5 +13,5 @@ let make = () =>
         )->ignore}>
       {"Show Toast"}
     </Button>
-    <Sonner.Toaster />
+    <Sonner.Toaster position=TopCenter />
   </div>

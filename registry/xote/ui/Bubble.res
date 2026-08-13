@@ -5,7 +5,10 @@ module Variant = {
   @unboxed
   type t =
     | @as("default") Default
+    | @as("secondary") Secondary
     | @as("muted") Muted
+    | @as("tinted") Tinted
+    | @as("outline") Outline
     | @as("ghost") Ghost
     | @as("destructive") Destructive
 }
@@ -86,6 +89,18 @@ module Content = {
 }
 
 module Reactions = {
+  let sideClass = (~side: Side.t) =>
+    switch side {
+    | Top => "cn-bubble-reactions-side-top"
+    | Bottom => "cn-bubble-reactions-side-bottom"
+    }
+
+  let alignClass = (~align: Align.t) =>
+    switch align {
+    | Start => "cn-bubble-reactions-align-start"
+    | End => "cn-bubble-reactions-align-end"
+    }
+
   @xote.component
   let make = (
     ~className: option<string>=?,
@@ -101,13 +116,9 @@ module Reactions = {
       role=?{role}
       ariaLabel=?{ariaLabel}
       class={cn(
-        `cn-bubble-reactions absolute z-10 flex w-max items-center gap-1 *:flex *:items-center *:gap-1 *:rounded-full *:border *:bg-background *:px-2 *:py-0.5 *:text-xs *:leading-none *:shadow-sm cn-bubble-reactions-side-${(side :> string)} cn-bubble-reactions-align-${(align :> string)} ${switch side {
-            | Top => "-top-3"
-            | Bottom => "-bottom-3"
-            }} ${switch align {
-            | Start => "start-2"
-            | End => "end-2"
-            }}`,
+        `cn-bubble-reactions absolute z-10 flex w-fit items-center justify-center ${sideClass(
+            ~side,
+          )} ${alignClass(~align)}`,
         className,
       )}
       attrs=[
