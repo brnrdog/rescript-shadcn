@@ -55,8 +55,32 @@ let toasts: Signal.t<array<toast>> = Signal.make([])
 
 let defaultDuration = 4000
 
+/* A toast slides in from the edge of the screen and back out to it, so a
+   dismissed one has to outlive the click that dismissed it. `leaving` holds
+   the ones on their way out; `pulse` re-runs the styles that read it. */
+let exitDuration = 200
+
+/* How long the expanded stack waits before collapsing once the pointer is off
+   it, so crossing the gap between two toasts doesn't close it. */
+let collapseDelay = 250
+let leaving: Dict.t<bool> = Dict.make()
+let pulse: Signal.t<int> = Signal.make(0)
+let bump = () => Signal.set(pulse, Signal.peek(pulse) + 1)
+
+let isLeaving = (id: string) => {
+  let _ = Signal.get(pulse)
+  leaving->Dict.get(id)->Option.isSome
+}
+
 let dismiss = (id: string) =>
-  Signal.set(toasts, Signal.peek(toasts)->Array.filter(toast => toast.id !== id))
+  if !(leaving->Dict.get(id)->Option.isSome) {
+    leaving->Dict.set(id, true)
+    bump()
+    XoteBase.Internal.El.setTimer(() => {
+      leaving->Dict.delete(id)
+      Signal.set(toasts, Signal.peek(toasts)->Array.filter(toast => toast.id !== id))
+    }, exitDuration)->ignore
+  }
 
 let push = (message: string, ~variant: Variant.t, ~options: option<Options.t>) => {
   let id = XoteBase.Internal.Id.make("toast")
@@ -122,6 +146,34 @@ module Toaster = {
     | _ => false
     }
 
+    /* The stack is a row of separate toasts with gaps between them, so the
+       pointer keeps leaving it on the way from one to the next. Collapsing is
+       delayed to ride over those gaps. */
+    let collapseTimer = ref(None)
+
+    let cancelCollapse = () =>
+      switch collapseTimer.contents {
+      | Some(timer) => {
+          XoteBase.Internal.El.clearTimer(timer)
+          collapseTimer := None
+        }
+      | None => ()
+      }
+
+    let scheduleCollapse = () => {
+      cancelCollapse()
+      collapseTimer :=
+        Some(
+          XoteBase.Internal.El.setTimer(() => {
+            collapseTimer := None
+            Signal.set(expanded, expand)
+          }, collapseDelay),
+        )
+    }
+
+    /* Toasts enter and leave through the nearest edge of the screen. */
+    let edge = isTop ? "translateY(-100%)" : "translateY(100%)"
+
     let placement = switch position {
     | TopLeft => "top-0 left-0 items-start"
     | TopRight => "top-0 right-0 items-end"
@@ -161,8 +213,11 @@ module Toaster = {
         `cn-toast-viewport pointer-events-none fixed z-[100] flex w-full max-w-sm flex-col p-4 ${placement}`,
         className,
       )}
-      onPointerEnter={_ => Signal.set(expanded, true)}
-      onPointerLeave={_ => Signal.set(expanded, expand)}
+      onPointerEnter={_ => {
+        cancelCollapse()
+        Signal.set(expanded, true)
+      }}
+      onPointerLeave={_ => scheduleCollapse()}
       attrs=[
         View.attr("data-slot", "toaster"),
         View.attr("data-position", (position :> string)),
@@ -178,28 +233,39 @@ module Toaster = {
             Signal.get(toasts)->Array.findIndexOpt(entry => entry.id === toast.id)->Option.getOr(0)
 
           let elementId = `${toast.id}-item`
-          XoteBase.Internal.El.withElement(elementId, element =>
+
+          /* Painted once at the edge, then moved into the stack on the next
+             frame so the transition has something to animate from. */
+          let mounted = Signal.make(false)
+
+          XoteBase.Internal.El.withElement(elementId, element => {
             measure(element, height => {
               heights->Dict.set(toast.id, height)
               Signal.set(bumped, Signal.peek(bumped) + 1)
             })
-          )
+            XoteBase.Internal.El.setTimer(() => Signal.set(mounted, true), 16)->ignore
+          })
+
+          let isSettled = () => Signal.get(mounted) && !isLeaving(toast.id)
 
           <li
             id={elementId}
             role="status"
-            class="cn-toast group/toast pointer-events-auto absolute flex w-full items-start gap-3 rounded-lg border bg-popover p-4 text-popover-foreground shadow-lg transition-all duration-300 ease-out"
-            style={() =>
-              `transform: ${offsetFor(index())}; z-index: ${(100 - index())->Int.toString}; opacity: ${index() >=
-                  visibleToasts
-                  ? "0"
-                  : "1"}`}
+            class="cn-toast group/toast pointer-events-auto absolute flex w-full items-start gap-3 rounded-lg border bg-popover p-4 text-popover-foreground shadow-lg transition-all duration-[400ms] ease-[cubic-bezier(0.21,1.02,0.73,1)]"
+            style={() => {
+              let settled = isSettled()
+              let transform = settled ? offsetFor(index()) : edge
+              let opacity = settled && index() < visibleToasts ? "1" : "0"
+              `transform: ${transform}; z-index: ${(100 - index())->Int.toString}; opacity: ${opacity}`
+            }}
             attrs=[
               View.attr("data-slot", "toast"),
               View.attr("data-variant", (toast.variant :> string)),
               View.attr("aria-live", "polite"),
               View.computedAttr("data-index", () => index()->Int.toString),
               XoteBase.Internal.flag("data-front", () => index() === 0),
+              XoteBase.Internal.flag("data-mounted", () => Signal.get(mounted)),
+              XoteBase.Internal.flag("data-removing", () => isLeaving(toast.id)),
             ]>
             {toast.variant === Default ? View.fragment([]) : icon(toast.variant)}
             <div class="flex min-w-0 flex-1 flex-col gap-1">
