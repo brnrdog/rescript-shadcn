@@ -1577,7 +1577,8 @@
       ],
       "registryDependencies": [
         "@rescript-shadcn/Breadcrumb",
-        "@rescript-shadcn/Icons"
+        "@rescript-shadcn/Button",
+        "@rescript-shadcn/DropdownMenu"
       ],
       "files": [
         {
@@ -2192,7 +2193,8 @@
         "xote"
       ],
       "registryDependencies": [
-        "@rescript-shadcn/Command"
+        "@rescript-shadcn/Command",
+        "@rescript-shadcn/Icons"
       ],
       "files": [
         {
@@ -2373,6 +2375,7 @@
       "registryDependencies": [
         "@rescript-shadcn/Button",
         "@rescript-shadcn/Dialog",
+        "@rescript-shadcn/Field",
         "@rescript-shadcn/Input",
         "@rescript-shadcn/Label"
       ],
@@ -2390,10 +2393,7 @@
         "xote"
       ],
       "registryDependencies": [
-        "@rescript-shadcn/Button",
-        "@rescript-shadcn/Direction",
-        "@rescript-shadcn/Input",
-        "@rescript-shadcn/Label"
+        "@rescript-shadcn/Direction"
       ],
       "files": [
         {
@@ -2638,7 +2638,6 @@
         "xote"
       ],
       "registryDependencies": [
-        "@rescript-shadcn/Avatar",
         "@rescript-shadcn/Button",
         "@rescript-shadcn/HoverCard"
       ],

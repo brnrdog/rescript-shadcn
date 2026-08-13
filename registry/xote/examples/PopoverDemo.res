@@ -5,18 +5,30 @@ let make = () =>
       {"Open popover"}
     </Popover.Trigger>
     <Popover.Content className="w-80">
-      <Popover.Header>
-        <Popover.Title> {"Dimensions"} </Popover.Title>
-        <Popover.Description> {"Set the dimensions for the layer."} </Popover.Description>
-      </Popover.Header>
-      <div class="grid gap-2">
-        <div class="grid grid-cols-3 items-center gap-4">
-          <Label for_="popover-demo-width"> {"Width"} </Label>
-          <Input id="popover-demo-width" value={MaybeSignal.static("100%")} className="col-span-2 h-8" />
+      <div class="grid gap-4">
+        <div class="space-y-2">
+          <h4 class="leading-none font-medium"> {"Dimensions"} </h4>
+          <p class="text-muted-foreground text-sm">
+            {"Set the dimensions for the layer."}
+          </p>
         </div>
-        <div class="grid grid-cols-3 items-center gap-4">
-          <Label for_="popover-demo-height"> {"Height"} </Label>
-          <Input id="popover-demo-height" value={MaybeSignal.static("25px")} className="col-span-2 h-8" />
+        <div class="grid gap-2">
+          <div class="grid grid-cols-3 items-center gap-4">
+            <Label for_="width"> {"Width"} </Label>
+            <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
+          </div>
+          <div class="grid grid-cols-3 items-center gap-4">
+            <Label for_="maxWidth"> {"Max. width"} </Label>
+            <Input id="maxWidth" defaultValue="300px" className="col-span-2 h-8" />
+          </div>
+          <div class="grid grid-cols-3 items-center gap-4">
+            <Label for_="height"> {"Height"} </Label>
+            <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
+          </div>
+          <div class="grid grid-cols-3 items-center gap-4">
+            <Label for_="maxHeight"> {"Max. height"} </Label>
+            <Input id="maxHeight" defaultValue="none" className="col-span-2 h-8" />
+          </div>
         </div>
       </div>
     </Popover.Content>

@@ -105,7 +105,8 @@ module List = {
 module Item = {
   @xote.component
   let make = (
-    ~value: string,
+    /* cmdk filters on the item's rendered text; passing `value` overrides it. */
+    ~value: option<string>=?,
     ~className: option<string>=?,
     ~id: option<string>=?,
     ~disabled: bool=false,
@@ -113,15 +114,26 @@ module Item = {
     ~children: View.node=View.fragment([]),
   ) => {
     let ctx = use()
-    let isVisible = () => ctx->Option.mapOr(true, ctx => ctx.matches(value))
+    let elementId = id->Option.getOr(XoteBase.Internal.Id.make("command-item"))
 
-    switch ctx {
-    | Some({register}) => register(value)
-    | None => ()
+    let searchText = () =>
+      switch value {
+      | Some(value) => value
+      | None =>
+        XoteBase.Internal.El.getElementById(elementId)
+        ->Nullable.toOption
+        ->Option.mapOr("", XoteBase.Internal.El.textContent)
+      }
+
+    let isVisible = () => ctx->Option.mapOr(true, ctx => ctx.matches(searchText()))
+
+    switch (ctx, value) {
+    | (Some({register}), Some(value)) => register(value)
+    | _ => ()
     }
 
     <div
-      id=?{id}
+      id={elementId}
       role="option"
       tabIndex={-1}
       class={cn(
@@ -135,7 +147,7 @@ module Item = {
         }}
       attrs=[
         View.attr("data-slot", "command-item"),
-        View.attr("data-value", value),
+        View.optionalAttr("data-value", value),
         View.computedAttr("data-disabled", () => disabled ? "true" : "false"),
         View.optionalComputedAttr("hidden", () => isVisible() ? None : Some("true")),
       ]>

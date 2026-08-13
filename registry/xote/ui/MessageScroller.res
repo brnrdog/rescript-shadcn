@@ -94,3 +94,10 @@ module Item = {
       {children}
     </div>
 }
+
+/* The scroller owns its own viewport, so the provider base needs is a no-op
+   wrapper kept for source compatibility. */
+module Provider = {
+  @xote.component
+  let make = (~children: View.node=View.fragment([])) => children
+}

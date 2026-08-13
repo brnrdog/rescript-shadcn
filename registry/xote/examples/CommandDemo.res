@@ -1,23 +1,39 @@
 @xote.component
 let make = () =>
-  <Command className="max-w-sm rounded-lg border shadow-md" ariaLabel="Command palette">
+  <Command className="max-w-sm rounded-lg border">
     <Command.Input placeholder="Type a command or search..." />
     <Command.List>
       <Command.Empty> {"No results found."} </Command.Empty>
       <Command.Group heading="Suggestions">
-        <Command.Item value="Calendar"> {"Calendar"} </Command.Item>
-        <Command.Item value="Search Emoji"> {"Search Emoji"} </Command.Item>
-        <Command.Item value="Calculator"> {"Calculator"} </Command.Item>
+        <Command.Item>
+          <Icons.Calendar />
+          <span> {"Calendar"} </span>
+        </Command.Item>
+        <Command.Item>
+          <Icons.Smile />
+          <span> {"Search Emoji"} </span>
+        </Command.Item>
+        <Command.Item disabled={true}>
+          <Icons.Calculator />
+          <span> {"Calculator"} </span>
+        </Command.Item>
       </Command.Group>
       <Command.Separator />
       <Command.Group heading="Settings">
-        <Command.Item value="Profile">
-          {"Profile"}
+        <Command.Item>
+          <Icons.User />
+          <span> {"Profile"} </span>
           <Command.Shortcut> {"⌘P"} </Command.Shortcut>
         </Command.Item>
-        <Command.Item value="Billing">
-          {"Billing"}
+        <Command.Item>
+          <Icons.CreditCard />
+          <span> {"Billing"} </span>
           <Command.Shortcut> {"⌘B"} </Command.Shortcut>
+        </Command.Item>
+        <Command.Item>
+          <Icons.Settings />
+          <span> {"Settings"} </span>
+          <Command.Shortcut> {"⌘S"} </Command.Shortcut>
         </Command.Item>
       </Command.Group>
     </Command.List>

@@ -1,25 +1,26 @@
 @xote.component
 let make = () =>
-  <Item.Group className="flex w-full max-w-md flex-col gap-6">
+  <div class="flex w-full max-w-md flex-col gap-6">
     <Item variant=Outline>
-      <Item.Media variant=Icon>
-        <Icons.Check />
-      </Item.Media>
       <Item.Content>
-        <Item.Title> {"Deployment complete"} </Item.Title>
-        <Item.Description> {"Your project is live at example.com."} </Item.Description>
+        <Item.Title> {"Basic Item"} </Item.Title>
+        <Item.Description>
+          {"A simple item with title and description."}
+        </Item.Description>
       </Item.Content>
       <Item.Actions>
-        <Button variant=Outline size=Sm> {"View"} </Button>
+        <Button variant=Outline size=Sm> {"Action"} </Button>
       </Item.Actions>
     </Item>
-    <Item variant=Muted>
-      <Item.Media variant=Icon>
-        <Icons.Loader className="animate-spin" />
+    <Item variant=Outline size=Sm href="#">
+      <Item.Media>
+        <Icons.BadgeCheck className="size-5" />
       </Item.Media>
       <Item.Content>
-        <Item.Title> {"Build running"} </Item.Title>
-        <Item.Description> {"Started a few seconds ago."} </Item.Description>
+        <Item.Title> {"Your profile has been verified."} </Item.Title>
       </Item.Content>
+      <Item.Actions>
+        <Icons.ChevronRight className="size-4" />
+      </Item.Actions>
     </Item>
-  </Item.Group>
+  </div>

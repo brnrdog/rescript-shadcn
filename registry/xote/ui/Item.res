@@ -31,21 +31,24 @@ let make = (
   ~id: option<string>=?,
   ~variant: Variant.t=Default,
   ~size: Size.t=Default,
+  ~href: option<string>=?,
   ~children: View.node=View.fragment([]),
-) =>
-  <div
-    id=?{id}
-    class={cn(
-      `cn-item w-full group/item focus-visible:border-ring focus-visible:ring-ring/50 flex items-center flex-wrap outline-none transition-colors duration-100 focus-visible:ring-[3px] [a]:transition-colors cn-item-variant-${(variant :> string)} cn-item-size-${(size :> string)}`,
-      className,
-    )}
-    attrs=[
-      View.attr("data-slot", "item"),
-      View.attr("data-variant", (variant :> string)),
-      View.attr("data-size", (size :> string)),
-    ]>
-    {children}
-  </div>
+) => {
+  let classes = cn(
+    `cn-item w-full group/item focus-visible:border-ring focus-visible:ring-ring/50 flex items-center flex-wrap outline-none transition-colors duration-100 focus-visible:ring-[3px] [a]:transition-colors cn-item-variant-${(variant :> string)} cn-item-size-${(size :> string)}`,
+    className,
+  )
+  let attributes = [
+    View.attr("data-slot", "item"),
+    View.attr("data-variant", (variant :> string)),
+    View.attr("data-size", (size :> string)),
+  ]
+
+  switch href {
+  | Some(href) => <a id=?{id} href class={classes} attrs={attributes}> {children} </a>
+  | None => <div id=?{id} class={classes} attrs={attributes}> {children} </div>
+  }
+}
 
 module Group = {
   @xote.component
