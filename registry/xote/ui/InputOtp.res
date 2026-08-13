@@ -47,7 +47,7 @@ let make = (
 
   <div
     id=?{id}
-    class={cn("cn-input-otp flex items-center has-disabled:opacity-50", className)}
+    class={cn("cn-input-otp relative flex items-center has-disabled:opacity-50", className)}
     attrs=[View.attr("data-slot", "input-otp")]>
     <input
       name=?{name}

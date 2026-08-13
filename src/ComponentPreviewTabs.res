@@ -34,7 +34,7 @@ module PreviewWrapper = {
         dataAlign={(align :> string)}
         dataChromeless={chromeLessOnMobile}
         className={Commons.cn(
-          `preview style-${styleId->Config.Style.toString} relative flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0`,
+          `preview style-${styleId->Config.Style.toString} relative flex min-h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0`,
           previewClassName,
         )}
       >

@@ -101,7 +101,13 @@ module Reactions = {
       role=?{role}
       ariaLabel=?{ariaLabel}
       class={cn(
-        `cn-bubble-reactions cn-bubble-reactions-side-${(side :> string)} cn-bubble-reactions-align-${(align :> string)}`,
+        `cn-bubble-reactions absolute z-10 flex w-max items-center gap-1 *:flex *:items-center *:gap-1 *:rounded-full *:border *:bg-background *:px-2 *:py-0.5 *:text-xs *:leading-none *:shadow-sm cn-bubble-reactions-side-${(side :> string)} cn-bubble-reactions-align-${(align :> string)} ${switch side {
+            | Top => "-top-3"
+            | Bottom => "-bottom-3"
+            }} ${switch align {
+            | Start => "start-2"
+            | End => "end-2"
+            }}`,
         className,
       )}
       attrs=[
