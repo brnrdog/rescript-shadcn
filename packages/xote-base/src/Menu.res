@@ -3,14 +3,24 @@
    and returns focus to its trigger. */
 
 module Ctx = {
-  type t = {
+  type rec t = {
     isOpen: unit => bool,
     setOpen: bool => unit,
     triggerId: string,
     popupId: string,
     modal: bool,
+    /* Submenus close on their own when the pointer leaves; a root menu waits
+       for a press outside. `parent` is the menu this one is nested in. */
+    isSub: bool,
+    cancelClose: unit => unit,
+    scheduleClose: unit => unit,
+    parent: option<t>,
   }
 }
+
+/* Leaving a submenu gives you this long to come back before it closes, so
+   cutting a corner on the way to its items doesn't snap it shut. */
+let hoverCloseDelay = 200
 
 module RadioCtx = {
   type t = {
@@ -33,6 +43,16 @@ let highlightOnHover = (~disabled: bool) => event =>
     | None => ()
     }
   }
+
+/* Selecting an item closes the menu it belongs to, and from a submenu the
+   menus it is nested in, so the whole tree dismisses at once. */
+let rec closeTree = (ctx: Ctx.t) => {
+  ctx.setOpen(false)
+  switch (ctx.isSub, ctx.parent) {
+  | (true, Some(parent)) => closeTree(parent)
+  | _ => ()
+  }
+}
 
 module Trigger = {
   @xote.component
@@ -160,7 +180,7 @@ module Item = {
         | None => ()
         }
         switch ctx {
-        | Some({setOpen}) if closeOnSelect => setOpen(false)
+        | Some(ctx) if closeOnSelect => closeTree(ctx)
         | _ => ()
         }
       }
@@ -214,7 +234,7 @@ module CheckboxItem = {
       if !disabled {
         state.set(!state.get())
         switch ctx {
-        | Some({setOpen}) if closeOnSelect => setOpen(false)
+        | Some(ctx) if closeOnSelect => closeTree(ctx)
         | _ => ()
         }
       }
@@ -300,7 +320,7 @@ module RadioItem = {
         | None => ()
         }
         switch ctx {
-        | Some({setOpen}) if closeOnSelect => setOpen(false)
+        | Some(ctx) if closeOnSelect => closeTree(ctx)
         | _ => ()
         }
       }
@@ -446,6 +466,16 @@ module Popup = {
       style=?{style}
       ariaLabel=?{ariaLabel}
       onKeyDown={onKeyDown}
+      onPointerEnter={_ =>
+        switch ctx {
+        | Some({isSub: true, cancelClose}) => cancelClose()
+        | _ => ()
+        }}
+      onPointerLeave={_ =>
+        switch ctx {
+        | Some({isSub: true, scheduleClose}) => scheduleClose()
+        | _ => ()
+        }}
       attrs={Array.concat(
         [
           View.optionalAttr("aria-labelledby", ctx->Option.map(ctx => ctx.triggerId)),
@@ -555,8 +585,17 @@ module SubTrigger = {
       style=?{style}
       onPointerEnter={event => {
         highlightOnHover(~disabled)(event)
+        switch ctx {
+        | Some({cancelClose}) => cancelClose()
+        | None => ()
+        }
         open_()
       }}
+      onPointerLeave={_ =>
+        switch ctx {
+        | Some({scheduleClose}) => scheduleClose()
+        | None => ()
+        }}
       onClick={_ => open_()}
       onKeyDown={onKeyDown}
       attrs=[
@@ -582,8 +621,10 @@ module Root = {
     ~defaultOpen: bool=false,
     ~onOpenChange: option<bool => unit>=?,
     ~modal: bool=true,
+    ~isSub: bool=false,
     ~children: View.node=Internal.noChildren,
   ) => {
+    let parent = isSub ? use() : None
     let elementId = id->Option.getOr(Internal.Id.make("menu"))
     let state = Internal.Controlled.make(
       ~value=open_,
@@ -591,17 +632,54 @@ module Root = {
       ~onChange=onOpenChange,
     )
 
+    let closeTimer = ref(None)
+
+    let cancelClose = () =>
+      switch closeTimer.contents {
+      | Some(timer) => {
+          Internal.El.clearTimer(timer)
+          closeTimer := None
+        }
+      | None => ()
+      }
+
+    let scheduleClose = () => {
+      cancelClose()
+      closeTimer :=
+        Some(
+          Internal.El.setTimer(() => {
+            closeTimer := None
+            state.set(false)
+          }, hoverCloseDelay),
+        )
+    }
+
     let ctx: Ctx.t = {
       isOpen: state.get,
       setOpen: state.set,
       triggerId: `${elementId}-trigger`,
       popupId: `${elementId}-popup`,
       modal,
+      isSub,
+      cancelClose,
+      scheduleClose,
+      parent,
     }
 
     Internal.Context.provide(context, ctx, children)
   }
 }
 
-/* A submenu is an independent menu: its own open state, its own popup. */
-module Sub = Root
+/* A submenu is an independent menu: its own open state, its own popup. It
+   knows its parent, so selecting one of its items closes the whole menu. */
+module Sub = {
+  @xote.component
+  let make = (
+    ~id: option<string>=?,
+    ~open_: option<MaybeSignal.t<bool>>=?,
+    ~defaultOpen: bool=false,
+    ~onOpenChange: option<bool => unit>=?,
+    ~modal: bool=false,
+    ~children: View.node=Internal.noChildren,
+  ) => <Root ?id ?open_ defaultOpen ?onOpenChange modal isSub=true> {children} </Root>
+}
