@@ -256,6 +256,27 @@ module El = {
     currentSlot := previous
   }
 
+  /* An effect created while a component body is evaluating can lose its own
+     subscription: in development xote evaluates those bodies inside a
+     `Computed.make` — its hidden-read probe — and an effect created inside a
+     computed never re-runs, so the thing it drives simply stops updating.
+     Creating it one microtask later puts it outside that computation, and the
+     slot opened here keeps it owned by the component either way. */
+  let ownedEffect = (
+    body: unit => option<unit => unit>,
+    ~alsoDispose: option<unit => unit>=?,
+  ): unit => {
+    let slot = openSlot()
+    schedule(() => {
+      let disposer = Effect.runWithDisposer(body)
+      slot.cleanups->Array.push(disposer.dispose)->ignore
+      switch alsoDispose {
+      | Some(dispose) => slot.cleanups->Array.push(dispose)->ignore
+      | None => ()
+      }
+    })
+  }
+
   let ownDisposer = (disposer: Effect.disposer): unit =>
     switch currentSlot.contents {
     | Some(slot) => slot.cleanups->Array.push(disposer.dispose)->ignore
@@ -397,7 +418,7 @@ module Portal = {
         container := None
       }
 
-      let disposer = Effect.runWithDisposer(() => {
+      El.ownedEffect(~alsoDispose=close, () => {
         if isOpen() {
           switch (container.contents, El.body()->Nullable.toOption) {
           | (None, Some(body)) =>
@@ -421,9 +442,6 @@ module Portal = {
         }
         None
       })
-
-      El.ownDisposer(disposer)
-      El.ownDisposer({dispose: close})
     }
 }
 
