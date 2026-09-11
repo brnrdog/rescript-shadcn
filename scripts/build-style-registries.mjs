@@ -32,7 +32,7 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const packageRoot = path.resolve(__dirname, "..")
 
-const LIBS = ["base", "aria"]
+const LIBS = ["base", "aria", "xote"]
 const stylesDir = path.join(packageRoot, "registry", "styles")
 const buildRoot = path.join(packageRoot, ".registry-build")
 const publicStylesRoot = path.join(packageRoot, "public", "r", "styles")

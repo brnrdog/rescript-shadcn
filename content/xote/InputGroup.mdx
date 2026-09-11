@@ -1,0 +1,126 @@
+---
+title: Input Group
+description: Add addons, buttons, and helper content to inputs.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+import { IconInfoCircle } from "@tabler/icons-react"
+
+<ComponentPreview name="InputGroupDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/InputGroup
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="InputGroup"
+  title="components/ui/InputGroup.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res showLineNumbers
+<InputGroup>
+  <InputGroup.Input placeholder="Search..." />
+  <InputGroup.Addon>
+    <Icons.Search />
+  </InputGroup.Addon>
+</InputGroup>
+```
+
+## Align
+
+Use the `align` prop on `InputGroupAddon` to position the addon relative to the input.
+
+<Callout>
+  For proper focus management, `InputGroupAddon` should always be placed after
+  `InputGroupInput` or `InputGroupTextarea` in the DOM. Use the `align` prop to
+  visually position the addon.
+</Callout>
+
+### inline-start
+
+Use `align=InlineStart` to position the addon at the start of the input. This is the default.
+
+<ComponentPreview name="InputGroupInlineStart" />
+
+### inline-end
+
+Use `align=InlineEnd` to position the addon at the end of the input.
+
+<ComponentPreview name="InputGroupInlineEnd" />
+
+### block-start
+
+Use `align=BlockStart` to position the addon above the input.
+
+<ComponentPreview name="InputGroupBlockStart" />
+
+### block-end
+
+Use `align=BlockEnd` to position the addon below the input.
+
+<ComponentPreview name="InputGroupBlockEnd" />
+
+## Examples
+
+### Icon
+
+<ComponentPreview name="InputGroupIcon" />
+
+### Text
+
+<ComponentPreview name="InputGroupText" />
+
+### Kbd
+
+<ComponentPreview name="InputGroupKbd" />
+
+### Spinner
+
+<ComponentPreview name="InputGroupSpinner" />
+
+### Textarea
+
+<ComponentPreview name="InputGroupTextarea" />
+
+### Custom Input
+
+Add the `data-slot="input-group-control"` attribute to your custom input for automatic focus state handling.
+
+Here's an example of a custom resizable textarea from a third-party library.
+
+<ComponentPreview name="InputGroupCustom" />
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

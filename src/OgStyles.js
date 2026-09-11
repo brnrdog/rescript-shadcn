@@ -1,7 +1,7 @@
 export const DEFAULT_STYLE = "vega";
 export const STYLES = ["vega", "nova", "lyra", "maia", "mira", "luma", "sera", "rhea"];
 export const DEFAULT_LIB = "base";
-export const LIBS = ["base", "aria"];
+export const LIBS = ["base", "aria", "xote"];
 export const DEFAULT_SELECTION = `${DEFAULT_LIB}-${DEFAULT_STYLE}`;
 
 const STYLE_SET = new Set(STYLES);

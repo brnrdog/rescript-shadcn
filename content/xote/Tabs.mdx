@@ -1,0 +1,87 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+<ComponentPreview name="TabsDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Tabs
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Tabs"
+  title="components/ui/Tabs.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res showLineNumbers
+<Tabs defaultValue="account" className="w-[400px]">
+  <Tabs.List>
+    <Tabs.Trigger value="account"> {"Account"} </Tabs.Trigger>
+    <Tabs.Trigger value="password"> {"Password"} </Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="account"> {"Make changes to your account here."} </Tabs.Content>
+  <Tabs.Content value="password"> {"Change your password here."} </Tabs.Content>
+</Tabs>
+```
+
+## Examples
+
+### Line
+
+Use the `variant=Line` prop on `TabsList` for a line style.
+
+<ComponentPreview name="TabsLine" />
+
+### Vertical
+
+Use `orientation="vertical"` for vertical tabs.
+
+<ComponentPreview name="TabsVertical" />
+
+### Disabled
+
+<ComponentPreview name="TabsDisabled" />
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

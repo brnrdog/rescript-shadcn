@@ -1,0 +1,71 @@
+---
+title: Drawer
+description: A drawer component for React.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="DrawerDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Drawer
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Drawer"
+  title="components/ui/Drawer.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Drawer>
+  <Drawer.Trigger> {"Open"} </Drawer.Trigger>
+  <Drawer.Content direction=Bottom>
+    <Drawer.Header>
+      <Drawer.Title> {"Move goal"} </Drawer.Title>
+      <Drawer.Description> {"Set your daily activity goal."} </Drawer.Description>
+    </Drawer.Header>
+  </Drawer.Content>
+</Drawer>
+```
+
+The drawer is a dialog pinned to an edge, chosen with `direction`. Dragging it
+shut is not implemented — it closes through its actions, Escape or the overlay.
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

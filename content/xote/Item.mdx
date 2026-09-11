@@ -1,0 +1,97 @@
+---
+title: Item
+description: A versatile component for displaying content with media, title, description, and actions.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+<ComponentPreview name="ItemDemo" />
+
+The `Item` component is a straightforward flex container that can house nearly any type of content. Use it to display a title, description, and actions. Group it with the `Item.Group` component to create a list of items.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Item
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Item"
+  title="components/ui/Item.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res showLineNumbers
+<Item variant=Outline>
+  <Item.Content>
+    <Item.Title> {"Title"} </Item.Title>
+    <Item.Description> {"Description"} </Item.Description>
+  </Item.Content>
+  <Item.Actions>
+    <Button> {"Action"} </Button>
+  </Item.Actions>
+</Item>
+```
+
+## Item vs Field
+
+Use `Field` if you need to display a form input such as a checkbox, input, radio, or select.
+
+If you only need to display content such as a title, description, and actions, use `Item`.
+
+## Variant
+
+Use the `variant` prop to change the visual style of the item.
+
+<ComponentPreview name="ItemVariant" />
+
+## Size
+
+Use the `size` prop to change the size of the item. Available sizes are `default`, `sm`, and `xs`.
+
+<ComponentPreview name="ItemSize" />
+
+## Examples
+
+### Icon
+
+Use `Item.Media` with `variant=Icon` to display an icon.
+
+<ComponentPreview name="ItemIcon" />
+
+### Avatar
+
+You can use `Item.Media` with `variant=Avatar` to display an avatar.
+
+<ComponentPreview name="ItemAvatar" />
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) —
+everything it renders lives in the file you copied, and there is no runtime
+dependency beyond xote itself.

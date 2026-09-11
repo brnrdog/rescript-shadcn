@@ -1,0 +1,79 @@
+---
+title: Dropdown Menu
+description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+base: xote
+component: true
+featured: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+<ComponentPreview name="DropdownMenuDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/DropdownMenu
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="DropdownMenu"
+  title="components/ui/DropdownMenu.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res showLineNumbers
+<DropdownMenu>
+  <DropdownMenu.Trigger render={<Button variant=Outline />}>
+    {"Open"}
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Group>
+      <DropdownMenu.Label> {"My Account"} </DropdownMenu.Label>
+      <DropdownMenu.Item> {"Profile"} </DropdownMenu.Item>
+      <DropdownMenu.Item> {"Billing"} </DropdownMenu.Item>
+      <DropdownMenu.Separator />
+    </DropdownMenu.Group>
+    <DropdownMenu.Group>
+      <DropdownMenu.Item> {"Team"} </DropdownMenu.Item>
+      <DropdownMenu.Item> {"Subscription"} </DropdownMenu.Item>
+    </DropdownMenu.Group>
+  </DropdownMenu.Content>
+</DropdownMenu>
+```
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

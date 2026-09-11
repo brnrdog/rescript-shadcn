@@ -5,13 +5,14 @@
   "workspaces": [
     "packages/*",
     "registry/base",
-    "registry/aria"
+    "registry/aria",
+    "registry/xote"
   ],
   "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "yarn loader:generate && yarn compile && next dev",
-    "compile": "yarn workspace rescript-shadcn-base res:build && yarn workspace rescript-shadcn-aria res:build && yarn rescript",
+    "compile": "yarn workspace rescript-shadcn-base res:build && yarn workspace rescript-shadcn-aria res:build && yarn workspace rescript-xote-base res:build && yarn workspace rescript-shadcn-xote res:build && yarn rescript",
     "build": "yarn loader:generate && yarn compile && yarn registry:sync && node scripts/build-with-og.mjs",
     "build:next": "next build --webpack",
     "start": "next start",
@@ -26,8 +27,9 @@
     "test:registry": "vitest run test/lib-style-registry.test.ts",
     "test:bindings": "vitest run test/react-aria-bindings.test.ts",
     "test:visual": "node test/visual/run-pixel-perfect.mjs",
-    "test": "yarn test:docs && yarn test:classnames && yarn test:registry && yarn test:bindings && yarn test:visual",
-    "postInstall": "yarn loader:generate && fumadocs-mdx source.config.mjs .source"
+    "test": "yarn test:docs && yarn test:classnames && yarn test:registry && yarn test:bindings && yarn test:xote && yarn test:visual",
+    "postInstall": "yarn loader:generate && fumadocs-mdx source.config.mjs .source",
+    "test:xote": "vitest run test/xote-registry.test.ts test/xote-docs.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "1.6.0",
@@ -71,17 +73,22 @@
     "rescript-shadcn-aria": "workspace:^",
     "rescript-shadcn-base": "workspace:^",
     "rescript-shadcn-react": "workspace:^",
+    "rescript-shadcn-xote": "workspace:^",
     "rescript-signals": "^1.3.4",
+    "rescript-xote-base": "workspace:^",
     "shadcn": "^3.0.0",
     "shiki": "^4.0.1",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tw-animate-css": "^1.3.6",
-    "vaul": "^1.1.2"
+    "vaul": "^1.1.2",
+    "xote": "7.1.0"
   },
   "devDependencies": {
     "@sparticuz/chromium": "^143.0.4",
     "@tailwindcss/postcss": "^4.2.1",
+    "jsdom": "^30.0.1",
+    "lucide-static": "^1.31.0",
     "puppeteer": "^24.40.0",
     "puppeteer-core": "^24.40.0",
     "sharp": "^0.34.5",

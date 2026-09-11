@@ -1,0 +1,71 @@
+---
+title: Carousel
+description: A carousel with motion and swipe.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="CarouselDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Carousel
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Carousel"
+  title="components/ui/Carousel.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Carousel>
+  <Carousel.Content>
+    <Carousel.Item> {"Slide 1"} </Carousel.Item>
+    <Carousel.Item> {"Slide 2"} </Carousel.Item>
+  </Carousel.Content>
+  <Carousel.Previous />
+  <Carousel.Next />
+</Carousel>
+```
+
+Motion is CSS scroll-snap rather than a JS animation loop, so there is no
+per-frame work and touch and trackpad gestures come for free. Pass
+`orientation=Vertical` to snap up and down instead.
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.

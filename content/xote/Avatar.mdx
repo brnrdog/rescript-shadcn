@@ -1,0 +1,119 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+<ComponentPreview name="AvatarDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Avatar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Avatar"
+  title="components/ui/Avatar.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res showLineNumbers
+<Avatar>
+  <Avatar.Image src="https://github.com/shadcn.png" alt="@shadcn" />
+  <Avatar.Fallback> {"CN"} </Avatar.Fallback>
+</Avatar>
+```
+
+## Examples
+
+### Basic
+
+A basic avatar component with an image and a fallback.
+
+<ComponentPreview name="AvatarBasic" />
+
+### Badge
+
+Use the `Avatar.Badge` component to add a badge to the avatar. The badge is positioned at the bottom right of the avatar.
+
+<ComponentPreview name="AvatarBadge" />
+
+Use the `className` prop to add custom styles to the badge such as custom colors, sizes, etc.
+
+```res showLineNumbers
+<Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback> {"CN"} </AvatarFallback>
+  <AvatarBadge className="bg-green-600 dark:bg-green-800" />
+</Avatar>
+```
+
+### Badge with Icon
+
+You can also use an icon inside `<Avatar.Badge>`.
+
+<ComponentPreview name="AvatarBadgeIcon" />
+
+### Avatar Group
+
+Use the `Avatar.Group` component to add a group of avatars.
+
+<ComponentPreview name="AvatarGroup" />
+
+### Avatar Group Count
+
+Use `<Avatar.GroupCount>` to add a count to the group.
+
+<ComponentPreview name="AvatarGroupCount" />
+
+### Avatar Group with Icon
+
+You can also use an icon inside `<Avatar.GroupCount>`.
+
+<ComponentPreview name="AvatarGroupCountIcon" />
+
+### Sizes
+
+Use the `size` prop to change the size of the avatar.
+
+<ComponentPreview name="AvatarSize" />
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

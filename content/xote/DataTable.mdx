@@ -1,0 +1,68 @@
+---
+title: Data Table
+description: Powerful table and datagrids built using TanStack Table.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="DataTableDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/DataTable
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="DataTable"
+  title="components/ui/DataTable.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+let columns: array<DataTable.column<payment>> = [
+  DataTable.column(~key="email", ~header="Email", ~value=payment => payment.email),
+  DataTable.column(~key="amount", ~header="Amount", ~value=payment => payment.amount),
+]
+
+<DataTable rows=payments columns rowKey={payment => payment.id} />
+```
+
+Sorting and filtering are signals over the row array rather than a table
+library: click a header to sort, and pass a `filter` signal to narrow the rows.
+
+## API Reference
+
+This component is plain markup built with [xote](https://xote.dev/) — everything it renders lives in the file you copied.

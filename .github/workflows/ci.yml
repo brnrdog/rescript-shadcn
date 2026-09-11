@@ -26,6 +26,31 @@ jobs:
       - name: check className parity
         run: yarn test:classnames
 
+  test-xote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: ".node-version"
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Compile xote packages
+        run: |
+          yarn workspace rescript-xote-base res:build
+          yarn workspace rescript-shadcn-xote res:build
+
+      - name: check xote registry behaviour
+        run: yarn test:xote
+
+      - name: check the xote registry is up to date
+        run: node scripts/generate-registry.mjs --lib xote --check
+
   # test-visual:
   #   runs-on: ubuntu-latest
   #   steps:

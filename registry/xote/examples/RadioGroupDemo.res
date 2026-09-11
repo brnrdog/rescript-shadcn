@@ -1,0 +1,16 @@
+@xote.component
+let make = () =>
+  <RadioGroup defaultValue="comfortable" className="w-fit">
+    <div class="flex items-center gap-3">
+      <RadioGroup.Item value="default" id="r1" />
+      <Label for_="r1"> {"Default"} </Label>
+    </div>
+    <div class="flex items-center gap-3">
+      <RadioGroup.Item value="comfortable" id="r2" />
+      <Label for_="r2"> {"Comfortable"} </Label>
+    </div>
+    <div class="flex items-center gap-3">
+      <RadioGroup.Item value="compact" id="r3" />
+      <Label for_="r3"> {"Compact"} </Label>
+    </div>
+  </RadioGroup>

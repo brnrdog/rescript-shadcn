@@ -49,6 +49,7 @@ module Lib = {
   type t =
     | @as("base") Base
     | @as("aria") Aria
+    | @as("xote") Xote
 
   let default = Base
 
@@ -60,7 +61,7 @@ module Lib = {
   }
 
   let toString = (value: t) => (value :> string)
-  let all = [Base, Aria]
+  let all = [Base, Aria, Xote]
   let atom = Signals.Signal.make(default)
 
   let fromStringOpt = (value: string) =>

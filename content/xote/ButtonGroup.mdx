@@ -1,0 +1,111 @@
+---
+title: Button Group
+description: A container that groups related buttons together with consistent styling.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+<ComponentPreview name="ButtonGroupDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/ButtonGroup
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="ButtonGroup"
+  title="components/ui/ButtonGroup.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res showLineNumbers
+<ButtonGroup>
+  <Button> {"Button 1"} </Button>
+  <Button> {"Button 2"} </Button>
+</ButtonGroup>
+```
+
+## Accessibility
+
+- The `ButtonGroup` component has the `role` attribute set to `group`.
+- Use <Kbd>Tab</Kbd> to navigate between the buttons in the group.
+- Use `aria-label` or `aria-labelledby` to label the button group.
+
+```res showLineNumbers
+<ButtonGroup aria-label="Button group">
+  <Button> {"Button 1"} </Button>
+  <Button> {"Button 2"} </Button>
+</ButtonGroup>
+```
+
+## ButtonGroup vs ToggleGroup
+
+- Use the `ButtonGroup` component when you want to group buttons that perform an action.
+- Use the `ToggleGroup` component when you want to group buttons that toggle a state.
+
+## Examples
+
+### Orientation
+
+Set the `orientation` prop to change the button group layout.
+
+<ComponentPreview name="ButtonGroupOrientation" />
+
+### Size
+
+Control the size of buttons using the `size` prop on individual buttons.
+
+<ComponentPreview name="ButtonGroupSize" />
+
+### Separator
+
+The `ButtonGroupSeparator` component visually divides buttons within a group.
+
+Buttons with variant `outline` do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
+
+<ComponentPreview name="ButtonGroupSeparator" />
+
+### Input
+
+Wrap an `Input` component with buttons.
+
+<ComponentPreview name="ButtonGroupInput" />
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from
+[`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base).
+The component in your project owns the markup and the classes, so you can change
+either without losing the behaviour.

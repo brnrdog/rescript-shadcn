@@ -1,0 +1,73 @@
+---
+title: Command
+description: Command menu for search and quick actions.
+base: xote
+component: true
+links:
+  doc: https://xote.dev/
+  api: https://github.com/brnrdog/xote#readme
+---
+
+<ComponentPreview name="CommandDemo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @rescript-shadcn/Command
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install xote rescript-xote-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="Command"
+  title="components/ui/Command.res"
+/>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```res
+<Command>
+  <Command.Input placeholder="Type a command or search..." />
+  <Command.List>
+    <Command.Empty> {"No results found."} </Command.Empty>
+    <Command.Group heading="Suggestions">
+      <Command.Item value="Calendar" onSelect={() => Console.log("calendar")}>
+        {"Calendar"}
+      </Command.Item>
+    </Command.Group>
+  </Command.List>
+</Command>
+```
+
+Items register their `value` as searchable text; typing hides the ones that do
+not match, and `Command.Empty` appears when none do.
+
+## API Reference
+
+Behaviour, ARIA wiring and keyboard interaction come from [`rescript-xote-base`](https://github.com/miriadhq/rescript-shadcn/tree/main/packages/xote-base); the component in your project owns the markup and the classes.
