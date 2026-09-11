@@ -15,6 +15,15 @@ let context: XoteBase.Internal.Context.t<Ctx.t> = XoteBase.Internal.Context.make
 
 let inputValue: Dom.event => string = %raw(`function (event) { return event.target.value || "" }`)
 
+/* The input is one field behind all the slots, so the caret has to sit at the
+   end of the value: pressing a slot otherwise leaves it at position 0, where
+   typing prepends and backspace eats the first digit instead of the last. */
+let caretToEnd: Dom.event => unit = %raw(`function (event) {
+  const input = event.currentTarget
+  const end = (input.value || "").length
+  requestAnimationFrame(() => { try { input.setSelectionRange(end, end) } catch (_) {} })
+}`)
+
 @xote.component
 let make = (
   ~className: option<string>=?,
@@ -56,10 +65,18 @@ let make = (
       required
       ariaLabel=?{ariaLabel}
       autoComplete="one-time-code"
-      onInput={onInput}
-      onFocus={_ => Signal.set(focused, true)}
+      onInput={event => {
+        onInput(event)
+        caretToEnd(event)
+      }}
+      onClick={caretToEnd}
+      onKeyUp={caretToEnd}
+      onFocus={event => {
+        Signal.set(focused, true)
+        caretToEnd(event)
+      }}
       onBlur={_ => Signal.set(focused, false)}
-      class="cn-input-otp-input absolute inset-0 opacity-0 disabled:cursor-not-allowed"
+      class="cn-input-otp-input absolute inset-0 z-20 cursor-text opacity-0 disabled:cursor-not-allowed"
       attrs=[
         View.attr("data-slot", "input-otp-input"),
         View.optionalAttr("pattern", pattern),
