@@ -10,6 +10,7 @@ import { make as DialogDemo } from "rescript-shadcn-xote/examples/DialogDemo.res
 import { make as DropdownMenuDemo } from "rescript-shadcn-xote/examples/DropdownMenuDemo.res.mjs"
 import { make as PopoverDemo } from "rescript-shadcn-xote/examples/PopoverDemo.res.mjs"
 import { make as SelectDemo } from "rescript-shadcn-xote/examples/SelectDemo.res.mjs"
+import { make as SliderMultiple } from "rescript-shadcn-xote/examples/SliderMultiple.res.mjs"
 import { make as SwitchDemo } from "rescript-shadcn-xote/examples/SwitchDemo.res.mjs"
 import { make as TooltipDemo } from "rescript-shadcn-xote/examples/TooltipDemo.res.mjs"
 import { make as TabsDemo } from "rescript-shadcn-xote/examples/TabsDemo.res.mjs"
@@ -350,5 +351,34 @@ describe("reopening an overlay", () => {
     const second = positionerFor()
     expect(second.style.position).toBe("fixed")
     expect(second.style.getPropertyValue("--anchor-width")).not.toBe("")
+  })
+})
+
+describe("Slider", () => {
+  it("gives each value its own thumb, bounded by its neighbours", async () => {
+    const container = await render(SliderMultiple)
+    const root = query(container, '[data-slot="slider"]')
+    const thumbs = Array.from(
+      root.querySelectorAll('[data-slot="slider-thumb"]')
+    ) as HTMLElement[]
+
+    // The root groups the thumbs; each thumb is the slider, per the ARIA pattern.
+    expect(root.getAttribute("role")).toBe("group")
+    expect(thumbs.map((t) => t.getAttribute("role"))).toEqual(["slider", "slider", "slider"])
+    expect(thumbs.map((t) => t.getAttribute("aria-valuenow"))).toEqual(["10", "20", "70"])
+
+    // A thumb's range is bounded by the thumbs either side of it.
+    expect(thumbs[1].getAttribute("aria-valuemin")).toBe("10")
+    expect(thumbs[1].getAttribute("aria-valuemax")).toBe("70")
+
+    thumbs[1].dispatchEvent(new window.KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }))
+    await flush()
+    expect(thumbs.map((t) => t.getAttribute("aria-valuenow"))).toEqual(["10", "30", "70"])
+
+    // End would take it past its neighbour, so it stops there instead.
+    thumbs[1].dispatchEvent(new window.KeyboardEvent("keydown", { key: "End", bubbles: true }))
+    await flush()
+    expect(thumbs[1].getAttribute("aria-valuenow")).toBe("70")
+    expect(thumbs[2].getAttribute("aria-valuenow")).toBe("70")
   })
 })

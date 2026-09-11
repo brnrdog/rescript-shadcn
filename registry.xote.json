@@ -4024,6 +4024,23 @@
       ]
     },
     {
+      "name": "SliderControlled",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Label",
+        "@rescript-shadcn/Slider"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SliderControlled.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "SliderDemo",
       "type": "registry:example",
       "dependencies": [
@@ -4035,6 +4052,70 @@
       "files": [
         {
           "path": "registry/xote/examples/SliderDemo.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SliderDisabled",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Slider"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SliderDisabled.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SliderMultiple",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Slider"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SliderMultiple.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SliderRange",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Slider"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SliderRange.res",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "SliderVertical",
+      "type": "registry:example",
+      "dependencies": [
+        "xote"
+      ],
+      "registryDependencies": [
+        "@rescript-shadcn/Slider"
+      ],
+      "files": [
+        {
+          "path": "registry/xote/examples/SliderVertical.res",
           "type": "registry:example"
         }
       ]

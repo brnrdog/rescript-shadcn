@@ -8,9 +8,9 @@ let make = (
   ~className: option<string>=?,
   ~id: option<string>=?,
   ~name: option<string>=?,
-  ~value: option<MaybeSignal.t<float>>=?,
-  ~defaultValue: float=0.,
-  ~onValueChange: option<float => unit>=?,
+  ~value: option<MaybeSignal.t<array<float>>>=?,
+  ~defaultValue: array<float>=[0.],
+  ~onValueChange: option<array<float> => unit>=?,
   ~min: float=0.,
   ~max: float=100.,
   ~step: float=1.,
@@ -43,5 +43,5 @@ let make = (
         className="cn-slider-range select-none data-horizontal:h-full data-vertical:w-full"
       />
     </XoteBase.Slider.Track>
-    <XoteBase.Slider.Thumb dataSlot="slider-thumb" className="cn-slider-thumb" />
+    <XoteBase.Slider.Thumbs dataSlot="slider-thumb" className="cn-slider-thumb" />
   </XoteBase.Slider.Root>
