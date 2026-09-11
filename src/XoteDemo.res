@@ -15,8 +15,28 @@ type loader = unit => promise<component>
 @module("xote/src/View.res.mjs")
 external mount: (node, Dom.element) => unit = "mount"
 
-@module("xote/src/View.res.mjs") @scope("Render")
-external disposeElement: Dom.element => unit = "disposeElement"
+@module("xote/src/Computed.res.mjs")
+external disposeComputed: 'a => unit = "dispose"
+
+/* xote 7.1.0 made the renderer's owner machinery internal and stopped serving
+   it from the package's exports, so the demo host tears down the subtree it
+   mounted itself, against the `__xote_owner__` property the owner system
+   documents. Without it, switching demos leaves the previous one's effects
+   running. */
+let disposeElement: (Dom.element, 'a => unit) => unit = %raw(`function (root, disposeComputed) {
+  const stack = [root]
+  while (stack.length > 0) {
+    const node = stack.pop()
+    const owner = node["__xote_owner__"]
+    if (owner) {
+      owner.disposers.forEach(dispose => dispose())
+      owner.computeds.forEach(disposeComputed)
+    }
+    for (const child of node.childNodes) {
+      if (child.nodeType === 1) { stack.push(child) }
+    }
+  }
+}`)
 
 @send external appendChild: (Dom.element, Dom.element) => unit = "appendChild"
 
@@ -34,7 +54,7 @@ let make = (~load: loader) => {
     let cleanup = () =>
       switch containerRef.current->Nullable.toOption {
       | Some(container) =>
-        container->disposeElement
+        disposeElement(container, disposeComputed)
         container->clear
       | None => ()
       }

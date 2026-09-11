@@ -204,10 +204,62 @@ module El = {
     }
   }
 
-  let ownDisposer = (disposer: Effect.disposer): unit =>
-    switch View.Reactivity.currentOwner.contents {
-    | Some(owner) => View.Reactivity.addDisposer(owner, disposer)
+  /* xote 7.1.0 keeps its renderer's owner machinery internal and no longer
+     serves those modules from the package's exports map, so a subtree this
+     package mounted itself is torn down here, against the `__xote_owner__`
+     property the owner system documents. Without it a portal that closes
+     leaves its content's effects running. */
+  type ownerRecord = {disposers: array<unit => unit>, computeds: array<Signal.t<unknown>>}
+
+  let readOwner: Dom.element => Nullable.t<ownerRecord> = %raw(`function (element) {
+    return element["__xote_owner__"] ?? null
+  }`)
+
+  let elementChildren: Dom.element => array<Dom.element> = %raw(`function (element) {
+    return Array.prototype.filter.call(element.childNodes, node => node.nodeType === 1)
+  }`)
+
+  let rec disposeSubtree = (element: Dom.element): unit => {
+    element->elementChildren->Array.forEach(disposeSubtree)
+
+    switch element->readOwner->Nullable.toOption {
+    | Some(owner) =>
+      owner.disposers->Array.forEach(dispose => dispose())
+      owner.computeds->Array.forEach(Computed.dispose)
     | None => ()
+    }
+  }
+
+  /* Cleanups for work that runs after render. An effect created while a
+     component renders belongs to that component, so one registered here is
+     disposed with it; work deferred to a later mount has no such scope, and
+     collects into the slot that was opened for it instead. */
+  type slot = {mutable cleanups: array<unit => unit>}
+
+  let currentSlot: ref<option<slot>> = ref(None)
+
+  let openSlot = (): slot => {
+    let slot = {cleanups: []}
+    Effect.run(() => Some(
+      () => {
+        slot.cleanups->Array.forEach(cleanup => cleanup())
+        slot.cleanups = []
+      },
+    ))
+    slot
+  }
+
+  let runInSlot = (slot: option<slot>, fn: unit => unit): unit => {
+    let previous = currentSlot.contents
+    currentSlot := slot
+    fn()
+    currentSlot := previous
+  }
+
+  let ownDisposer = (disposer: Effect.disposer): unit =>
+    switch currentSlot.contents {
+    | Some(slot) => slot.cleanups->Array.push(disposer.dispose)->ignore
+    | None => Effect.run(() => Some(disposer.dispose))
     }
 
   /* Work bound to a node by id. Portaled content is built long before it is
@@ -216,17 +268,13 @@ module El = {
   type binding = {
     id: string,
     fn: Dom.element => unit,
-    owner: option<View.Reactivity.owner>,
+    slot: slot,
     mutable last: option<Dom.element>,
   }
 
   let bindings: array<binding> = []
 
-  let runOwned = (fn, owner, element) =>
-    switch owner {
-    | Some(owner) => View.Reactivity.runWithOwner(owner, () => fn(element))
-    | None => fn(element)
-    }
+  let runOwned = (fn, slot, element) => runInSlot(Some(slot), () => fn(element))
 
   /* Run every binding whose node is in the document and is not the one it last
      ran against — that covers both the first mount and each reopen. */
@@ -237,7 +285,7 @@ module El = {
       | (Some(element), Some(previous)) if element === previous => ()
       | (Some(element), _) =>
         binding.last = Some(element)
-        runOwned(binding.fn, binding.owner, element)
+        runOwned(binding.fn, binding.slot, element)
       }
     )
 
@@ -247,7 +295,7 @@ module El = {
   let withElement = (id: string, fn: Dom.element => unit): unit =>
     if isBrowser {
       bindings
-      ->Array.push({id, fn, owner: View.Reactivity.currentOwner.contents, last: None})
+      ->Array.push({id, fn, slot: openSlot(), last: None})
       ->ignore
       schedule(flushPending)
     }
@@ -342,7 +390,7 @@ module Portal = {
 
         switch container.contents {
         | Some(element) =>
-          View.Render.disposeElement(element)
+          El.disposeSubtree(element)
           element->El.remove
         | None => ()
         }

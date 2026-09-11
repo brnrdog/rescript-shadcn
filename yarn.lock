@@ -2389,15 +2389,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rescript/core@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "@rescript/core@npm:1.6.1"
-  peerDependencies:
-    rescript: ">=11.1.0"
-  checksum: 10c0/04e7fc14dc050de0a9da8eb0642fb0800bc80c8978ef79aada1823bc2080b47a4d40c1168c63b53642009935342a4feb833fc190a71aa45e83af5d896269b95d
-  languageName: node
-  linkType: hard
-
 "@rescript/darwin-arm64@npm:12.3.0":
   version: 12.3.0
   resolution: "@rescript/darwin-arm64@npm:12.3.0"
@@ -8861,7 +8852,7 @@ __metadata:
     rescript: "npm:^12.3.0"
     rescript-xote-base: "workspace:^"
     tailwind-merge: "npm:^3.3.1"
-    xote: "npm:7.1.0-beta.8"
+    xote: "npm:7.1.0"
   languageName: unknown
   linkType: soft
 
@@ -8928,7 +8919,7 @@ __metadata:
     tw-animate-css: "npm:^1.3.6"
     vaul: "npm:^1.1.2"
     vitest: "npm:^4.0.18"
-    xote: "npm:7.1.0-beta.8"
+    xote: "npm:7.1.0"
   languageName: unknown
   linkType: soft
 
@@ -8951,9 +8942,9 @@ __metadata:
   resolution: "rescript-xote-base@workspace:packages/xote-base"
   dependencies:
     rescript: "npm:^12.3.0"
-    xote: "npm:7.1.0-beta.8"
+    xote: "npm:7.1.0"
   peerDependencies:
-    xote: ^7.1.0-beta.8
+    xote: ^7.1.0
   languageName: unknown
   linkType: soft
 
@@ -10639,13 +10630,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"xote@npm:7.1.0-beta.8":
-  version: 7.1.0-beta.8
-  resolution: "xote@npm:7.1.0-beta.8"
+"xote@npm:7.1.0":
+  version: 7.1.0
+  resolution: "xote@npm:7.1.0"
   dependencies:
-    "@rescript/core": "npm:^1.6.1"
     rescript-signals: "npm:^3.1.0"
-  checksum: 10c0/6d736c81bfcef8ff40220e4e4c9f6c8eb52e7b094552c5f9b0a567b0260c33d1a71958bac65b328acefba64b87f22d9c836382f8a0c6f0b9577a7cd19fbcccde
+  checksum: 10c0/cf3e95269c5132aa9f03ef8d77365e583ae482ff90e1251c8c20063ee7ec8995e85b6869751db3c3a5df98e8fef60b15537a88f1e0a168ca0e24bed608e84c40
   languageName: node
   linkType: hard
 
