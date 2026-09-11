@@ -48,8 +48,8 @@ jobs:
       - name: check xote registry behaviour
         run: yarn test:xote
 
-      - name: check registries are up to date
-        run: node scripts/generate-registry.mjs --check
+      - name: check the xote registry is up to date
+        run: node scripts/generate-registry.mjs --lib xote --check
 
   # test-visual:
   #   runs-on: ubuntu-latest
